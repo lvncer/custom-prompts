@@ -1,0 +1,68 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(terminal-notifier:*)"
+    ],
+    "deny": [
+      "Bash(git merge:*)",
+      "Bash(npm run dev:*)",
+      "Bash(rm /: *)",
+      "Bash(rm ~/: *)",
+      "Bash(rm -rf: *)",
+      "Bash(sudo rm: *)",
+      "Bash(chmod -R: *)",
+      "Bash(chown -R: *)",
+      "Bash(dd: *)",
+      "Bash(mkfs: *)",
+      "Bash(fdisk: *)"
+    ]
+  },
+  "enableAllProjectMcpServers": false,
+  "enabledMcpjsonServers": [],
+  "hooks": {
+    "EventName": [
+      {
+        "matcher": "Bash|Read|Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Morse.aiff"
+          }
+        ]
+      }
+    ],
+    "Notification": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Bottle.aiff"
+          },
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code - ' -message 'Action Required for Your Next Command.'"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "afplay /System/Library/Sounds/Hero.aiff"
+          },
+          {
+            "type": "command",
+            "command": "terminal-notifier -title 'Claude Code' -message 'Task completed successfully!'"
+          }
+        ]
+      }
+    ]
+  }
+}
