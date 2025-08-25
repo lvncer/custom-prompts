@@ -20,6 +20,8 @@ Custom Prompts は、開発効率と品質を向上させるための独自の�
 
 - Cursor
   - [Cursor Rules](./.cursor/rules/index.mdc)
+  - [Cursor Slash Commands Instructions](./.cursor/slash-commands.md)
+  - [Cursor Custom Slash Commands](./.cursor/commands/)
   - [Cursor MCP](./.cursor/mcp.json)
 - Claude Code
   - [Claude Code Rules](./CLAUDE.md)
