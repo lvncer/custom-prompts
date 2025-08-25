@@ -1,16 +1,27 @@
-# Branch Creation & Management
+# Branch & Git Operations
 
 ## Overview
-Create feature branch following naming conventions and link to GitHub issue.
 
-## Steps
+Create and manage branches following established naming conventions and commit practices.
+
+## Branch Creation & Naming
+
+### Branch Format
+
+- Create after issue creation
+- Refer to `.github/CONTRIBUTING.md` for detailed naming conventions
+
+### Steps
+
 1. **Branch Naming**
+
    - Format: `feat/123-feature-name`
    - Include issue number
    - Use descriptive feature name
    - Follow kebab-case convention
 
 2. **Branch Creation**
+
    - Create from main/master branch
    - Push to remote immediately
    - Set up tracking
@@ -20,7 +31,18 @@ Create feature branch following naming conventions and link to GitHub issue.
    - Update issue status to in-progress
    - Set up development environment
 
+## Commit Management
+
+### Commit Guidelines
+
+- **Commit at each phase completion**
+- Manual commits (recommended)
+- **Include issue number** in commit messages
+- **Concise Japanese messages** (20 characters max)
+- Refer to `.github/COMMIT_CONVENTION.md` for the commit message conventions
+
 ## Branch Commands
+
 ```bash
 # Get current repository info
 git remote -v
@@ -36,6 +58,7 @@ git status
 ```
 
 ## Branch Naming Convention
+
 - **feat/**: New features
 - **fix/**: Bug fixes
 - **docs/**: Documentation updates
@@ -43,6 +66,7 @@ git status
 - **test/**: Test additions/updates
 
 ## Branch Checklist
+
 - [ ] Issue number included in branch name
 - [ ] Descriptive feature name used
 - [ ] Branch created from main/master

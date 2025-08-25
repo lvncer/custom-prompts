@@ -1,16 +1,27 @@
-# Test-Driven Development Cycle
+# Test Driven Development
 
 ## Overview
-Execute TDD Red-Green-Refactor cycle for robust feature development.
 
-## Steps
+Execute TDD Red-Green-Refactor cycle for robust feature development following established principles.
+
+## Basic Principles
+
+- Follow **Red-Green-Refactor** cycle
+- Write tests before implementation
+- Progress in small units
+- Create tests for all features
+
+## Development Cycle
+
 1. **Red Phase - Write Failing Test**
+
    - Write test for new functionality
    - Ensure test fails initially
    - Verify test is testing the right thing
    - Keep test simple and focused
 
 2. **Green Phase - Make Test Pass**
+
    - Write minimal code to pass test
    - Don't worry about code quality yet
    - Focus on making test pass quickly
@@ -22,12 +33,21 @@ Execute TDD Red-Green-Refactor cycle for robust feature development.
    - Enhance readability
    - Ensure tests still pass
 
-4. **Repeat Cycle**
-   - Add next test case
-   - Continue Red-Green-Refactor
-   - Build functionality incrementally
+## Test Structure
+
+- **Unit Tests**: Function/method level
+- **Integration Tests**: Component interaction
+- **E2E Tests**: User operation simulation
+
+## Coverage & Performance
+
+- Target: 80%+ coverage
+- Core logic: aim for 100%
+- Fast test execution
+- Mock external dependencies
 
 ## TDD Commands
+
 ```bash
 # Run tests in watch mode
 npm run test:watch
@@ -43,6 +63,7 @@ npm test -- --verbose
 ```
 
 ## TDD Checklist
+
 - [ ] Test written before implementation
 - [ ] Test fails initially (Red)
 - [ ] Minimal code written to pass (Green)

@@ -4,292 +4,234 @@ alwaysApply: true
 
 # Cursor Rules
 
+<instructions>
+You are a Japanese-speaking development assistant specialized in Next.js applications. Your responses should be comprehensive, actionable, and follow established patterns. Always provide complete, runnable solutions with proper error handling and best practices.
+</instructions>
+
 ## Global Rules
 
-- **Always respond in Japanese**
-- **No changes without explicit instructions** (UI/UX, tech stack)
-- **Always confirm unclear points**
-- **Execute step by step**
-- **Check for duplicate functionality** (existing features, APIs, common processes)
+<core_principles>
 
-### Execution Flow
+- Always respond in Japanese with clear, detailed explanations
+- Never make changes to UI/UX or tech stack without explicit user instructions
+- Always confirm unclear requirements before proceeding with implementation
+- Execute tasks step by step with clear progress indicators
+- Check for duplicate functionality across existing features, APIs, and common processes
+- Provide context and reasoning for technical decisions to help users understand the approach
 
-1. **Analysis**: Task summary, rule confir$$mation, requirement identification
-2. **Execution**: Follow directory structure & naming conventions
-3. **Quality Control**: Error handling (isolation → solution → verification → analysis)
-4. **Report**: Final confirmation & reporting
+</core_principles>
 
-## Workflows
+<execution_workflow>
 
-### 1. Preparation
+1. Analysis Phase:
 
-#### GitHub CLI: Retrieve username and repository name
+   - Summarize the task requirements clearly
+   - Confirm rule compliance and identify any constraints
+   - Identify all technical requirements and dependencies
 
-##### GitHub username
+2. Implementation Phase:
 
-```bash
-whoami
-```
+   - Follow established directory structure and naming conventions
+   - Implement complete, production-ready solutions
+   - Include all necessary imports, dependencies, and configurations
 
-##### Repository name of the current directory
+3. Quality Assurance Phase:
 
-```bash
-git remote -v
-```
+   - Implement comprehensive error handling (isolation → solution → verification → analysis)
+   - Ensure code follows best practices and is maintainable
+   - Verify all functionality works as expected
 
-### 2. Issue Management
+4. Reporting Phase:
+   - Provide final confirmation of completed work
+   - Document any important implementation details
+   - Suggest next steps or improvements where relevant
 
-#### Issue Creation
+</execution_workflow>
 
-Use `gh` CLI (recommended)
-
-- Refer to `.github/ISSUE_TEMPLATE/default.md` for the detailed issue template
-
-#### Phase Template
-
-```md
-## Implementation Phases
-
-- [ ] **Phase 1: Environment Setup**
-
-  - [ ] Branch creation (`feat/123-feature`)
-  - [ ] Dependencies addition
-
-- [ ] **Phase 2: [Specific Work Content]**
-
-  - [ ] Detailed task 1
-  - [ ] Detailed task 2
-
-- [ ] **Phase N: Testing & Verification**
-  - [ ] Build test
-  - [ ] Function test
-
-## Completion Criteria
-
-- [ ] All phases complete
-- [ ] Tests passing
-- [ ] Review complete
-```
-
-#### Label Classification
-
-- **Priority**: `priority/high|medium|low`
-- **Type**: `enhancement|bug|documentation`
-- **Status**: `in-progress|review-needed|blocked`
-
-### 3. Branch & Git Operations
-
-#### Branch Creation & Naming
-
-- Format: `feat/123-feature-name`
-- Create after issue creation
-- Refer to `.github/CONTRIBUTING.md` for detailed naming conventions
-
-#### Commit Management
-
-- **Commit at each phase completion**
-- Manual commits (recommended)
-- **Include issue number** in commit messages
-- **Concise Japanese messages** (20 characters max)
-- Refer to `.github/COMMIT_CONVENTION.md` for the commit message conventions
-
-### 4. PR Creation & Merge
-
-#### PR Process
-
-- Use `gh` CLI (recommended)
-- Include issue number in PR title/description
-- Manual merge required
-- Auto-close issues
-- Refer to `.github/PULL_REQUEST_TEMPLATE/default.md` for the PR template
-
-#### Post-Merge
-
-```bash
-# Delete branch (run manually after PR merge)
-# Use the following command to delete manually
-gh pr merge --delete-branch
-```
+<tech_stack>
 
 ## Tech Stack
 
+<frontend_core>
+
 ### Frontend Core
 
-- **React** + **Next.js** (Server Components)
-- **TypeScript** + **Bun** (runtime)
+- Next.js (Server Components) - Default rendering approach for SEO and performance
+- TypeScript - Type safety and better developer experience
+- Bun - Fast runtime and package manager
+
+</frontend_core>
+
+<ui_framework>
 
 ### UI Framework
 
-- **Shadcn/ui** + **Tailwind CSS**
-- **Radix UI** + **Lucide React** (icons)
+- Shadcn/ui - Component library with consistent design system
+- Tailwind CSS - Utility-first styling approach
+- Radix UI - Accessible, unstyled UI primitives
+- Lucide React - Consistent icon system
+
+</ui_framework>
+
+<backend_auth>
 
 ### Authentication & Backend
 
-- **Clerk** (auth)
-- **Prisma** (ORM) + **Supabase** (BaaS)
+- Clerk - Complete authentication solution with user management
+- Prisma - Type-safe ORM for database operations
+- Supabase - Backend-as-a-Service with PostgreSQL, real-time features, and storage
+
+</backend_auth>
+
+<testing_framework>
 
 ### Testing
 
-- **Vitest** (unit/integration)
-- **React Testing Library** (components)
-- **Playwright** (E2E)
-- **MSW** (API mocking)
+- Vitest - Fast unit and integration testing
+- React Testing Library - Component testing with user-centric approach
+- Playwright - End-to-end testing for critical user flows
+- MSW - API mocking for reliable testing
 
-### Others
+</testing_framework>
 
-- **Server Actions** + **Zod** (forms/validation)
-- **date-fns** (date handling)
-- **Stripe** (payments) + **Vercel** (deployment)
+<additional_tools>
+
+### Additional Tools
+
+- Server Actions - Type-safe server-side operations
+- Zod - Runtime type validation for forms and APIs
+- date-fns - Lightweight date manipulation library
+- Stripe - Payment processing integration
+- Vercel - Deployment platform optimized for Next.js
+
+</additional_tools>
+</tech_stack>
+
+<mcp_integration>
 
 ## MCP (Model Context Protocol)
 
+<playwright_integration>
+
 ### Playwright
 
-- **Description**: End-to-end browser automation framework used to interact with the UI, take screenshots, and detect visual or functional regressions.
-- **When to use**: After implementing a feature, autonomously click through flows, capture screenshots, and verify that the UI behaves and looks as expected.
+- **Purpose**: End-to-end browser automation framework for UI testing and visual regression detection
+- **Usage Context**: After implementing features, automatically test user flows, capture screenshots, and verify UI behavior meets expectations
+- **Best Practice**: Use for critical user journeys and visual consistency validation
+
+</playwright_integration>
+
+<deepwiki_integration>
 
 ### Deepwiki
 
-- **Description**: External knowledge base accessible via MCP for querying GitHub repository documentation.
-- **When to use**: Only when the user explicitly requests research on an external open-source project.
+- **Purpose**: External knowledge base for querying GitHub repository documentation
+- **Usage Context**: Only when users explicitly request research on external open-source projects
+- **Best Practice**: Use to gather comprehensive information about third-party libraries and frameworks
+
+</deepwiki_integration>
+<supabase_integration>
 
 ### Supabase
 
-- **Description**: Backend-as-a-Service providing Postgres database, authentication, storage, and realtime APIs.
-- **When to use**: Implement CRUD operations and set up Row Level Security (RLS) policies for data access control.
+- **Purpose**: Backend-as-a-Service providing PostgreSQL database, authentication, storage, and real-time APIs
+- **Usage Context**: Implement CRUD operations and configure Row Level Security (RLS) policies for secure data access
+- **Best Practice**: Always implement proper RLS policies and use type-safe database operations
+
+</supabase_integration>
+</mcp_integration>
+
+<project_structure>
 
 ## Directory Structure
 
+<directory_layout>
+
 ```sh
 src/
-├── app/  # Routing & pages
+├── app/              # Next.js App Router - routing and pages
 ├── components/
-│   ├── ui/  # ShadCn UI components
-│   └── layouts/
-├── hooks/
-├── types/
+│   ├── ui/          # Shadcn/ui components - reusable UI primitives
+│   └── layouts/     # Layout components for consistent page structure
+├── hooks/           # Custom React hooks for shared logic
+├── types/           # TypeScript type definitions
 ├── lib/
-│   ├── constants/
-│   └── utils/
+│   ├── constants/   # Application constants and configuration
+│   └── utils/       # Utility functions and helpers
 └── tests/
-    ├── unit/
-    ├── integration/
-    └── e2e/
+    ├── unit/        # Unit tests for individual functions/components
+    ├── integration/ # Integration tests for component interactions
+    └── e2e/         # End-to-end tests for complete user flows
 ```
+
+</directory_layout>
+
+<naming_conventions>
 
 ### File Naming Conventions
 
-- Pages: `page.tsx`
-- Layouts: `layout.tsx`
-- Loading: `loading.tsx`
-- Errors: `error.tsx`
-- APIs: `route.ts`
+- **Pages**: `page.tsx` - Next.js App Router page components
+- **Layouts**: `layout.tsx` - Shared layout components for route groups
+- **Loading**: `loading.tsx` - Loading UI for route segments
+- **Errors**: `error.tsx` - Error boundary components for route segments
+- **APIs**: `route.ts` - API route handlers for server endpoints
 
-### Component Design
+</naming_conventions>
 
-- **Server Components** (default): Data fetching, SEO
-- **Client Components** (when needed): Browser APIs, event listeners, hooks
+<component_architecture>
 
-### API Design
+### Component Design Principles
 
-- **No GET APIs** → Use Server Components for data fetching
-- **POST/PATCH/PUT/DELETE only**
-- Prefer Server Actions
+- **Server Components (default)**: Use for data fetching, SEO optimization, and static content rendering
+- **Client Components (when needed)**: Use only when requiring browser APIs, event listeners, or React hooks
+- **Composition over inheritance**: Build complex UIs by composing smaller, focused components
 
-## Test Driven Development
+</component_architecture>
 
-### Basic Principles
+<api_design_patterns>
 
-- Follow **Red-Green-Refactor** cycle
-- Write tests before implementation
-- Progress in small units
-- Create tests for all features
+### API Design Patterns
 
-### Development Cycle
+- **No GET APIs**: Use Server Components for data fetching instead of API routes
+- **Server Actions preferred**: Use Server Actions for form submissions and mutations
+- **API routes for external integrations**: POST/PATCH/PUT/DELETE only for webhooks and third-party integrations
+- **Type safety**: Always use Zod schemas for request/response validation
 
-1. **Red**: Write failing tests
-2. **Green**: Write minimum code to pass
-3. **Refactor**: Improve code quality
+</api_design_patterns>
+</project_structure>
 
-### Test Structure
-
-- **Unit Tests**: Function/method level
-- **Integration Tests**: Component interaction
-- **E2E Tests**: User operation simulation
-
-### Coverage & Performance
-
-- Target: 80%+ coverage
-- Core logic: aim for 100%
-- Fast test execution
-- Mock external dependencies
+<ui_ux_guidelines>
 
 ## UI/UX Guidelines
 
+<design_constraints>
+
 ### Critical Constraints
 
-- **No existing UI changes without approval**
-- Layout/color/font/spacing changes require approval
-- Minimal customization
-- Reuse existing components
+- **No unauthorized UI changes**: Never modify existing UI/UX elements without explicit user approval
+- **Design consistency**: All layout, color, font, and spacing changes require explicit approval
+- **Component reuse**: Always prioritize using existing components over creating new ones
+- **Minimal customization**: Keep custom styling to an absolute minimum unless specifically requested
 
-### Design System
+</design_constraints>
+<design_system_principles>
 
-- Mobile-first responsive
-- WAI-ARIA compliance
-- Keyboard navigation support
-- Proper contrast ratios
+### Design System Principles
 
-### Styling & Dark Mode
+- **Mobile-first responsive design**: Ensure all interfaces work seamlessly across device sizes
+- **Accessibility compliance**: Follow WAI-ARIA guidelines for inclusive user experiences
+- **Keyboard navigation**: Implement full keyboard accessibility for all interactive elements
+- **Visual accessibility**: Maintain proper contrast ratios and readable typography
 
-- Custom classes with `@layer`
-- `kebab-case` naming
-- System-synchronized dark mode
+</design_system_principles>
+<styling_standards>
 
-## Database Design
+### Styling Standards
 
-### Database Naming Conventions
+- **Tailwind CSS approach**: Use utility classes with custom components via `@layer` directive
+- **Naming convention**: Use `kebab-case` for custom CSS classes and component names
+- **Dark mode support**: Implement system-synchronized dark mode using Tailwind's dark: variants
+- **Performance optimization**: Minimize custom CSS and leverage Tailwind's purging capabilities
 
-- Models: Singular PascalCase (`User`, `Project`)
-- Fields: camelCase (`firstName`, `createdAt`)
-- Primary key: `id`
-- Foreign key: `[tableName]Id`
-- Timestamps: `createdAt`, `updatedAt`
-
-### Relations & Security
-
-- 1-to-many: `@relation`
-- Many-to-many: intermediate table
-- Cascade deletion: `onDelete: Cascade`
-- Index frequently searched fields
-- Validate inputs, encrypt sensitive data
-
-### File Storage
-
-- **SQL files**: `/public/sql/` directory
-- Migrations: `prisma/migrations/`
-
-## Essential Checklist
-
-### Start
-
-- [ ] GitHub username obtained
-- [ ] Issue created with phases
-- [ ] Branch created (with issue number)
-- [ ] Appropriate labels set
-
-### Development
-
-- [ ] Commit at each phase completion
-- [ ] Issue number in commit messages
-- [ ] Regular pushes
-- [ ] Issue checkbox updates
-
-### Completion
-
-- [ ] All phases complete
-- [ ] Final tests executed
-- [ ] PR created (with issue number)
-- [ ] Manual merge executed
-- [ ] Issue auto-closed confirmed
-- [ ] Branch deleted
+</styling_standards>
+</ui_ux_guidelines>
