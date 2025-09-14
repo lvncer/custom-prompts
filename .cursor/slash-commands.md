@@ -1,193 +1,215 @@
-# Cursor Slash Commands
+# Cursor スラッシュコマンド
 
-## Requirements Definition & Large-Scale Workflows
+## 要件定義コマンド
 
-### 🎯 Requirement Definition Commands
+### `/requirements` - 要件定義フェーズテンプレート作成
 
-#### `/requirements` - Create requirement definition phase template
+- ユーザーストーリーの作成と検証
+- 受け入れ基準の定義
+- 技術要件の仕様策定
+- 依存関係の特定
 
-- User stories creation and validation
-- Acceptance criteria definition
-- Technical requirements specification
-- Dependency identification
+### `/architecture` - システム設計・技術スタック選定
 
-#### `/architecture` - System design & tech stack selection
+- データベース設計とスキーマ計画
+- API 設計とエンドポイント仕様
+- セキュリティ要件と実装
+- パフォーマンス考慮事項
 
-- Database design and schema planning
-- API design and endpoint specification
-- Security requirements and implementation
-- Performance considerations
+### `/epic` - 大規模機能の分解・管理
 
-#### `/epic` - Large feature breakdown & management
+- 複数 Issue 作成と連携
+- 機能間の依存関係管理
+- タイムラインとマイルストーン調整
+- リソース配分計画
 
-- Multiple issue creation and linking
-- Dependency management across features
-- Timeline and milestone coordination
-- Resource allocation planning
+### `/milestone` - マイルストーン設定・進捗管理
 
-#### `/milestone` - Milestone setting & progress management
+- リリース計画とスケジューリング
+- スプリント管理と追跡
+- 進捗監視とレポート
+- ステークホルダーコミュニケーション
 
-- Release planning and scheduling
-- Sprint management and tracking
-- Progress monitoring and reporting
-- Stakeholder communication
+### `/stakeholder` - ステークホルダー分析・要件整理
 
-#### `/stakeholder` - Stakeholder analysis & requirement organization
+- ステークホルダーの特定とマッピング
+- 要件の優先順位付け
+- コミュニケーション計画策定
+- フィードバック収集と統合
 
-- Stakeholder identification and mapping
-- Requirement prioritization
-- Communication plan development
-- Feedback collection and integration
+---
 
-### 🔧 Development Efficiency Commands
+## 開発効率化コマンド
 
-#### `/logs` - Save prompt logs
+### `/logs` - プロンプトログ保存
 
-- Save implementation logs to `.prompts/yyyy-mm-dd_feature-name.md` format
-- Document decision-making process
-- Track implementation progress
-- Maintain development history
+- 実装ログを`.prompts/yyyy-mm-dd_feature-name.md`形式で保存
+- 意思決定プロセスの文書化
+- 実装進捗の追跡
+- 開発履歴の維持
 
-#### `/notify` - Task completion notification
+### `/notify` - タスク完了通知
 
-- Mandatory notification automation
-- Status update distribution
-- Progress reporting to stakeholders
-- Alert system configuration
+- 必須通知の自動化
+- ステータス更新の配信
+- ステークホルダーへの進捗報告
+- アラートシステム設定
 
-#### `/stack` - Tech stack verification & updates
+### `/stack` - 技術スタック検証・更新
 
-- Dependency version checks
-- Security vulnerability scanning
-- Performance optimization recommendations
-- Compatibility verification
+- 依存関係バージョンチェック
+- セキュリティ脆弱性スキャン
+- パフォーマンス最適化推奨
+- 互換性検証
 
-#### `/security` - Security checks & RLS setup
+### `/security` - セキュリティチェック・RLS 設定
 
-- Row Level Security policy implementation
-- Authentication flow verification
-- Authorization checks
-- Security audit and compliance
+- Row Level Security ポリシー実装
+- 認証フロー検証
+- 認可チェック
+- セキュリティ監査とコンプライアンス
 
-#### `/cleanup` - Temporary file deletion & environment cleanup
+### `/cleanup` - 一時ファイル削除・環境クリーンアップ
 
-- Remove temporary development files
-- Clean build artifacts
-- Reset development environment
-- Optimize workspace organization
+- 一時開発ファイルの削除
+- ビルド成果物のクリーン
+- 開発環境のリセット
+- ワークスペース組織の最適化
 
-### 🚀 Integrated Workflow Commands
+---
 
-#### `/feature` - Full feature development flow
+## 統合ワークフローコマンド
 
-- Requirements analysis and documentation
-- Issue creation and branch setup
-- Implementation with best practices
-- Testing and quality assurance
-- Pull request creation and review
+### `/feature` - 完全機能開発フロー
 
-#### `/hotfix` - Emergency fix flow
+- 要件分析と文書化
+- Issue 作成とブランチ設定
+- ベストプラクティスでの実装
+- テストと品質保証
+- プルリクエスト作成とレビュー
 
-- High priority issue identification
-- Immediate response protocol
-- Fast-track development process
-- Emergency deployment procedures
+### `/hotfix` - 緊急修正フロー
 
-#### `/review` - Code review preparation
+- 高優先度 Issue 特定
+- 即座対応プロトコル
+- 高速開発プロセス
+- 緊急デプロイ手順
 
-- Test execution and validation
-- Coverage verification (80%+ target)
-- Code quality assessment
-- Pull request optimization
+### `/review` - コードレビュー準備
 
-#### `/deploy` - Deployment preparation
+- テスト実行と検証
+- カバレッジ検証（80%+目標）
+- コード品質評価
+- プルリクエスト最適化
 
-- Build verification and testing
-- Environment configuration check
-- Release documentation
-- Deployment automation
+### `/deploy` - デプロイ準備
 
-### 🎨 UI/UX Specialized Commands
+- ビルド検証とテスト
+- 環境設定チェック
+- リリース文書化
+- デプロイ自動化
 
-#### `/design` - Apply design system
+---
 
-- Shadcn/ui component integration
-- Tailwind CSS utility application
-- Design token consistency
-- Component library usage
+## UI/UX 専門コマンド
 
-#### `/responsive` - Responsive design verification
+### `/design` - デザインシステム適用
 
-- Mobile-first approach validation
-- Breakpoint testing
-- Cross-device compatibility
-- Performance optimization
+- Shadcn/ui コンポーネント統合
+- Tailwind CSS ユーティリティ適用
+- デザイントークン一貫性
+- コンポーネントライブラリ使用
 
-#### `/accessibility` - Accessibility checks
+### `/responsive` - レスポンシブデザイン検証
 
-- WAI-ARIA compliance verification
-- Keyboard navigation testing
-- Screen reader compatibility
-- Color contrast validation
+- モバイルファーストアプローチ検証
+- ブレークポイントテスト
+- クロスデバイス互換性
+- パフォーマンス最適化
 
-### 🧪 Testing Specialized Commands
+### `/accessibility` - アクセシビリティチェック
 
-#### `/tdd` - Execute TDD cycle
+- WAI-ARIA コンプライアンス検証
+- キーボードナビゲーションテスト
+- スクリーンリーダー互換性
+- カラーコントラスト検証
 
-- Red-Green-Refactor implementation
-- Test-first development approach
-- Unit test creation and execution
-- Code quality improvement
+### テスト専門コマンド
 
-#### `/coverage` - Test coverage verification
+### `/test` - テスト・ビルド実行
 
-- 80%+ coverage target validation
-- Coverage gap identification
-- Test quality assessment
-- Reporting and documentation
+- 開発サーバー起動とホットリロード
+- コード品質チェック（lint・format）
+- 包括的テスト実行（unit・integration・e2e）
+- プロダクションビルド検証
 
-#### `/e2e` - E2E test execution
+### `/tdd` - TDD サイクル実行
 
-- Playwright automation setup
-- User journey testing
-- Visual regression detection
-- Performance monitoring
+- Red-Green-Refactor 実装
+- テストファースト開発アプローチ
+- ユニットテスト作成と実行
+- コード品質向上
 
-### 🗂️ Issue Management Commands
+### `/coverage` - テストカバレッジ検証
 
-#### `/issue` - GitHub issue creation and management
+- 80%+カバレッジ目標検証
+- カバレッジギャップ特定
+- テスト品質評価
+- レポートと文書化
 
-- Issue template application
-- Phase-based implementation planning
-- Label classification and assignment
-- Progress tracking and updates
+### `/e2e` - E2E テスト実行
 
-#### `/branch` - Branch creation and Git operations
+- Playwright 自動化設定
+- ユーザージャーニーテスト
+- ビジュアル回帰検出
+- パフォーマンス監視
 
-- Branch naming convention compliance
-- Git workflow management
-- Commit message standardization
-- Merge conflict resolution
+---
 
-#### `/commit` - Commit management and conventions
+## Issue 管理コマンド
 
-- Conventional commit format
-- Japanese commit messages (20 characters max)
-- Issue number integration
-- Change documentation
+### `/issue` - GitHub Issue 作成・管理
 
-#### `/pr` - Pull request creation and management
+- Issue テンプレート適用
+- フェーズベース実装計画
+- ラベル分類と割り当て
+- 進捗追跡と更新
 
-- PR template application
-- Review request automation
-- Auto-close issue configuration
-- Merge strategy optimization
+### `/branch` - ブランチ作成・Git 操作
 
-### 🗄️ Database Management Commands
+- ブランチ命名規則準拠
+- Git ワークフロー管理
+- コミットメッセージ標準化
+- マージコンフリクト解決
 
-#### `/database` - Database design and management
+### `/sync` - Git 同期・プッシュ解決
 
-- Schema design and validation
-- Migration creation and execution
-- Prisma client generation
-- Database optimization
+- リポジトリ状態分析とステータス確認
+- リモート変更の取得と比較
+- マージコンフリクト解決
+- 安全な同期とプッシュ実行
+
+### `/commit` - コミット管理・規約
+
+- Conventional Commit フォーマット
+- 日本語コミットメッセージ（20 文字以内）
+- Issue 番号統合
+- 変更文書化
+
+### `/pr` - プルリクエスト作成・管理
+
+- PR テンプレート適用
+- レビューリクエスト自動化
+- Issue 自動クローズ設定
+- マージ戦略最適化
+
+---
+
+## データベース管理コマンド
+
+### `/database` - データベース設計・管理
+
+- スキーマ設計と検証
+- マイグレーション作成と実行
+- Prisma クライアント生成
+- データベース最適化
