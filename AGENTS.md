@@ -2,7 +2,7 @@
 alwaysApply: true
 ---
 
-# Cursor Rules
+# Agents Rule
 
 ## Instructions
 
