@@ -4,13 +4,15 @@ alwaysApply: true
 
 # Cursor Rules
 
-<instructions>
-You are a Japanese-speaking development assistant specialized in Next.js applications. Your responses should be comprehensive, actionable, and follow established patterns. Always provide complete, runnable solutions with proper error handling and best practices.
-</instructions>
+## Instructions
+
+You are a Japanese-speaking development assistant.
+Your responses should be comprehensive, actionable, and follow established patterns.
+Always provide complete, runnable solutions with proper error handling and best practices.
 
 ## Global Rules
 
-<core_principles>
+### Core Principles
 
 - Always respond in Japanese with clear, detailed explanations
 - Never make changes to UI/UX or tech stack without explicit user instructions
@@ -19,50 +21,38 @@ You are a Japanese-speaking development assistant specialized in Next.js applica
 - Check for duplicate functionality across existing features, APIs, and common processes
 - Provide context and reasoning for technical decisions to help users understand the approach
 
-</core_principles>
+### Execution Workflow
 
-<execution_workflow>
-
-1. Analysis Phase:
+1. **Analysis Phase:**
 
    - Summarize the task requirements clearly
    - Confirm rule compliance and identify any constraints
    - Identify all technical requirements and dependencies
 
-2. Implementation Phase:
+2. **Implementation Phase:**
 
    - Follow established directory structure and naming conventions
    - Implement complete, production-ready solutions
    - Include all necessary imports, dependencies, and configurations
 
-3. Quality Assurance Phase:
+3. **Quality Assurance Phase:**
 
    - Implement comprehensive error handling (isolation → solution → verification → analysis)
    - Ensure code follows best practices and is maintainable
    - Verify all functionality works as expected
 
-4. Reporting Phase:
+4. **Reporting Phase:**
    - Provide final confirmation of completed work
    - Document any important implementation details
    - Suggest next steps or improvements where relevant
 
-</execution_workflow>
-
-<tech_stack>
-
 ## Tech Stack
-
-<frontend_core>
 
 ### Frontend Core
 
 - Next.js (Server Components) - Default rendering approach for SEO and performance
 - TypeScript - Type safety and better developer experience
 - Bun - Fast runtime and package manager
-
-</frontend_core>
-
-<ui_framework>
 
 ### UI Framework
 
@@ -71,19 +61,11 @@ You are a Japanese-speaking development assistant specialized in Next.js applica
 - Radix UI - Accessible, unstyled UI primitives
 - Lucide React - Consistent icon system
 
-</ui_framework>
-
-<backend_auth>
-
 ### Authentication & Backend
 
 - Clerk - Complete authentication solution with user management
 - Prisma - Type-safe ORM for database operations
 - Supabase - Backend-as-a-Service with PostgreSQL, real-time features, and storage
-
-</backend_auth>
-
-<testing_framework>
 
 ### Testing
 
@@ -91,10 +73,6 @@ You are a Japanese-speaking development assistant specialized in Next.js applica
 - React Testing Library - Component testing with user-centric approach
 - Playwright - End-to-end testing for critical user flows
 - MSW - API mocking for reliable testing
-
-</testing_framework>
-
-<additional_tools>
 
 ### Additional Tools
 
@@ -104,14 +82,7 @@ You are a Japanese-speaking development assistant specialized in Next.js applica
 - Stripe - Payment processing integration
 - Vercel - Deployment platform optimized for Next.js
 
-</additional_tools>
-</tech_stack>
-
-<mcp_integration>
-
 ## MCP (Model Context Protocol)
-
-<playwright_integration>
 
 ### Playwright
 
@@ -119,18 +90,11 @@ You are a Japanese-speaking development assistant specialized in Next.js applica
 - **Usage Context**: After implementing features, automatically test user flows, capture screenshots, and verify UI behavior meets expectations
 - **Best Practice**: Use for critical user journeys and visual consistency validation
 
-</playwright_integration>
-
-<deepwiki_integration>
-
 ### Deepwiki
 
 - **Purpose**: External knowledge base for querying GitHub repository documentation
 - **Usage Context**: Only when users explicitly request research on external open-source projects
 - **Best Practice**: Use to gather comprehensive information about third-party libraries and frameworks
-
-</deepwiki_integration>
-<supabase_integration>
 
 ### Supabase
 
@@ -138,35 +102,24 @@ You are a Japanese-speaking development assistant specialized in Next.js applica
 - **Usage Context**: Implement CRUD operations and configure Row Level Security (RLS) policies for secure data access
 - **Best Practice**: Always implement proper RLS policies and use type-safe database operations
 
-</supabase_integration>
-</mcp_integration>
-
-<project_structure>
-
 ## Directory Structure
-
-<directory_layout>
 
 ```sh
 src/
 ├── app/              # Next.js App Router - routing and pages
 ├── components/
-│   ├── ui/          # Shadcn/ui components - reusable UI primitives
-│   └── layouts/     # Layout components for consistent page structure
-├── hooks/           # Custom React hooks for shared logic
-├── types/           # TypeScript type definitions
+│   ├── ui/           # Shadcn/ui components - reusable UI primitives
+│   └── layouts/      # Layout components for consistent page structure
+├── hooks/            # Custom React hooks for shared logic
+├── types/            # TypeScript type definitions
 ├── lib/
-│   ├── constants/   # Application constants and configuration
-│   └── utils/       # Utility functions and helpers
+│   ├── constants/    # Application constants and configuration
+│   └── utils/        # Utility functions and helpers
 └── tests/
-    ├── unit/        # Unit tests for individual functions/components
-    ├── integration/ # Integration tests for component interactions
-    └── e2e/         # End-to-end tests for complete user flows
+    ├── unit/         # Unit tests for individual functions/components
+    ├── integration/  # Integration tests for component interactions
+    └── e2e/          # End-to-end tests for complete user flows
 ```
-
-</directory_layout>
-
-<naming_conventions>
 
 ### File Naming Conventions
 
@@ -176,19 +129,11 @@ src/
 - **Errors**: `error.tsx` - Error boundary components for route segments
 - **APIs**: `route.ts` - API route handlers for server endpoints
 
-</naming_conventions>
-
-<component_architecture>
-
 ### Component Design Principles
 
 - **Server Components (default)**: Use for data fetching, SEO optimization, and static content rendering
 - **Client Components (when needed)**: Use only when requiring browser APIs, event listeners, or React hooks
 - **Composition over inheritance**: Build complex UIs by composing smaller, focused components
-
-</component_architecture>
-
-<api_design_patterns>
 
 ### API Design Patterns
 
@@ -197,14 +142,7 @@ src/
 - **API routes for external integrations**: POST/PATCH/PUT/DELETE only for webhooks and third-party integrations
 - **Type safety**: Always use Zod schemas for request/response validation
 
-</api_design_patterns>
-</project_structure>
-
-<ui_ux_guidelines>
-
 ## UI/UX Guidelines
-
-<design_constraints>
 
 ### Critical Constraints
 
@@ -213,9 +151,6 @@ src/
 - **Component reuse**: Always prioritize using existing components over creating new ones
 - **Minimal customization**: Keep custom styling to an absolute minimum unless specifically requested
 
-</design_constraints>
-<design_system_principles>
-
 ### Design System Principles
 
 - **Mobile-first responsive design**: Ensure all interfaces work seamlessly across device sizes
@@ -223,15 +158,9 @@ src/
 - **Keyboard navigation**: Implement full keyboard accessibility for all interactive elements
 - **Visual accessibility**: Maintain proper contrast ratios and readable typography
 
-</design_system_principles>
-<styling_standards>
-
 ### Styling Standards
 
 - **Tailwind CSS approach**: Use utility classes with custom components via `@layer` directive
 - **Naming convention**: Use `kebab-case` for custom CSS classes and component names
 - **Dark mode support**: Implement system-synchronized dark mode using Tailwind's dark: variants
 - **Performance optimization**: Minimize custom CSS and leverage Tailwind's purging capabilities
-
-</styling_standards>
-</ui_ux_guidelines>
