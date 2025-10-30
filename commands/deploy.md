@@ -1,45 +1,49 @@
-# Deployment Preparation
+# デプロイ準備
 
-## Overview
-Prepare application for deployment with comprehensive testing and environment verification.
+## 概要
 
-## Steps
-1. **Build Verification**
-   - Run production build
-   - Verify build artifacts
-   - Check bundle size and performance
+包括的なテストと環境検証により、アプリケーションをデプロイに備える。
 
-2. **Environment Preparation**
-   - Verify environment variables
-   - Check database migrations
-   - Validate configuration files
+## 手順
 
-3. **Pre-Deployment Testing**
-   - Run full test suite
-   - Perform smoke tests
-   - Verify integrations
+1. **ビルド検証**
+   - プロダクションビルドを実行
+   - ビルド成果物を検証
+   - バンドルサイズとパフォーマンスを確認
 
-4. **Deployment Execution**
-   - Deploy to staging environment
-   - Run post-deployment verification
-   - Monitor application health
+2. **環境準備**
+   - 環境変数を検証
+   - データベースマイグレーションを確認
+   - 設定ファイルを検証
 
-5. **Post-Deployment**
-   - Verify functionality in production
-   - Monitor error rates and performance
-   - Update documentation
+3. **デプロイ前テスト**
+   - フルテストスイートを実行
+   - スモークテストを実施
+   - 統合を検証
 
-## Deployment Checklist
-- [ ] Production build successful
-- [ ] Environment variables configured
-- [ ] Database migrations applied
-- [ ] All tests passing
-- [ ] Staging deployment verified
-- [ ] Production deployment completed
-- [ ] Health checks passing
-- [ ] Monitoring alerts configured
+4. **デプロイ実行**
+   - ステージング環境にデプロイ
+   - デプロイ後の検証を実行
+   - アプリケーションの健全性を監視
 
-## Deployment Commands
+5. **デプロイ後**
+   - プロダクションでの機能を検証
+   - エラー率とパフォーマンスを監視
+   - ドキュメントを更新
+
+## デプロイチェックリスト
+
+- [ ] プロダクションビルドが成功している
+- [ ] 環境変数が設定されている
+- [ ] データベースマイグレーションが適用されている
+- [ ] すべてのテストが通過している
+- [ ] ステージングデプロイが検証されている
+- [ ] プロダクションデプロイが完了している
+- [ ] ヘルスチェックが通過している
+- [ ] モニタリングアラートが設定されている
+
+## デプロイコマンド
+
 ```bash
 # Build for production
 npm run build
@@ -54,8 +58,9 @@ vercel --prod
 vercel ls
 ```
 
-## Rollback Plan
-- [ ] Previous version identified
-- [ ] Rollback procedure documented
-- [ ] Database rollback plan ready
-- [ ] Monitoring for rollback triggers
+## ロールバック計画
+
+- [ ] 以前のバージョンが特定されている
+- [ ] ロールバック手順が文書化されている
+- [ ] データベースのロールバック計画が準備されている
+- [ ] ロールバックのトリガーの監視

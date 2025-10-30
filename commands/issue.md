@@ -1,52 +1,52 @@
-# Issue Creation
+# Issue 作成
 
-## Overview
+## 概要
 
-Create GitHub issue with proper phase template and labels following established workflow patterns.
+確立されたワークフローパターンに従い、適切なフェーズテンプレートとラベルで GitHub Issue を作成する。
 
-## Preparation
+## 準備
 
-### GitHub CLI: Retrieve username and repository name
+### GitHub CLI: ユーザー名とリポジトリ名を取得
 
-#### GitHub username
+#### GitHub ユーザー名
 
 ```bash
 git config user.name
 ```
 
-#### Repository name of the current directory
+#### 現在のディレクトリのリポジトリ名
 
 ```bash
 git remote -v
 ```
 
-## Steps
+## 手順
 
-1. **Issue Planning**
+1. **Issue 計画**
 
-   - Define clear issue title
-   - Write comprehensive description
-   - Identify implementation phases
+   - 明確な Issue タイトルを定義
+   - 包括的な説明を記述
+   - 実装フェーズを特定
 
-2. **Phase Template Setup**
+2. **フェーズテンプレート設定**
 
-   - Use standard phase template structure
-   - Define environment setup phase
-   - Plan specific work content phases
-   - Include testing & verification phase
+   - 標準的なフェーズテンプレート構造を使用
+   - 環境セットアップフェーズを定義
+   - 特定の作業内容フェーズを計画
+   - テストと検証フェーズを含める
 
-3. **Label Assignment**
+3. **ラベル割り当て**
 
-   - Set appropriate priority (high/medium/low)
-   - Assign type (enhancement/bug/documentation)
-   - Add status labels as needed
+   - 適切な優先度を設定（high/medium/low）
+   - タイプを割り当てる（enhancement/bug/documentation）
+   - 必要に応じてステータスラベルを追加
 
-4. **Issue Creation**
-   - Use `gh` CLI for creation
-   - Reference issue templates if available
-   - Link related issues or epics
+4. **Issue 作成**
+   - 作成には `gh` CLI を使用
+   - 利用可能な場合、Issue テンプレートを参照
+   - 関連する Issue や Epic にリンク
 
-## Issue Template
+## Issue テンプレート
 
 ```markdown
 ## Implementation Phases
@@ -72,13 +72,13 @@ git remote -v
 - [ ] Review complete
 ```
 
-### Label Classification
+### ラベル分類
 
 - **Priority**: `priority/high|medium|low`
 - **Type**: `enhancement|bug|documentation`
 - **Status**: `in-progress|review-needed|blocked`
 
-## Issue Creation Commands
+## Issue 作成コマンド
 
 ```bash
 # Create issue with template
@@ -88,10 +88,10 @@ gh issue create --title "Feature: [Feature Name]" --body-file issue-template.md
 gh issue edit [issue-number] --add-label "enhancement,priority/medium"
 ```
 
-## Issue Checklist
+## Issue チェックリスト
 
-- [ ] Clear title defined
-- [ ] Phase template included
-- [ ] Appropriate labels assigned
-- [ ] Issue created successfully
-- [ ] Issue number noted for branch creation
+- [ ] 明確なタイトルが定義されている
+- [ ] フェーズテンプレートが含まれている
+- [ ] 適切なラベルが割り当てられている
+- [ ] Issue が正常に作成されている
+- [ ] ブランチ作成のために Issue 番号が記録されている

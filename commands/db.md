@@ -1,30 +1,30 @@
-# Database Design & Management
+# データベース設計と管理
 
-## Overview
+## 概要
 
-Database schema design and management commands following established naming conventions and best practices.
+確立された命名規則とベストプラクティスに従ったデータベーススキーマ設計と管理コマンド。
 
-## Database Naming Conventions
+## データベース命名規則
 
-### Schema Design
+### スキーマ設計
 
-- Models: Singular PascalCase (`User`, `Project`)
-- Fields: camelCase (`firstName`, `createdAt`)
-- Primary key: `id`
-- Foreign key: `[tableName]Id`
-- Timestamps: `createdAt`, `updatedAt`
+- モデル: 単数形 PascalCase (`User`, `Project`)
+- フィールド: camelCase (`firstName`, `createdAt`)
+- プライマリキー: `id`
+- 外部キー: `[tableName]Id`
+- タイムスタンプ: `createdAt`, `updatedAt`
 
-### Relations & Security
+### リレーションとセキュリティ
 
-- 1-to-many: `@relation`
-- Many-to-many: intermediate table
-- Cascade deletion: `onDelete: Cascade`
-- Index frequently searched fields
-- Validate inputs, encrypt sensitive data
+- 1対多: `@relation`
+- 多対多: 中間テーブル
+- カスケード削除: `onDelete: Cascade`
+- 頻繁に検索されるフィールドにインデックス
+- 入力を検証し、機密データを暗号化
 
-## Database Commands
+## データベースコマンド
 
-### Schema Management
+### スキーマ管理
 
 ```bash
 # Generate Prisma client
@@ -40,7 +40,7 @@ npx prisma migrate deploy
 npx prisma migrate reset
 ```
 
-### Database Operations
+### データベース操作
 
 ```bash
 # Open Prisma Studio
@@ -56,7 +56,7 @@ npx prisma migrate status
 npx prisma format
 ```
 
-### Backup & Restore
+### バックアップと復元
 
 ```bash
 # Create database backup
@@ -69,19 +69,19 @@ psql database_name < backup.sql
 pg_dump -t table_name database_name > table_backup.sql
 ```
 
-## File Storage
+## ファイルストレージ
 
-- **SQL files**: `/public/sql/` directory
-- Migrations: `prisma/migrations/`
-- Schema: `prisma/schema.prisma`
-- Seeds: `prisma/seed.ts`
+- **SQL ファイル**: `/public/sql/` ディレクトリ
+- マイグレーション: `prisma/migrations/`
+- スキーマ: `prisma/schema.prisma`
+- シード: `prisma/seed.ts`
 
-## Database Checklist
+## データベースチェックリスト
 
-- [ ] Schema follows naming conventions
-- [ ] Relations properly defined
-- [ ] Indexes added for performance
-- [ ] RLS policies configured
-- [ ] Migration tested locally
-- [ ] Backup strategy in place
-- [ ] Seed data prepared
+- [ ] スキーマが命名規則に従っている
+- [ ] リレーションが適切に定義されている
+- [ ] パフォーマンスのためにインデックスが追加されている
+- [ ] RLS ポリシーが設定されている
+- [ ] マイグレーションがローカルでテストされている
+- [ ] バックアップ戦略が確立されている
+- [ ] シードデータが準備されている

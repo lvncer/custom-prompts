@@ -1,39 +1,39 @@
-# Test & Build Execution
+# テストとビルド実行
 
-## Overview
+## 概要
 
-Execute comprehensive testing, building, and development tasks for robust application development and deployment preparation.
+堅牢なアプリケーション開発とデプロイ準備のため、包括的なテスト、ビルド、開発タスクを実行する。
 
-## Steps
+## 手順
 
-1. **Development Environment**
+1. **開発環境**
 
-   - Start development server
-   - Watch file changes
-   - Hot reload functionality
-   - Debug configuration
+   - 開発サーバーを起動
+   - ファイル変更を監視
+   - ホットリロード機能
+   - デバッグ設定
 
-2. **Code Quality Check**
+2. **コード品質チェック**
 
-   - Run linting checks
-   - Apply code formatting
-   - Verify code standards
-   - Fix auto-fixable issues
+   - リンティングチェックを実行
+   - コードフォーマットを適用
+   - コード標準を検証
+   - 自動修正可能な問題を修正
 
-3. **Testing Execution**
+3. **テスト実行**
 
-   - Run unit tests
-   - Execute integration tests
-   - Perform E2E testing
-   - Generate coverage reports
+   - ユニットテストを実行
+   - 統合テストを実行
+   - E2E テストを実行
+   - カバレッジレポートを生成
 
-4. **Build Verification**
-   - Create production build
-   - Verify build artifacts
-   - Check bundle optimization
-   - Validate deployment readiness
+4. **ビルド検証**
+   - プロダクションビルドを作成
+   - ビルド成果物を検証
+   - バンドル最適化を確認
+   - デプロイ準備状況を検証
 
-## Development Commands
+## 開発コマンド
 
 ```bash
 # Start development server
@@ -43,7 +43,7 @@ bun run dev
 bun run dev
 ```
 
-## Code Quality Commands
+## コード品質コマンド
 
 ```bash
 # Check TypeScript types (no compilation)
@@ -59,7 +59,7 @@ bun run format
 bunx tsc --noEmit && bun run lint
 ```
 
-## Testing Commands
+## テストコマンド
 
 ```bash
 # Run unit tests only
@@ -81,7 +81,7 @@ bun test src/tests/unit/AuthButton.test.tsx
 bun test --verbose src/tests/
 ```
 
-## Build Commands
+## ビルドコマンド
 
 ```bash
 # Build for production
@@ -94,7 +94,7 @@ bun run start
 bun run build && bun run start
 ```
 
-## Complete Workflow Commands
+## 完全なワークフローコマンド
 
 ```bash
 # Development verification (recommended for regular checks)
@@ -110,40 +110,40 @@ bunx tsc --noEmit && bun run lint && bun run test
 bunx tsc --noEmit && bun run lint && bun run test:all && bun run build && bun run start
 ```
 
-## ⚠️ Important Notes
+## ⚠️ 重要な注意事項
 
-- **Auto-formatting**: `bun run format` should only be executed when explicitly requested
-- **Code changes**: Do not run formatting or other code-modifying commands without user instruction
-- **Type checking**: Always run `bunx tsc --noEmit` to verify TypeScript types before deployment
+- **自動フォーマット**: `bun run format` は明示的に要求された場合のみ実行する
+- **コード変更**: ユーザーの指示なしにフォーマットやその他のコード変更コマンドを実行しない
+- **型チェック**: デプロイ前に常に `bunx tsc --noEmit` を実行して TypeScript の型を検証する
 
-## Test Categories
+## テストカテゴリ
 
-- **Unit Tests**: Individual component/function testing
-- **Integration Tests**: Component interaction testing
-- **E2E Tests**: Complete user workflow testing
-- **Build Tests**: Production build verification
+- **Unit Tests**: 個別のコンポーネント/関数のテスト
+- **Integration Tests**: コンポーネント相互作用のテスト
+- **E2E Tests**: 完全なユーザーワークフローのテスト
+- **Build Tests**: プロダクションビルドの検証
 
-## Quality Targets
+## 品質目標
 
-- **Code Style**: Biome formatting standards
-- **Linting**: Zero linting errors
-- **Test Coverage**: Comprehensive testing
-- **Build Success**: Clean production build
+- **コードスタイル**: Biome フォーマット標準
+- **リンティング**: リンティングエラーなし
+- **テストカバレッジ**: 包括的なテスト
+- **ビルド成功**: クリーンなプロダクションビルド
 
-## Development Checklist
+## 開発チェックリスト
 
-- [ ] Development server running
-- [ ] Code formatted and linted
-- [ ] Unit tests passing
-- [ ] Integration tests passing
-- [ ] E2E tests passing
-- [ ] Production build successful
-- [ ] No linting errors
-- [ ] All dependencies resolved
-- [ ] Environment variables configured
-- [ ] Ready for deployment
+- [ ] 開発サーバーが動作している
+- [ ] コードがフォーマットされリントされている
+- [ ] ユニットテストが通過している
+- [ ] 統合テストが通過している
+- [ ] E2E テストが通過している
+- [ ] プロダクションビルドが成功している
+- [ ] リンティングエラーがない
+- [ ] すべての依存関係が解決されている
+- [ ] 環境変数が設定されている
+- [ ] デプロイ準備が整っている
 
-## Troubleshooting
+## トラブルシューティング
 
 ```bash
 # Clear Next.js cache

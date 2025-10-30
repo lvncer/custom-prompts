@@ -1,32 +1,32 @@
-# Row Level Security (RLS) Implementation
+# Row Level Security (RLS) 実装
 
-## Overview
+## 概要
 
-Implement Row Level Security policies for database tables to ensure proper data access control and user isolation.
+適切なデータアクセス制御とユーザー分離を確保するため、データベーステーブルに Row Level Security ポリシーを実装する。
 
-## Steps
+## 手順
 
-1. **RLS Policy Planning**
+1. **RLS ポリシー計画**
 
-   - Identify tables requiring RLS
-   - Define access patterns and user roles
-   - Plan policy conditions and rules
+   - RLS が必要なテーブルを特定
+   - アクセスパターンとユーザーロールを定義
+   - ポリシー条件とルールを計画
 
-2. **Policy Implementation**
+2. **ポリシー実装**
 
-   - Enable RLS on target tables
-   - Create appropriate policies for each operation
-   - Test policy effectiveness
+   - 対象テーブルで RLS を有効化
+   - 各操作に対する適切なポリシーを作成
+   - ポリシーの効果をテスト
 
-3. **Verification & Testing**
+3. **検証とテスト**
 
-   - Verify policies work as expected
-   - Test with different user roles
-   - Validate data isolation
+   - ポリシーが期待通りに動作することを確認
+   - 異なるユーザーロールでテスト
+   - データ分離を検証
 
-## RLS Policy Templates
+## RLS ポリシーテンプレート
 
-### Basic User Data Isolation
+### 基本ユーザーデータ分離
 
 ```sql
 -- Enable RLS on table
@@ -39,7 +39,7 @@ CREATE POLICY "users_own_data" ON [table_name]
   USING (auth.uid() = user_id);
 ```
 
-### Read/Write Separation
+### 読み取り/書き込み分離
 
 ```sql
 -- Read policy
@@ -62,7 +62,7 @@ CREATE POLICY "update_own_data" ON [table_name]
   WITH CHECK (auth.uid() = user_id);
 ```
 
-### Role-Based Access
+### ロールベースアクセス
 
 ```sql
 -- Admin access policy
@@ -89,7 +89,7 @@ CREATE POLICY "team_access" ON [table_name]
   );
 ```
 
-### Public/Private Content
+### パブリック/プライベートコンテンツ
 
 ```sql
 -- Public content access
@@ -106,50 +106,50 @@ CREATE POLICY "private_content" ON [table_name]
   WITH CHECK (user_id = auth.uid());
 ```
 
-## Common RLS Patterns
+## 一般的な RLS パターン
 
-### 1. User Isolation
+### 1. ユーザー分離
 
-- Each user can only access their own records
-- Most common pattern for user-specific data
+- 各ユーザーが自分のレコードにのみアクセス可能
+- ユーザー固有のデータの最も一般的なパターン
 
-### 2. Team/Organization Access
+### 2. チーム/組織アクセス
 
-- Users can access data within their team/organization
-- Requires junction tables for membership
+- ユーザーがチーム/組織内のデータにアクセス可能
+- メンバーシップには結合テーブルが必要
 
-### 3. Hierarchical Access
+### 3. 階層型アクセス
 
-- Different access levels based on user roles
-- Admin > Manager > User hierarchy
+- ユーザーロールに基づく異なるアクセスレベル
+- Admin > Manager > User の階層
 
-### 4. Time-Based Access
+### 4. 時間ベースアクセス
 
-- Access based on date ranges or schedules
-- Useful for temporary permissions
+- 日付範囲やスケジュールに基づくアクセス
+- 一時的な権限に有用
 
-## RLS Implementation Checklist
+## RLS 実装チェックリスト
 
-- [ ] Tables identified for RLS implementation
-- [ ] RLS enabled on target tables
-- [ ] Policies created for all required operations
-- [ ] User roles and permissions defined
-- [ ] Policies tested with different user scenarios
-- [ ] Performance impact evaluated
-- [ ] Documentation updated
-- [ ] Team trained on RLS patterns
+- [ ] RLS 実装が必要なテーブルが特定されている
+- [ ] 対象テーブルで RLS が有効になっている
+- [ ] 必要なすべての操作に対してポリシーが作成されている
+- [ ] ユーザーロールと権限が定義されている
+- [ ] 異なるユーザーシナリオでポリシーがテストされている
+- [ ] パフォーマンスへの影響が評価されている
+- [ ] ドキュメントが更新されている
+- [ ] チームが RLS パターンについて教育を受けている
 
-## Best Practices
+## ベストプラクティス
 
-- **Test thoroughly**: Always test policies with different user roles
-- **Performance consideration**: RLS adds overhead, monitor query performance
-- **Documentation**: Document policy logic for team understanding
-- **Gradual rollout**: Implement RLS incrementally, not all at once
-- **Backup strategy**: Have rollback plan in case of issues
+- **徹底的にテストする**: 常に異なるユーザーロールでポリシーをテストする
+- **パフォーマンスを考慮**: RLS はオーバーヘッドを追加するため、クエリパフォーマンスを監視する
+- **ドキュメント**: チームの理解のためにポリシーロジックを文書化する
+- **段階的な展開**: 一度に全部ではなく、段階的に RLS を実装する
+- **バックアップ戦略**: 問題が発生した場合のロールバック計画を準備する
 
-## Troubleshooting
+## トラブルシューティング
 
-### Policy Not Working
+### ポリシーが動作しない
 
 ```sql
 -- Check if RLS is enabled
@@ -162,7 +162,7 @@ SELECT * FROM pg_policies
 WHERE tablename = '[table_name]';
 ```
 
-### Performance Issues
+### パフォーマンスの問題
 
 ```sql
 -- Analyze query performance

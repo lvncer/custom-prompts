@@ -1,25 +1,28 @@
-# Prompt Logs Management
+# プロンプトログ管理
 
-## Overview
-Save implementation logs to maintain project history and knowledge sharing.
+## 概要
 
-## Steps
-1. **Create Log Entry**
-   - Create file in `.prompts/` directory
-   - Use format: `yyyy-mm-dd_feature-name.md`
-   - Include implementation details and decisions
+プロジェクト履歴とナレッジシェアリングのために実装ログを保存する。
 
-2. **Document Implementation**
-   - Record key technical decisions
-   - Include code snippets and examples
-   - Note challenges and solutions
+## 手順
 
-3. **Knowledge Sharing**
-   - Document lessons learned
-   - Include best practices discovered
-   - Note areas for future improvement
+1. **ログエントリの作成**
+   - `.prompts/` ディレクトリにファイルを作成
+   - フォーマット: `yyyy-mm-dd_feature-name.md` を使用
+   - 実装詳細と決定事項を含める
 
-## Log Content Template
+2. **実装の文書化**
+   - 重要な技術的決定を記録
+   - コードスニペットと例を含める
+   - 課題と解決策を記録
+
+3. **ナレッジシェアリング**
+   - 学んだ教訓を文書化
+   - 発見したベストプラクティスを含める
+   - 今後の改善領域を記録
+
+## ログコンテンツテンプレート
+
 ```markdown
 # Feature Implementation Log - [Feature Name]
 
@@ -46,9 +49,10 @@ Save implementation logs to maintain project history and knowledge sharing.
 [Areas for potential enhancement]
 ```
 
-## Logs Checklist
-- [ ] Log file created in `.prompts/` directory
-- [ ] Implementation details documented
-- [ ] Technical decisions recorded
-- [ ] Challenges and solutions noted
-- [ ] Lessons learned captured
+## ログチェックリスト
+
+- [ ] `.prompts/` ディレクトリにログファイルが作成されている
+- [ ] 実装詳細が文書化されている
+- [ ] 技術的決定が記録されている
+- [ ] 課題と解決策が記録されている
+- [ ] 学んだ教訓が記録されている

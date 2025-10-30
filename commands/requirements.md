@@ -1,34 +1,37 @@
-# Requirements Definition
+# 要件定義
 
-## Overview
-Create comprehensive requirement definition phase template with user stories, acceptance criteria, and technical requirements.
+## 概要
 
-## Steps
-1. **Define Feature Scope**
-   - Clarify feature goals and objectives
-   - Identify target users and use cases
-   - Define success metrics
+ユーザーストーリー、受け入れ基準、技術要件を含む包括的な要件定義フェーズのテンプレートを作成する。
 
-2. **Create User Stories**
-   - Write user stories in "As a [user], I want [goal] so that [benefit]" format
-   - Include acceptance criteria for each story
-   - Prioritize stories by business value
+## 手順
 
-3. **Technical Requirements**
-   - Define functional requirements
-   - Specify non-functional requirements (performance, security, scalability)
-   - Identify technical constraints and dependencies
+1. **機能スコープの定義**
+   - 機能の目標と目的を明確化
+   - 対象ユーザーとユースケースを特定
+   - 成功指標を定義
 
-4. **Documentation**
-   - Create requirement specification document
-   - Include wireframes or mockups if applicable
-   - Define API contracts and data models
+2. **ユーザーストーリーの作成**
+   - "As a [user], I want [goal] so that [benefit]" 形式でユーザーストーリーを作成
+   - 各ストーリーに受け入れ基準を含める
+   - ビジネス価値でストーリーを優先順位付け
 
-## Requirements Checklist
-- [ ] Feature scope documented
-- [ ] User stories written with acceptance criteria
-- [ ] Technical requirements specified
-- [ ] Non-functional requirements defined
-- [ ] Dependencies identified
-- [ ] Success metrics established
-- [ ] Documentation created
+3. **技術要件**
+   - 機能要件を定義
+   - 非機能要件を指定（パフォーマンス、セキュリティ、スケーラビリティ）
+   - 技術的制約と依存関係を特定
+
+4. **ドキュメント**
+   - 要件仕様書を作成
+   - 該当する場合はワイヤーフレームやモックアップを含める
+   - API契約とデータモデルを定義
+
+## 要件チェックリスト
+
+- [ ] 機能スコープが文書化されている
+- [ ] ユーザーストーリーが受け入れ基準付きで作成されている
+- [ ] 技術要件が指定されている
+- [ ] 非機能要件が定義されている
+- [ ] 依存関係が特定されている
+- [ ] 成功指標が設定されている
+- [ ] ドキュメントが作成されている
