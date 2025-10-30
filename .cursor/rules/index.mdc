@@ -84,23 +84,36 @@ Always provide complete, runnable solutions with proper error handling and best 
 
 ## MCP (Model Context Protocol)
 
+### Next.js DevTools
+
+- **目的**: Next.js 16 以降の開発サーバーと統合し、リアルタイムでアプリケーションの内部情報にアクセスする
+- **使用コンテキスト**: エラー検出、ライブ状態クエリ、ページメタデータの取得、Server Actions の検査などに使用する
+- **ベストプラクティス**: 開発サーバー起動後、エージェントにエラーや実装箇所を質問することで、コンテキストを踏まえた正確な提案が得られる
+
+### Chrome DevTools
+
+- **目的**: Chrome DevTools を MCP 経由で操作し、ブラウザの開発者ツール機能をエージェントから利用可能にする
+- **使用コンテキスト**: パフォーマンス分析、ネットワークトラフィック監視、コンソールログ取得、DOM 操作、デバッグ作業などに使用する
+- **ベストプラクティス**: フロントエンドのパフォーマンスボトルネック特定やブラウザ固有の問題調査に活用する
+
 ### Playwright
 
-- **Purpose**: End-to-end browser automation framework for UI testing and visual regression detection
-- **Usage Context**: After implementing features, automatically test user flows, capture screenshots, and verify UI behavior meets expectations
-- **Best Practice**: Use for critical user journeys and visual consistency validation
+- **目的**: ブラウザの自動操作とエンドツーエンドテストを行うためのフレームワーク
+- **使用コンテキスト**: 機能実装後、ユーザーフローを自動テストし、スクリーンショットを取得して UI の動作を検証する
+- **ベストプラクティス**: 重要なユーザージャーニーやビジュアル回帰テストに活用する
 
 ### Deepwiki
 
-- **Purpose**: External knowledge base for querying GitHub repository documentation
-- **Usage Context**: Only when users explicitly request research on external open-source projects
-- **Best Practice**: Use to gather comprehensive information about third-party libraries and frameworks
+- **目的**: 外部ナレッジベースから GitHub リポジトリのドキュメントを検索する
+- **使用コンテキスト**: ユーザーが外部のオープンソースプロジェクトの調査を明示的に依頼した場合のみ使用する
+- **ベストプラクティス**: サードパーティライブラリやフレームワークの包括的な情報を収集するために活用する
+- **利用可能なメソッド**: `read_wiki_structure`, `read_wiki_contents`, `ask_question`
 
 ### Supabase
 
-- **Purpose**: Backend-as-a-Service providing PostgreSQL database, authentication, storage, and real-time APIs
-- **Usage Context**: Implement CRUD operations and configure Row Level Security (RLS) policies for secure data access
-- **Best Practice**: Always implement proper RLS policies and use type-safe database operations
+- **目的**: PostgreSQL データベース、認証、ストレージ、リアルタイム API を提供する Backend-as-a-Service
+- **使用コンテキスト**: CRUD 操作の実装や Row Level Security (RLS)ポリシーの設定により、セキュアなデータアクセスを提供する
+- **ベストプラクティス**: 適切な RLS ポリシーを実装し、型安全なデータベース操作を行う
 
 ## Directory Structure
 
