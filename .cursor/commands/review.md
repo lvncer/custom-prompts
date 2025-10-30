@@ -1,41 +1,45 @@
-# Code Review Preparation
+# コードレビュー準備
 
-## Overview
-Prepare comprehensive code review with testing, coverage verification, and PR creation.
+## 概要
 
-## Steps
-1. **Pre-Review Testing**
-   - Run all unit tests
-   - Execute integration tests
-   - Perform E2E testing with Playwright
+テスト、カバレッジ検証、PR 作成を含む包括的なコードレビューを準備する。
 
-2. **Code Quality Checks**
-   - Verify test coverage (80%+ target)
-   - Run linting and formatting
-   - Check for security vulnerabilities
+## 手順
 
-3. **Documentation Review**
-   - Update README if needed
-   - Add/update code comments
-   - Update API documentation
+1. **レビュー前テスト**
+   - すべてのユニットテストを実行
+   - 統合テストを実行
+   - Playwright で E2E テストを実行
 
-4. **PR Preparation**
-   - Create descriptive PR title
-   - Write comprehensive PR description
-   - Link related issues
-   - Add appropriate labels
+2. **コード品質チェック**
+   - テストカバレッジを検証（80% 以上の目標）
+   - リンティングとフォーマットを実行
+   - セキュリティの脆弱性をチェック
 
-## Review Checklist
-- [ ] All tests passing
-- [ ] Test coverage ≥ 80%
-- [ ] Linting/formatting clean
-- [ ] Security checks passed
-- [ ] Documentation updated
-- [ ] PR created with proper description
-- [ ] Related issues linked
-- [ ] Reviewers assigned
+3. **ドキュメントレビュー**
+   - 必要に応じて README を更新
+   - コードコメントを追加/更新
+   - API ドキュメントを更新
 
-## PR Description Template
+4. **PR 準備**
+   - 説明的な PR タイトルを作成
+   - 包括的な PR 説明を記述
+   - 関連する Issue にリンク
+   - 適切なラベルを追加
+
+## レビューチェックリスト
+
+- [ ] すべてのテストが通過している
+- [ ] テストカバレッジが 80% 以上
+- [ ] リンティング/フォーマットがクリーン
+- [ ] セキュリティチェックが通過している
+- [ ] ドキュメントが更新されている
+- [ ] 適切な説明で PR が作成されている
+- [ ] 関連する Issue がリンクされている
+- [ ] レビュアーが割り当てられている
+
+## PR 説明テンプレート
+
 ```markdown
 ## Summary
 [Brief description of changes]

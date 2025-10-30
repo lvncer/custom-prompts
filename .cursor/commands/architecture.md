@@ -1,39 +1,42 @@
-# System Architecture Design
+# システム設計
 
-## Overview
-Design system architecture and select appropriate technology stack for the feature implementation.
+## 概要
 
-## Steps
-1. **System Design**
-   - Design high-level architecture
-   - Define component interactions
-   - Plan data flow and storage
+機能実装のためのシステムアーキテクチャを設計し、適切な技術スタックを選定する。
 
-2. **Database Design**
-   - Design data models using Prisma schema
-   - Plan relationships and constraints
-   - Consider Row Level Security (RLS) policies
+## 手順
 
-3. **API Design**
-   - Design REST endpoints or Server Actions
-   - Define request/response schemas using Zod
-   - Plan authentication and authorization
+1. **システム設計**
+   - 高レベルなアーキテクチャを設計
+   - コンポーネント間の相互作用を定義
+   - データフローとストレージを計画
 
-4. **Frontend Architecture**
-   - Plan component hierarchy
-   - Design state management approach
-   - Consider Server vs Client Components
+2. **データベース設計**
+   - Prisma スキーマを使用してデータモデルを設計
+   - リレーションと制約を計画
+   - Row Level Security (RLS) ポリシーを考慮
 
-5. **Security & Performance**
-   - Plan security measures
-   - Consider caching strategies
-   - Design for scalability
+3. **API設計**
+   - REST エンドポイントまたは Server Actions を設計
+   - Zod を使用してリクエスト/レスポンススキーマを定義
+   - 認証と認可を計画
 
-## Architecture Checklist
-- [ ] High-level architecture designed
-- [ ] Database schema planned
-- [ ] API contracts defined
-- [ ] Component structure planned
-- [ ] Security measures considered
-- [ ] Performance optimizations planned
-- [ ] Technology stack confirmed
+4. **フロントエンドアーキテクチャ**
+   - コンポーネント階層を計画
+   - 状態管理アプローチを設計
+   - Server と Client Components を考慮
+
+5. **セキュリティとパフォーマンス**
+   - セキュリティ対策を計画
+   - キャッシュ戦略を考慮
+   - スケーラビリティを考慮して設計
+
+## アーキテクチャチェックリスト
+
+- [ ] 高レベルなアーキテクチャが設計されている
+- [ ] データベーススキーマが計画されている
+- [ ] API契約が定義されている
+- [ ] コンポーネント構造が計画されている
+- [ ] セキュリティ対策が考慮されている
+- [ ] パフォーマンス最適化が計画されている
+- [ ] 技術スタックが確認されている

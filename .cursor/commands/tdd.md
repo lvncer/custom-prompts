@@ -1,52 +1,52 @@
-# Test Driven Development
+# テスト駆動開発
 
-## Overview
+## 概要
 
-Execute TDD Red-Green-Refactor cycle for robust feature development following established principles.
+確立された原則に従い、堅牢な機能開発のための TDD Red-Green-Refactor サイクルを実行する。
 
-## Basic Principles
+## 基本原則
 
-- Follow **Red-Green-Refactor** cycle
-- Write tests before implementation
-- Progress in small units
-- Create tests for all features
+- **Red-Green-Refactor** サイクルに従う
+- 実装前にテストを記述
+- 小さな単位で進める
+- すべての機能に対してテストを作成
 
-## Development Cycle
+## 開発サイクル
 
-1. **Red Phase - Write Failing Test**
+1. **Red Phase - 失敗するテストを記述**
 
-   - Write test for new functionality
-   - Ensure test fails initially
-   - Verify test is testing the right thing
-   - Keep test simple and focused
+   - 新機能のテストを記述
+   - 初期状態でテストが失敗することを確認
+   - テストが正しいことをテストしていることを検証
+   - テストをシンプルで焦点を絞ったものにする
 
-2. **Green Phase - Make Test Pass**
+2. **Green Phase - テストを通す**
 
-   - Write minimal code to pass test
-   - Don't worry about code quality yet
-   - Focus on making test pass quickly
-   - Avoid over-engineering
+   - テストを通すための最小限のコードを記述
+   - コード品質はまだ気にしない
+   - テストを素早く通すことに焦点を当てる
+   - 過度な設計を避ける
 
-3. **Refactor Phase - Improve Code**
-   - Improve code quality
-   - Remove duplication
-   - Enhance readability
-   - Ensure tests still pass
+3. **Refactor Phase - コードを改善**
+   - コード品質を向上
+   - 重複を削除
+   - 可読性を向上
+   - テストがまだ通過することを確認
 
-## Test Structure
+## テスト構造
 
-- **Unit Tests**: Function/method level
-- **Integration Tests**: Component interaction
-- **E2E Tests**: User operation simulation
+- **Unit Tests**: 関数/メソッドレベル
+- **Integration Tests**: コンポーネント相互作用
+- **E2E Tests**: ユーザー操作のシミュレーション
 
-## Coverage & Performance
+## カバレッジとパフォーマンス
 
-- Target: 80%+ coverage
-- Core logic: aim for 100%
-- Fast test execution
-- Mock external dependencies
+- 目標: 80%以上のカバレッジ
+- コアロジック: 100%を目指す
+- 高速なテスト実行
+- 外部依存関係をモック化
 
-## TDD Commands
+## TDD コマンド
 
 ```bash
 # Run tests in watch mode
@@ -62,12 +62,12 @@ npm run test:coverage
 npm test -- --verbose
 ```
 
-## TDD Checklist
+## TDD チェックリスト
 
-- [ ] Test written before implementation
-- [ ] Test fails initially (Red)
-- [ ] Minimal code written to pass (Green)
-- [ ] Code refactored for quality
-- [ ] All tests still passing
-- [ ] Coverage maintained/improved
-- [ ] Next test case identified
+- [ ] 実装前にテストが記述されている
+- [ ] テストが初期状態で失敗している (Red)
+- [ ] テストを通すための最小限のコードが記述されている (Green)
+- [ ] 品質のためにコードがリファクタリングされている
+- [ ] すべてのテストがまだ通過している
+- [ ] カバレッジが維持/改善されている
+- [ ] 次のテストケースが特定されている

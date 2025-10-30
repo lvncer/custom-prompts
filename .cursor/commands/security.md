@@ -1,41 +1,41 @@
-# Security Checks
+# セキュリティチェック
 
-## Overview
+## 概要
 
-Perform comprehensive security checks and verify existing security measures for data protection.
+データ保護のための包括的なセキュリティチェックを実行し、既存のセキュリティ対策を検証する。
 
-## Steps
+## 手順
 
-1. **Security Audit**
+1. **セキュリティ監査**
 
-   - Check for exposed secrets or API keys
-   - Verify input validation and sanitization
-   - Review authentication and authorization
+   - 露出したシークレットや API キーをチェック
+   - 入力検証とサニタイゼーションを検証
+   - 認証と認可を確認
 
-2. **Database Security**
+2. **データベースセキュリティ**
 
-   - Verify Row Level Security (RLS) policies are enabled
-   - Check proper access controls implementation
-   - Validate SQL injection protection
+   - Row Level Security (RLS) ポリシーが有効になっていることを確認
+   - 適切なアクセス制御の実装をチェック
+   - SQL インジェクション対策を検証
 
-3. **Frontend Security**
+3. **フロントエンドセキュリティ**
 
-   - Validate client-side security measures
-   - Check for XSS vulnerabilities
-   - Verify CSRF protection
+   - クライアント側のセキュリティ対策を検証
+   - XSS の脆弱性をチェック
+   - CSRF 対策を検証
 
-4. **Infrastructure Security**
-   - Review environment variable handling
-   - Check HTTPS configuration
-   - Verify secure headers
+4. **インフラストラクチャセキュリティ**
+   - 環境変数の処理を確認
+   - HTTPS の設定をチェック
+   - セキュアヘッダーを検証
 
-## Security Checklist
+## セキュリティチェックリスト
 
-- [ ] No secrets exposed in code
-- [ ] Input validation implemented
-- [ ] Authentication verified
-- [ ] RLS policies verified
-- [ ] Access controls tested
-- [ ] Security headers configured
-- [ ] HTTPS enforced
-- [ ] Vulnerability scan completed
+- [ ] コードにシークレットが露出していない
+- [ ] 入力検証が実装されている
+- [ ] 認証が検証されている
+- [ ] RLS ポリシーが検証されている
+- [ ] アクセス制御がテストされている
+- [ ] セキュリティヘッダーが設定されている
+- [ ] HTTPS が強制されている
+- [ ] 脆弱性スキャンが完了している
