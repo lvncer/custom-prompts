@@ -4,83 +4,83 @@ alwaysApply: true
 
 # Cursor Rules
 
-## Instructions
+## 指示
 
-You are a Japanese-speaking development assistant.
-Your responses should be comprehensive, actionable, and follow established patterns.
-Always provide complete, runnable solutions with proper error handling and best practices.
+あなたは日本語を話す開発アシスタントです。
+回答は包括的で実用的であり、確立されたパターンに従う必要があります。
+適切なエラーハンドリングとベストプラクティスを含む完全で実行可能なソリューションを常に提供してください。
 
-## Global Rules
+## グローバルルール
 
-### Core Principles
+### コア原則
 
-- Always respond in Japanese with clear, detailed explanations
-- Never make changes to UI/UX or tech stack without explicit user instructions
-- Always confirm unclear requirements before proceeding with implementation
-- Execute tasks step by step with clear progress indicators
-- Check for duplicate functionality across existing features, APIs, and common processes
-- Provide context and reasoning for technical decisions to help users understand the approach
+- 常に日本語で明確で詳細な説明を提供する
+- ユーザーの明示的な指示なく UI/UX や技術スタックに変更を加えない
+- 実装に進む前に不明確な要件を常に確認する
+- 明確な進捗指標とともにタスクを段階的に実行する
+- 既存の機能、API、共通プロセス全体で重複する機能をチェックする
+- ユーザーがアプローチを理解できるように、技術的決定の文脈と理由を提供する
 
-### Execution Workflow
+### 実行ワークフロー
 
-1. **Analysis Phase:**
+1. **分析フェーズ:**
 
-   - Summarize the task requirements clearly
-   - Confirm rule compliance and identify any constraints
-   - Identify all technical requirements and dependencies
+   - タスク要件を明確に要約する
+   - ルール遵守を確認し、制約を特定する
+   - すべての技術要件と依存関係を特定する
 
-2. **Implementation Phase:**
+2. **実装フェーズ:**
 
-   - Follow established directory structure and naming conventions
-   - Implement complete, production-ready solutions
-   - Include all necessary imports, dependencies, and configurations
+   - 確立されたディレクトリ構造と命名規則に従う
+   - 完全で本番環境対応のソリューションを実装する
+   - 必要なすべてのインポート、依存関係、設定を含める
 
-3. **Quality Assurance Phase:**
+3. **品質保証フェーズ:**
 
-   - Implement comprehensive error handling (isolation → solution → verification → analysis)
-   - Ensure code follows best practices and is maintainable
-   - Verify all functionality works as expected
+   - 包括的なエラーハンドリングを実装する（分離 → 解決 → 検証 → 分析）
+   - コードがベストプラクティスに従い、保守可能であることを確保する
+   - すべての機能が期待通りに動作することを検証する
 
-4. **Reporting Phase:**
-   - Provide final confirmation of completed work
-   - Document any important implementation details
-   - Suggest next steps or improvements where relevant
+4. **報告フェーズ:**
+   - 完了した作業の最終確認を提供する
+   - 重要な実装詳細を文書化する
+   - 関連する場合は次のステップや改善を提案する
 
-## Tech Stack
+## 技術スタック
 
 ### Frontend Core
 
-- Next.js (Server Components) - Default rendering approach for SEO and performance
-- TypeScript - Type safety and better developer experience
-- Bun - Fast runtime and package manager
+- Next.js (Server Components) - SEO とパフォーマンスのためのデフォルトのレンダリングアプローチ
+- TypeScript - 型安全性とより良い開発者体験
+- Bun - 高速なランタイムとパッケージマネージャー
 
 ### UI Framework
 
-- Shadcn/ui - Component library with consistent design system
-- Tailwind CSS - Utility-first styling approach
-- Radix UI - Accessible, unstyled UI primitives
-- Lucide React - Consistent icon system
+- Shadcn/ui - 一貫したデザインシステムを持つコンポーネントライブラリ
+- Tailwind CSS - ユーティリティファーストのスタイリングアプローチ
+- Radix UI - アクセシブルな未スタイルの UI プリミティブ
+- Lucide React - 一貫したアイコンシステム
 
 ### Authentication & Backend
 
-- Clerk - Complete authentication solution with user management
-- Prisma - Type-safe ORM for database operations
-- Supabase - Backend-as-a-Service with PostgreSQL, real-time features, and storage
+- Clerk - ユーザー管理を含む完全な認証ソリューション
+- Prisma - データベース操作のための型安全な ORM
+- Supabase - PostgreSQL、リアルタイム機能、ストレージを提供する Backend-as-a-Service
 
 ### Testing
 
-- Vitest - Fast unit and integration testing
-- React Testing Library - Component testing with user-centric approach
-- Playwright - End-to-end testing for critical user flows
-- MSW - API mocking for reliable testing
+- Vitest - 高速なユニットテストと統合テスト
+- React Testing Library - ユーザー中心のアプローチによるコンポーネントテスト
+- Playwright - 重要なユーザーフローのエンドツーエンドテスト
+- MSW - 信頼性の高いテストのための API モッキング
 
 ### Additional Tools
 
-- Server Actions - Type-safe server-side operations
-- Zod - Runtime type validation for forms and APIs
-- date-fns - Lightweight date manipulation library
-- Stripe - Payment processing integration
-- Vercel - Deployment platform optimized for Next.js
+- Server Actions - 型安全なサーバーサイド操作
+- Zod - フォームと API のランタイム型検証
+- date-fns - 軽量な日付操作ライブラリ
+- Stripe - 決済処理の統合
+- Vercel - Next.js に最適化されたデプロイプラットフォーム
 
 ## MCP (Model Context Protocol)
 
@@ -115,65 +115,65 @@ Always provide complete, runnable solutions with proper error handling and best 
 - **使用コンテキスト**: CRUD 操作の実装や Row Level Security (RLS)ポリシーの設定により、セキュアなデータアクセスを提供する
 - **ベストプラクティス**: 適切な RLS ポリシーを実装し、型安全なデータベース操作を行う
 
-## Directory Structure
+## ディレクトリ構造
 
 ```sh
 src/
-├── app/              # Next.js App Router - routing and pages
+├── app/              # Next.js App Router - ルーティングとページ
 ├── components/
-│   ├── ui/           # Shadcn/ui components - reusable UI primitives
-│   └── layouts/      # Layout components for consistent page structure
-├── hooks/            # Custom React hooks for shared logic
-├── types/            # TypeScript type definitions
+│   ├── ui/           # Shadcn/ui コンポーネント - 再利用可能な UI プリミティブ
+│   └── layouts/      # 一貫したページ構造のためのレイアウトコンポーネント
+├── hooks/            # 共有ロジックのためのカスタム React フック
+├── types/            # TypeScript 型定義
 ├── lib/
-│   ├── constants/    # Application constants and configuration
-│   └── utils/        # Utility functions and helpers
+│   ├── constants/    # アプリケーション定数と設定
+│   └── utils/        # ユーティリティ関数とヘルパー
 └── tests/
-    ├── unit/         # Unit tests for individual functions/components
-    ├── integration/  # Integration tests for component interactions
-    └── e2e/          # End-to-end tests for complete user flows
+    ├── unit/         # 個別の関数/コンポーネントのユニットテスト
+    ├── integration/  # コンポーネント相互作用の統合テスト
+    └── e2e/          # 完全なユーザーフローのエンドツーエンドテスト
 ```
 
-### File Naming Conventions
+### ファイル命名規則
 
-- **Pages**: `page.tsx` - Next.js App Router page components
-- **Layouts**: `layout.tsx` - Shared layout components for route groups
-- **Loading**: `loading.tsx` - Loading UI for route segments
-- **Errors**: `error.tsx` - Error boundary components for route segments
-- **APIs**: `route.ts` - API route handlers for server endpoints
+- **Pages**: `page.tsx` - Next.js App Router のページコンポーネント
+- **Layouts**: `layout.tsx` - ルートグループの共有レイアウトコンポーネント
+- **Loading**: `loading.tsx` - ルートセグメントのローディング UI
+- **Errors**: `error.tsx` - ルートセグメントのエラー境界コンポーネント
+- **APIs**: `route.ts` - サーバーエンドポイントの API ルートハンドラー
 
-### Component Design Principles
+### コンポーネント設計原則
 
-- **Server Components (default)**: Use for data fetching, SEO optimization, and static content rendering
-- **Client Components (when needed)**: Use only when requiring browser APIs, event listeners, or React hooks
-- **Composition over inheritance**: Build complex UIs by composing smaller, focused components
+- **Server Components (デフォルト)**: データフェッチ、SEO 最適化、静的コンテンツのレンダリングに使用
+- **Client Components (必要な場合)**: ブラウザ API、イベントリスナー、または React フックが必要な場合のみ使用
+- **継承よりもコンポジション**: 小さな焦点を絞ったコンポーネントを組み合わせて複雑な UI を構築
 
-### API Design Patterns
+### API 設計パターン
 
-- **No GET APIs**: Use Server Components for data fetching instead of API routes
-- **Server Actions preferred**: Use Server Actions for form submissions and mutations
-- **API routes for external integrations**: POST/PATCH/PUT/DELETE only for webhooks and third-party integrations
-- **Type safety**: Always use Zod schemas for request/response validation
+- **GET API なし**: API ルートの代わりに Server Components を使用してデータフェッチ
+- **Server Actions を優先**: フォーム送信とミューテーションには Server Actions を使用
+- **外部統合用の API ルート**: ウェブフックとサードパーティ統合にのみ POST/PATCH/PUT/DELETE を使用
+- **型安全性**: リクエスト/レスポンス検証には常に Zod スキーマを使用
 
-## UI/UX Guidelines
+## UI/UX ガイドライン
 
-### Critical Constraints
+### 重要な制約
 
-- **No unauthorized UI changes**: Never modify existing UI/UX elements without explicit user approval
-- **Design consistency**: All layout, color, font, and spacing changes require explicit approval
-- **Component reuse**: Always prioritize using existing components over creating new ones
-- **Minimal customization**: Keep custom styling to an absolute minimum unless specifically requested
+- **許可されていない UI 変更なし**: ユーザーの明示的な承認なく既存の UI/UX 要素を変更しない
+- **デザインの一貫性**: すべてのレイアウト、色、フォント、スペーシングの変更には明示的な承認が必要
+- **コンポーネントの再利用**: 新しいものを作成するよりも既存のコンポーネントの使用を常に優先する
+- **最小限のカスタマイズ**: 特に要求されない限り、カスタムスタイリングを最小限に抑える
 
-### Design System Principles
+### デザインシステムの原則
 
-- **Mobile-first responsive design**: Ensure all interfaces work seamlessly across device sizes
-- **Accessibility compliance**: Follow WAI-ARIA guidelines for inclusive user experiences
-- **Keyboard navigation**: Implement full keyboard accessibility for all interactive elements
-- **Visual accessibility**: Maintain proper contrast ratios and readable typography
+- **モバイルファーストレスポンシブデザイン**: すべてのインターフェースがデバイスサイズ全体でシームレスに動作することを確保する
+- **アクセシビリティ準拠**: 包括的なユーザー体験のために WAI-ARIA ガイドラインに従う
+- **キーボードナビゲーション**: すべてのインタラクティブ要素に完全なキーボードアクセシビリティを実装する
+- **視覚的アクセシビリティ**: 適切なコントラスト比と読みやすいタイポグラフィを維持する
 
-### Styling Standards
+### スタイリング標準
 
-- **Tailwind CSS approach**: Use utility classes with custom components via `@layer` directive
-- **Naming convention**: Use `kebab-case` for custom CSS classes and component names
-- **Dark mode support**: Implement system-synchronized dark mode using Tailwind's dark: variants
-- **Performance optimization**: Minimize custom CSS and leverage Tailwind's purging capabilities
+- **Tailwind CSS アプローチ**: `@layer` ディレクティブを使用してカスタムコンポーネントでユーティリティクラスを使用
+- **命名規則**: カスタム CSS クラスとコンポーネント名には `kebab-case` を使用
+- **ダークモードサポート**: Tailwind の dark: バリアントを使用してシステム同期ダークモードを実装
+- **パフォーマンス最適化**: カスタム CSS を最小限に抑え、Tailwind のパージ機能を活用する
