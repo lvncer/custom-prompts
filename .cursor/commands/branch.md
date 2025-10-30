@@ -1,47 +1,47 @@
-# Branch & Git Operations
+# ブランチと Git 操作
 
-## Overview
+## 概要
 
-Create and manage branches following established naming conventions and commit practices.
+確立された命名規則とコミット慣例に従ってブランチを作成および管理する。
 
-## Branch Creation & Naming
+## ブランチ作成と命名
 
-### Branch Format
+### ブランチ形式
 
-- Create after issue creation
-- Refer to `.github/CONTRIBUTING.md` for detailed naming conventions
+- Issue 作成後に作成
+- 詳細な命名規則については `.github/CONTRIBUTING.md` を参照
 
-### Steps
+### 手順
 
-1. **Branch Naming**
+1. **ブランチ命名**
 
-   - Format: `feat/123-feature-name`
-   - Include issue number
-   - Use descriptive feature name
-   - Follow kebab-case convention
+   - 形式: `feat/123-feature-name`
+   - Issue 番号を含める
+   - 説明的な機能名を使用
+   - kebab-case 規則に従う
 
-2. **Branch Creation**
+2. **ブランチ作成**
 
-   - Create from main/master branch
-   - Push to remote immediately
-   - Set up tracking
+   - main/master ブランチから作成
+   - 即座にリモートにプッシュ
+   - 追跡を設定
 
-3. **Initial Setup**
-   - Create initial commit if needed
-   - Update issue status to in-progress
-   - Set up development environment
+3. **初期セットアップ**
+   - 必要に応じて初期コミットを作成
+   - Issue ステータスを in-progress に更新
+   - 開発環境をセットアップ
 
-## Commit Management
+## コミット管理
 
-### Commit Guidelines
+### コミットガイドライン
 
-- **Commit at each phase completion**
-- Manual commits (recommended)
-- **Include issue number** in commit messages
-- **Concise Japanese messages** (20 characters max)
-- Refer to `.github/COMMIT_CONVENTION.md` for the commit message conventions
+- **各フェーズ完了時にコミット**
+- 手動コミット（推奨）
+- コミットメッセージに **Issue 番号を含める**
+- **簡潔な日本語メッセージ**（最大 20 文字）
+- コミットメッセージ規則については `.github/COMMIT_CONVENTION.md` を参照
 
-## Branch Commands
+## ブランチコマンド
 
 ```bash
 # Get current repository info
@@ -57,19 +57,19 @@ git push -u origin feat/123-feature-name
 git status
 ```
 
-## Branch Naming Convention
+## ブランチ命名規則
 
-- **feat/**: New features
-- **fix/**: Bug fixes
-- **docs/**: Documentation updates
-- **refactor/**: Code refactoring
-- **test/**: Test additions/updates
+- **feat/**: 新機能
+- **fix/**: バグ修正
+- **docs/**: ドキュメント更新
+- **refactor/**: コードリファクタリング
+- **test/**: テスト追加/更新
 
-## Branch Checklist
+## ブランチチェックリスト
 
-- [ ] Issue number included in branch name
-- [ ] Descriptive feature name used
-- [ ] Branch created from main/master
-- [ ] Branch pushed to remote
-- [ ] Tracking set up
-- [ ] Issue status updated
+- [ ] ブランチ名に Issue 番号が含まれている
+- [ ] 説明的な機能名が使用されている
+- [ ] main/master からブランチが作成されている
+- [ ] ブランチがリモートにプッシュされている
+- [ ] 追跡が設定されている
+- [ ] Issue ステータスが更新されている

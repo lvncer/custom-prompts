@@ -1,34 +1,40 @@
-# Test Coverage Verification
+# テストカバレッジ検証
 
-## Overview
-Verify test coverage meets 80%+ target and ensure core logic has comprehensive testing.
+## 概要
 
-## Steps
-1. **Coverage Analysis**
-   - Run coverage reports
-   - Identify uncovered lines
-   - Analyze coverage by file/function
-   - Check branch coverage
+テストカバレッジが 80% 以上の目標を満たしていることを確認し、コアロジックが包括的にテストされていることを保証する。
 
-2. **Coverage Improvement**
-   - Add tests for uncovered code
-   - Focus on critical business logic
-   - Test edge cases and error paths
-   - Improve branch coverage
+## 手順
 
-3. **Coverage Monitoring**
-   - Set up coverage thresholds
-   - Monitor coverage trends
-   - Prevent coverage regression
-   - Report coverage metrics
+1. **カバレッジ分析**
 
-4. **Quality Assessment**
-   - Review test quality, not just quantity
-   - Ensure meaningful assertions
-   - Test behavior, not implementation
-   - Maintain fast test execution
+   - カバレッジレポートを実行
+   - 未カバー行を特定
+   - ファイル/関数別にカバレッジを分析
+   - ブランチカバレッジを確認
 
-## Coverage Commands
+2. **カバレッジ改善**
+
+   - 未カバーコードのテストを追加
+   - 重要なビジネスロジックに焦点を当てる
+   - エッジケースとエラーパスをテスト
+   - ブランチカバレッジを改善
+
+3. **カバレッジ監視**
+
+   - カバレッジのしきい値を設定
+   - カバレッジの傾向を監視
+   - カバレッジの回帰を防止
+   - カバレッジメトリクスを報告
+
+4. **品質評価**
+   - テストの量だけでなく品質を確認
+   - 意味のあるアサーションを確保
+   - 実装ではなく動作をテスト
+   - 高速なテスト実行を維持
+
+## カバレッジコマンド
+
 ```bash
 # Generate coverage report
 npm run test:coverage
@@ -43,18 +49,20 @@ npm run test:coverage:check
 npm run test:coverage:badge
 ```
 
-## Coverage Targets
-- **Overall**: 80%+ line coverage
-- **Core Logic**: 100% coverage
-- **Critical Paths**: 100% coverage
-- **Edge Cases**: Well covered
+## カバレッジ目標
 
-## Coverage Checklist
-- [ ] Coverage report generated
-- [ ] 80%+ overall coverage achieved
-- [ ] Core logic 100% covered
-- [ ] Critical paths tested
-- [ ] Edge cases covered
-- [ ] Coverage thresholds set
-- [ ] No coverage regression
-- [ ] Test quality verified
+- **全体**: 80% 以上の行カバレッジ
+- **コアロジック**: 100% カバレッジ
+- **重要なパス**: 100% カバレッジ
+- **エッジケース**: 十分にカバーされている
+
+## カバレッジチェックリスト
+
+- [ ] カバレッジレポートが生成されている
+- [ ] 80% 以上の全体カバレッジが達成されている
+- [ ] コアロジックが 100% カバーされている
+- [ ] 重要なパスがテストされている
+- [ ] エッジケースがカバーされている
+- [ ] カバレッジのしきい値が設定されている
+- [ ] カバレッジの回帰がない
+- [ ] テストの品質が検証されている

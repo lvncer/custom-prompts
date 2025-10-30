@@ -1,42 +1,42 @@
-# PR Creation & Merge
+# PR 作成とマージ
 
-## Overview
+## 概要
 
-Create pull request with proper description, issue linking, and manage merge process following established workflow.
+確立されたワークフローに従い、適切な説明、Issue リンク、マージプロセス管理でプルリクエストを作成する。
 
-## PR Process
+## PR プロセス
 
-### Steps
+### 手順
 
-1. **Pre-PR Preparation**
+1. **PR 準備**
 
-   - Ensure all changes committed
-   - Push latest changes to remote
-   - Run final tests and checks
+   - すべての変更がコミットされていることを確認
+   - 最新の変更をリモートにプッシュ
+   - 最終テストとチェックを実行
 
-2. **PR Creation**
+2. **PR 作成**
 
-   - Use `gh` CLI (recommended)
-   - Include issue number in PR title/description
-   - Write comprehensive description
-   - Manual merge required
-   - Auto-close issues
-   - Refer to `.github/PULL_REQUEST_TEMPLATE/default.md` for the PR template
+   - `gh` CLI を使用（推奨）
+   - PR タイトル/説明に Issue 番号を含める
+   - 包括的な説明を記述
+   - 手動マージが必要
+   - Issue を自動クローズ
+   - PR テンプレートについては `.github/PULL_REQUEST_TEMPLATE/default.md` を参照
 
-3. **PR Configuration**
+3. **PR 設定**
 
-   - Add appropriate labels
-   - Request reviewers if needed
-   - Set up auto-close with "Closes #123"
+   - 適切なラベルを追加
+   - 必要に応じてレビュアーをリクエスト
+   - "Closes #123" で自動クローズを設定
 
-4. **Post-Creation**
-   - Monitor CI checks
-   - Address any failures
-   - Respond to review feedback
+4. **作成後**
+   - CI チェックを監視
+   - 失敗を対処
+   - レビューフィードバックに対応
 
-## Post-Merge
+## マージ後
 
-### Branch Cleanup
+### ブランチクリーンアップ
 
 ```bash
 # Delete branch (run manually after PR merge)
@@ -44,7 +44,7 @@ Create pull request with proper description, issue linking, and manage merge pro
 gh pr merge --delete-branch
 ```
 
-## PR Commands
+## PR コマンド
 
 ```bash
 # Create PR with description
@@ -57,7 +57,7 @@ echo "Closes #123" >> pr-description.md
 gh pr view
 ```
 
-## PR Description Template
+## PR 説明テンプレート
 
 ```markdown
 ## Summary
@@ -87,12 +87,12 @@ Closes #[issue-number]
 - [ ] No breaking changes
 ```
 
-## PR Checklist
+## PR チェックリスト
 
-- [ ] All changes committed and pushed
-- [ ] PR title includes issue number
-- [ ] Comprehensive description written
-- [ ] Issue linked for auto-close
-- [ ] Appropriate labels added
-- [ ] CI checks passing
-- [ ] Ready for review
+- [ ] すべての変更がコミットされプッシュされている
+- [ ] PR タイトルに Issue 番号が含まれている
+- [ ] 包括的な説明が記述されている
+- [ ] 自動クローズのために Issue がリンクされている
+- [ ] 適切なラベルが追加されている
+- [ ] CI チェックが通過している
+- [ ] レビュー準備が整っている

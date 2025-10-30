@@ -1,58 +1,70 @@
-# Milestone Management
+# マイルストーン管理
 
-## Overview
-Set up project milestones for release planning and sprint management.
+## 概要
 
-## Steps
-1. **Milestone Planning**
-   - Define milestone objectives
-   - Set target completion dates
-   - Identify deliverables
+リリース計画とスプリント管理のためのプロジェクトマイルストーンを設定する。
 
-2. **Issue Assignment**
-   - Assign issues to milestones
-   - Balance workload across milestones
-   - Consider dependencies and priorities
+## 手順
 
-3. **Progress Monitoring**
-   - Track milestone completion
-   - Monitor burn-down progress
-   - Adjust timeline if needed
+1. **マイルストーン計画**
 
-4. **Release Planning**
-   - Plan feature releases
-   - Coordinate with deployment schedule
-   - Prepare release notes
+   - マイルストーンの目標を定義
+   - 完了目標日を設定
+   - 成果物を特定
 
-## Milestone Template
+2. **Issue の割り当て**
+
+   - Issue をマイルストーンに割り当て
+   - マイルストーン間でワークロードをバランス
+   - 依存関係と優先順位を考慮
+
+3. **進捗監視**
+
+   - マイルストーンの完了を追跡
+   - バーンダウンプログレスを監視
+   - 必要に応じてタイムラインを調整
+
+4. **リリース計画**
+   - 機能リリースを計画
+   - デプロイスケジュールと調整
+   - リリースノートを準備
+
+## マイルストーンテンプレート
+
 ```markdown
 # Milestone: [Version/Release Name]
 
 ## Target Date
+
 [YYYY-MM-DD]
 
 ## Objectives
+
 - [Objective 1]
 - [Objective 2]
 
 ## Deliverables
+
 - [ ] [Feature/Component 1]
 - [ ] [Feature/Component 2]
 
 ## Issues
+
 - [ ] #[issue-number] - [Issue title]
 - [ ] #[issue-number] - [Issue title]
 
 ## Success Criteria
+
 - [ ] All planned features completed
 - [ ] Quality gates passed
 - [ ] Documentation updated
 - [ ] Release deployed
 ```
 
-## Milestone Checklist
-- [ ] Milestone created with clear objectives
-- [ ] Target date set
-- [ ] Issues assigned to milestone
-- [ ] Progress tracking enabled
-- [ ] Release plan documented
+## マイルストーンチェックリスト
+
+- [ ] 明確な目標でマイルストーンが作成されている
+- [ ] 目標日が設定されている
+- [ ] Issue がマイルストーンに割り当てられている
+- [ ] 進捗追跡が有効になっている
+- [ ] リリース計画が文書化されている

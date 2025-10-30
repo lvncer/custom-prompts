@@ -1,38 +1,42 @@
-# Git Sync & Push Resolution
+# Git 同期とプッシュ解決
 
-## Overview
+## 概要
 
-Resolve common git sync issues when push is rejected due to remote changes. Analyze git status, pull latest changes, resolve conflicts, and safely push to remote.
+リモートの変更によりプッシュが拒否された場合の一般的な git 同期の問題を解決する。git の状態を分析し、最新の変更をプルし、競合を解決して、安全にリモートにプッシュする。
 
-## Steps
+## 手順
 
-1. **Status Analysis**
-   - Check current repository status
-   - Identify uncommitted changes
-   - Review branch tracking information
+1. **状態分析**
 
-2. **Pre-sync Preparation**
-   - Stash or commit local changes
-   - Fetch remote changes
-   - Compare local and remote branches
+   - 現在のリポジトリの状態を確認
+   - 未コミットの変更を特定
+   - ブランチの追跡情報を確認
 
-3. **Pull & Merge Resolution**
-   - Pull latest changes from remote
-   - Handle merge conflicts if they occur
-   - Verify merge completion
+2. **同期前の準備**
 
-4. **Conflict Resolution** (if needed)
-   - Identify conflicted files
-   - Resolve conflicts manually or with tools
-   - Stage resolved files
-   - Complete merge commit
+   - ローカルの変更を stash またはコミット
+   - リモートの変更を fetch
+   - ローカルとリモートのブランチを比較
 
-5. **Final Push**
-   - Verify all changes are committed
-   - Push to remote repository
-   - Confirm successful sync
+3. **プルとマージ解決**
 
-## Sync Commands
+   - リモートから最新の変更をプル
+   - マージ競合が発生した場合は処理
+   - マージの完了を確認
+
+4. **競合解決** (必要な場合)
+
+   - 競合ファイルを特定
+   - 手動またはツールで競合を解決
+   - 解決したファイルをステージング
+   - マージコミットを完了
+
+5. **最終プッシュ**
+   - すべての変更がコミットされていることを確認
+   - リモートリポジトリにプッシュ
+   - 同期の成功を確認
+
+## 同期コマンド
 
 ```bash
 # 1. Check current status
@@ -66,7 +70,7 @@ git commit -m "resolve merge conflicts"
 git push origin main
 ```
 
-## Automated Sync Flow
+## 自動同期フロー
 
 ```bash
 # Quick sync command sequence
@@ -78,7 +82,7 @@ git pull origin $(git branch --show-current) && \
 git push origin $(git branch --show-current)
 ```
 
-## Common Error Solutions
+## 一般的なエラー解決
 
 ### "Updates were rejected"
 
@@ -110,19 +114,19 @@ git fetch origin
 git reset --hard origin/main
 ```
 
-## Sync Strategies
+## 同期戦略
 
 ### Safe Merge Strategy
 
-- Preserves both local and remote history
-- Creates merge commits
-- Safer for collaborative work
+- ローカルとリモートの履歴の両方を保持
+- マージコミットを作成
+- 共同作業により安全
 
 ### Rebase Strategy
 
-- Creates linear history
-- Moves local commits on top of remote
-- Cleaner but can be complex with conflicts
+- 線形の履歴を作成
+- ローカルコミットをリモートの上に移動
+- よりクリーンだが、競合があると複雑になる可能性がある
 
 ### Branch Protection
 
@@ -133,14 +137,14 @@ git checkout main
 # Proceed with sync operations
 ```
 
-## Sync Checklist
+## 同期チェックリスト
 
-- [ ] Local changes committed or stashed
-- [ ] Remote changes fetched
-- [ ] Branch comparison reviewed
-- [ ] Pull completed successfully
-- [ ] Conflicts resolved (if any)
-- [ ] All tests passing
-- [ ] Push completed successfully
-- [ ] Remote branch updated
-- [ ] Local and remote in sync
+- [ ] ローカルの変更がコミットまたは stash されている
+- [ ] リモートの変更が fetch されている
+- [ ] ブランチの比較が確認されている
+- [ ] プルが正常に完了している
+- [ ] 競合が解決されている (発生した場合)
+- [ ] すべてのテストが通過している
+- [ ] プッシュが正常に完了している
+- [ ] リモートブランチが更新されている
+- [ ] ローカルとリモートが同期している

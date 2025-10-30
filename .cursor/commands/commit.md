@@ -1,26 +1,31 @@
-# Commit Management
+# コミット管理
 
-## Overview
-Create meaningful commits at each phase completion with proper formatting and issue references.
+## 概要
 
-## Steps
-1. **Commit Preparation**
-   - Stage only relevant files
-   - Review changes with `git diff`
-   - Ensure working tree is clean
+各フェーズ完了時に適切なフォーマットと Issue 参照を含む意味のあるコミットを作成する。
 
-2. **Commit Message Format**
-   - Include issue number
-   - Use conventional commit format
-   - Keep messages concise (20 characters max in Japanese, descriptive in English)
-   - Follow project conventions
+## 手順
 
-3. **Phase-based Commits**
-   - Commit at each phase completion
-   - Include phase context in message
-   - Reference issue number
+1. **コミット準備**
 
-## Commit Commands
+   - 関連するファイルのみをステージング
+   - `git diff` で変更を確認
+   - ワーキングツリーがクリーンであることを確認
+
+2. **コミットメッセージ形式**
+
+   - Issue 番号を含める
+   - コンベンショナルコミット形式を使用
+   - メッセージを簡潔に保つ（日本語は最大 20 文字、英語は説明的に）
+   - プロジェクトの規則に従う
+
+3. **フェーズベースのコミット**
+   - 各フェーズ完了時にコミット
+   - メッセージにフェーズコンテキストを含める
+   - Issue 番号を参照
+
+## コミットコマンド
+
 ```bash
 # Review changes
 git status
@@ -36,7 +41,8 @@ git commit -m "feat: implement feature component (#123)"
 git push origin feat/123-feature-name
 ```
 
-## Commit Message Conventions
+## コミットメッセージ規則
+
 ```
 feat: add new feature (#123)
 fix: resolve bug in component (#123)
@@ -45,19 +51,21 @@ test: add unit tests (#123)
 refactor: improve code structure (#123)
 ```
 
-## Commit Types
-- **feat**: New features
-- **fix**: Bug fixes
-- **docs**: Documentation changes
-- **test**: Test additions/updates
-- **refactor**: Code refactoring
-- **style**: Formatting changes
-- **chore**: Maintenance tasks
+## コミットタイプ
 
-## Commit Checklist
-- [ ] Only relevant files staged
-- [ ] Changes reviewed with git diff
-- [ ] Commit message includes issue number
-- [ ] Message follows conventions
-- [ ] Commit represents logical unit of work
-- [ ] Changes pushed to remote
+- **feat**: 新機能
+- **fix**: バグ修正
+- **docs**: ドキュメント変更
+- **test**: テスト追加/更新
+- **refactor**: コードリファクタリング
+- **style**: フォーマット変更
+- **chore**: メンテナンスタスク
+
+## コミットチェックリスト
+
+- [ ] 関連するファイルのみがステージングされている
+- [ ] 変更が git diff で確認されている
+- [ ] コミットメッセージに Issue 番号が含まれている
+- [ ] メッセージが規則に従っている
+- [ ] コミットが論理的な作業単位を表している
+- [ ] 変更がリモートにプッシュされている

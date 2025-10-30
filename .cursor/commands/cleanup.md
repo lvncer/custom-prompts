@@ -1,30 +1,36 @@
-# Environment Cleanup
+# 環境クリーンアップ
 
-## Overview
-Clean up temporary files, unused dependencies, and development environment to maintain project hygiene.
+## 概要
 
-## Steps
-1. **File Cleanup**
-   - Remove temporary files and build artifacts
-   - Clean up unused assets and resources
-   - Remove obsolete configuration files
+プロジェクトの健全性を維持するために、一時ファイル、未使用の依存関係、開発環境をクリーンアップする。
 
-2. **Dependency Cleanup**
-   - Remove unused npm/yarn packages
-   - Update outdated dependencies
-   - Clean package lock files if needed
+## 手順
 
-3. **Code Cleanup**
-   - Remove dead code and unused imports
-   - Clean up commented code
-   - Remove debug statements
+1. **ファイルのクリーンアップ**
 
-4. **Environment Reset**
-   - Clear development caches
-   - Reset local database if needed
-   - Clean up environment variables
+   - 一時ファイルとビルド成果物を削除
+   - 未使用のアセットとリソースをクリーンアップ
+   - 古い設定ファイルを削除
 
-## Cleanup Commands
+2. **依存関係のクリーンアップ**
+
+   - 未使用の npm/yarn パッケージを削除
+   - 古い依存関係を更新
+   - 必要に応じて package lock ファイルをクリーンアップ
+
+3. **コードのクリーンアップ**
+
+   - デッドコードと未使用のインポートを削除
+   - コメントアウトされたコードをクリーンアップ
+   - デバッグステートメントを削除
+
+4. **環境リセット**
+   - 開発キャッシュをクリア
+   - 必要に応じてローカルデータベースをリセット
+   - 環境変数をクリーンアップ
+
+## クリーンアップコマンド
+
 ```bash
 # Clean build artifacts
 rm -rf .next dist build
@@ -43,11 +49,12 @@ bun pm cache rm
 npx prisma generate
 ```
 
-## Cleanup Checklist
-- [ ] Temporary files removed
-- [ ] Build artifacts cleaned
-- [ ] Unused dependencies removed
-- [ ] Dead code eliminated
-- [ ] Development caches cleared
-- [ ] Environment variables verified
-- [ ] Git working tree clean
+## クリーンアップチェックリスト
+
+- [ ] 一時ファイルが削除されている
+- [ ] ビルド成果物がクリーンアップされている
+- [ ] 未使用の依存関係が削除されている
+- [ ] デッドコードが削除されている
+- [ ] 開発キャッシュがクリアされている
+- [ ] 環境変数が検証されている
+- [ ] Git ワーキングツリーがクリーン
