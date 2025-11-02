@@ -50,39 +50,54 @@ alwaysApply: true
 
 ### Frontend Core
 
-- Next.js (Server Components) - SEO とパフォーマンスのためのデフォルトのレンダリングアプローチ
-- TypeScript - 型安全性とより良い開発者体験
-- Bun - 高速なランタイムとパッケージマネージャー
+| stacks     | description                              |
+| ---------- | ---------------------------------------- |
+| TypeScript |                                          |
+| Next.js    |                                          |
+| Bun        | 高速なランタイムとパッケージマネージャー |
 
 ### UI Framework
 
-- Shadcn/ui - 一貫したデザインシステムを持つコンポーネントライブラリ
-- Tailwind CSS - ユーティリティファーストのスタイリングアプローチ
-- Radix UI - アクセシブルな未スタイルの UI プリミティブ
-- Lucide React - 一貫したアイコンシステム
+| stacks       | description                                      |
+| ------------ | ------------------------------------------------ |
+| Shadcn/ui    | コンポーネントライブラリ                         |
+| Tailwind CSS | ユーティリティファーストのスタイリングアプローチ |
+| Radix UI     | アクセシブルな未スタイルの UI プリミティブ       |
+| Lucide React | アイコンシステム                                 |
 
 ### Authentication & Backend
 
-- Clerk - ユーザー管理を含む完全な認証ソリューション
-- Prisma - データベース操作のための型安全な ORM
-- Supabase - PostgreSQL、リアルタイム機能、ストレージを提供する Backend-as-a-Service
+| stacks   | description                                |
+| -------- | ------------------------------------------ |
+| Clerk    | ユーザー管理を含む完全な認証ソリューション |
+| Prisma   | ORM                                        |
+| Supabase | PostgreSQL Database & Backend as a Service |
 
 ### Testing
 
-- Vitest - 高速なユニットテストと統合テスト
-- React Testing Library - ユーザー中心のアプローチによるコンポーネントテスト
-- Playwright - 重要なユーザーフローのエンドツーエンドテスト
-- MSW - 信頼性の高いテストのための API モッキング
+| stacks                | desctption                                         |
+| --------------------- | -------------------------------------------------- |
+| Vitest                | 高速なユニットテストと統合テスト                   |
+| React Testing Library | ユーザー中心のアプローチによるコンポーネントテスト |
+| Playwright            | 重要なユーザーフローのエンドツーエンドテスト       |
+| MSW                   | 信頼性の高いテストのための API モッキング          |
 
 ### Additional Tools
 
-- Server Actions - 型安全なサーバーサイド操作
-- Zod - フォームと API のランタイム型検証
-- date-fns - 軽量な日付操作ライブラリ
-- Stripe - 決済処理の統合
-- Vercel - Next.js に最適化されたデプロイプラットフォーム
+| stacks   | description                                    |
+| -------- | ---------------------------------------------- |
+| Zod      | フォームと API のランタイム型検証              |
+| date-fns | 軽量な日付操作ライブラリ                       |
+| Stripe   | 決済処理の統合                                 |
+| Vercel   | Next.js に最適化されたデプロイプラットフォーム |
 
 ## MCP (Model Context Protocol)
+
+### GitKraken MCP
+
+- **目的**: GitKraken が提供する Git 操作とプロジェクト管理機能を MCP 経由で利用する
+- **使用コンテキスト**: ブランチ管理、コミット履歴の確認、変更のステージング/コミット、プルリクエストの作成・レビュー、イシュー管理など、Git ワークフローに関連する操作を自動化・支援する
+- **ベストプラクティス**: 変更をステージングしてコミットする前に必ずステータスを確認する。プルリクエストやイシュー操作は適切な認証情報（リポジトリ名、組織名など）を指定する
 
 ### Next.js DevTools
 
