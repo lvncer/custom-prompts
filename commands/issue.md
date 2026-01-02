@@ -4,94 +4,142 @@
 
 確立されたワークフローパターンに従い、適切なフェーズテンプレートとラベルで GitHub Issue を作成する。
 
-## 準備
-
-### GitHub CLI: ユーザー名とリポジトリ名を取得
-
-#### GitHub ユーザー名
-
-```bash
-git config user.name
-```
-
-#### 現在のディレクトリのリポジトリ名
-
-```bash
-git remote -v
-```
-
 ## 手順
 
-1. **Issue 計画**
+1. Issue 計画
 
    - 明確な Issue タイトルを定義
-   - 包括的な説明を記述
    - 実装フェーズを特定
 
-2. **フェーズテンプレート設定**
+2. フェーズテンプレート設定
 
-   - 標準的なフェーズテンプレート構造を使用
-   - 環境セットアップフェーズを定義
-   - 特定の作業内容フェーズを計画
-   - テストと検証フェーズを含める
+   - 実装を段階的に分割するためのフェーズを定義（詳細は「フェーズテンプレート」セクションを参照）
+   - Phase 1: 環境セットアップ（ブランチ作成、依存関係追加など）
+   - Phase 2-N: 具体的な実装作業（機能ごとに分割）
+   - 最終フェーズ: テストと検証（ビルドテスト、機能テストなど）
 
-3. **ラベル割り当て**
+3. Issue 作成
 
-   - 適切な優先度を設定（high/medium/low）
-   - タイプを割り当てる（enhancement/bug/documentation）
-   - 必要に応じてステータスラベルを追加
+   - `gh` CLI を使用する
+   - タイトルは以下のフォーマットに従う（詳細は「Issue タイトルフォーマット」を参照）
+   - body には以下の Issue テンプレートを使用（`--body-file` で指定）
 
-4. **Issue 作成**
-   - 作成には `gh` CLI を使用
-   - 利用可能な場合、Issue テンプレートを参照
-   - 関連する Issue や Epic にリンク
+     ```bash
+      gh issue create \
+      --title "[タイトル]" \
+      --body-file issue-template.md \
+      --assignee @me
+     ```
 
-## Issue テンプレート
+   - **重要**: body-file として作成した Markdown ファイルは絶対にコミットせずに、Issue 作成後、必ず完全に削除する。
+
+     ```
+     rm issue-template.md
+     ```
+
+4. ラベルを追加（任意）
+
+   - 必ず、以下のラベル分類を参照
+
+     ```sh
+     gh issue edit [issue-number] --add-label "enhancement,priority/medium"
+     ```
+
+## Issue タイトルフォーマット
+
+コンベンショナルコミット形式に準拠したフォーマットを使用する。
+
+### 基本フォーマット
+
+```
+<type>: <説明>
+```
+
+または scope を含む場合：
+
+```
+<type>[scope]: <説明>
+```
+
+### Type 一覧
+
+| Type     | 説明                 |
+| -------- | -------------------- |
+| feat     | 新機能の追加         |
+| fix      | バグ修正             |
+| docs     | ドキュメントの更新   |
+| style    | コードスタイルの修正 |
+| refactor | リファクタリング     |
+| perf     | パフォーマンス改善   |
+| test     | テストの追加・修正   |
+| build    | ビルドシステムの変更 |
+| ci       | CI 関連の変更        |
+| chore    | その他の変更         |
+
+### 説明文のルール
+
+- 必ず日本語で記述
+- 変更内容が明確に分かるように
+- 文末は体言止め（「〜する」「〜した」ではなく「〜を追加」「〜を修正」）
+- 50 文字以内の簡潔な文章を推奨
+
+### 良い例
+
+```
+feat: ユーザー認証機能を追加
+fix: ログインエラーを修正
+docs: API ドキュメントを更新
+refactor: 認証モジュールをリファクタリング
+```
+
+## Issue テンプレート（body）
+
+以下のテンプレートを Markdown ファイルとして保存し、`--body-file` オプションで指定する。
+
+**重要**: このファイルは一時ファイルとして扱い、Issue 作成後は必ず削除すること。コミットしないこと。
 
 ```markdown
-## Implementation Phases
+## 概要
 
-- [ ] **Phase 1: Environment Setup**
+<!-- イシューの目的を簡潔に説明 -->
 
-  - [ ] Branch creation (`feat/123-feature`)
-  - [ ] Dependencies addition
+## 現状の問題点
 
-- [ ] **Phase 2: [Specific Work Content]**
+<!-- 現在の問題点や課題を具体的に記述 -->
 
-  - [ ] Detailed task 1
-  - [ ] Detailed task 2
+## 期待される結果
 
-- [ ] **Phase N: Testing & Verification**
-  - [ ] Build test
-  - [ ] Function test
+<!-- このイシューで達成したい目標や期待される結果を記述 -->
 
-## Completion Criteria
+## 提案される解決策
 
-- [ ] All phases complete
-- [ ] Tests passing
-- [ ] Review complete
+<!-- 問題解決のためのアプローチや具体的な実装案があれば記述 -->
+
+## タスク
+
+<!-- 必要なタスクをチェックリスト形式で記述 -->
+
+## 追加情報
+
+<!-- スクリーンショット、エラーメッセージ、関連するドキュメントなど、問題解決に役立つ情報があれば追加してください -->
+
+## 関連リンク
+
+<!-- 関連するイシューやプルリクエスト、外部リソースへのリンクを記載 -->
+
+例：
+
+- 関連 PR: #123
+- 類似イシュー: #456
+- API 仕様書: https://api-docs.example.com/reset-password
+
+## 環境情報（バグの場合）
+
+<!-- バグ報告の場合は動作環境の情報を記入 -->
 ```
 
-### ラベル分類
+## ラベル分類
 
-- **Priority**: `priority/high|medium|low`
-- **Type**: `enhancement|bug|documentation`
-- **Status**: `in-progress|review-needed|blocked`
-
-## Issue 作成コマンド
-
-```bash
-# Create issue with template
-gh issue create --title "Feature: [Feature Name]" --body-file issue-template.md
-
-# Add labels
-gh issue edit [issue-number] --add-label "enhancement,priority/medium"
-```
-
-## Issue チェックリスト
-
-- [ ] 明確なタイトルが定義されている
-- [ ] フェーズテンプレートが含まれている
-- [ ] 適切なラベルが割り当てられている
-- [ ] Issue が正常に作成されている
-- [ ] ブランチ作成のために Issue 番号が記録されている
+- Priority: `priority/high|medium|low`
+- Type: `bug`, `documentation`, `enhancement`...
+- Status: `in-progress`, `review-needed`, `blocked`
