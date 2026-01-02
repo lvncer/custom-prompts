@@ -6,66 +6,79 @@
 
 ## 手順
 
-1. **コミット準備**
+1. コミット準備
 
-   - 関連するファイルのみをステージング
    - `git diff` で変更を確認
+   - 関連するファイルのみをステージング
+     - 必ず GitKraken MCP を使用
+     - ツール: `git_add_or_commit` (action: "add", directory: リポジトリパス, files: ファイル配列)
    - ワーキングツリーがクリーンであることを確認
 
-2. **コミットメッセージ形式**
+2. コミットメッセージ形式
 
-   - Issue 番号を含める
    - コンベンショナルコミット形式を使用
-   - メッセージを簡潔に保つ（日本語は最大 20 文字、英語は説明的に）
-   - プロジェクトの規則に従う
+   - 以下の基本フォーマットに従う
 
-3. **フェーズベースのコミット**
+3. フェーズベースのコミット
+
    - 各フェーズ完了時にコミット
+     - 必ず GitKraken MCP を使用
+     - ツール: `git_add_or_commit` (action: "commit", directory: リポジトリパス, message: コミットメッセージ)
    - メッセージにフェーズコンテキストを含める
    - Issue 番号を参照
 
-## コミットコマンド
-
-```bash
-# Review changes
-git status
-git diff
-
-# Stage specific files (never use git add .)
-git add path/to/file1 path/to/file2
-
-# Commit with proper message
-git commit -m "feat: implement feature component (#123)"
-
-# Push to remote
-git push origin feat/123-feature-name
-```
-
-## コミットメッセージ規則
+## 基本フォーマット
 
 ```
-feat: add new feature (#123)
-fix: resolve bug in component (#123)
-docs: update README (#123)
-test: add unit tests (#123)
-refactor: improve code structure (#123)
+<type>[任意の scope]: <説明>
+
+[任意の本文]
+[Issue: #123]
 ```
 
-## コミットタイプ
+### Type 一覧
 
-- **feat**: 新機能
-- **fix**: バグ修正
-- **docs**: ドキュメント変更
-- **test**: テスト追加/更新
-- **refactor**: コードリファクタリング
-- **style**: フォーマット変更
-- **chore**: メンテナンスタスク
+| Type     | 説明                                                                   |
+| -------- | ---------------------------------------------------------------------- |
+| feat     | 新機能の追加                                                           |
+| fix      | バグ修正                                                               |
+| docs     | ドキュメントの更新のみ                                                 |
+| style    | コードの意味に影響しない変更（空白、フォーマット、セミコロン追加など） |
+| refactor | バグ修正や機能追加ではないコードの変更                                 |
+| perf     | パフォーマンス改善のための変更                                         |
+| test     | テストの追加・修正                                                     |
+| build    | ビルドシステムや外部依存関係に関する変更                               |
+| ci       | CI 設定ファイルやスクリプトの変更                                      |
+| chore    | その他の変更（ソースやテストの変更を含まない）                         |
 
-## コミットチェックリスト
+### Scope（任意）
 
-- [ ] 関連するファイルのみがステージングされている
-- [ ] 変更が git diff で確認されている
-- [ ] コミットメッセージに Issue 番号が含まれている
-- [ ] メッセージが規則に従っている
-- [ ] コミットが論理的な作業単位を表している
-- [ ] 変更がリモートにプッシュされている
+- 変更の範囲を示す
+- 例： feat(auth), fix(api)
+
+### 説明文のルール
+
+- 必ず日本語で記述
+- 変更内容が明確に分かるように
+- 文末は体言止め（「〜する」「〜した」ではなく「〜を追加」「〜を修正」）
+
+### イシューの関連付け
+
+- イシュー番号は `Issue: #番号` の形式で記載
+- 複数のイシューに関連する場合はカンマ区切りで記載（例：`Issue: #123, #124`）
+- クローズするイシューの場合は `Closes #123` の形式も使用可能
+
+## 重大な変更を含む場合
+
+破壊的に変更していることを明示する。
+
+1. Type/Scope の後に!をつける
+
+2. フッターに BREAKING CHANGE:を記載
+
+例：
+
+```md
+feat: 認証 API の仕様を変更
+BREAKING CHANGE: トークンの形式を変更
+```
