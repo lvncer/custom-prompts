@@ -39,7 +39,7 @@ GitKraken MCP が利用できない場合、または PR 作成機能が提供�
 
 ### 基本的な PR 作成
 
-```bash
+```sh
 # Create PR with description
 gh pr create --title "feat: [Feature Name] (#123)" --body-file pr-description.md
 
@@ -49,7 +49,7 @@ gh pr view
 
 ### 詳細な作成オプション
 
-```bash
+```sh
 # PR を作成してレビュアーを同時に指定
 --reviewer @username
 
@@ -63,7 +63,7 @@ gh pr view
 
 ### PR 作成後、テンプレートファイルを削除
 
-```
+```sh
 rm pr-description.md
 ```
 

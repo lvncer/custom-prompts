@@ -33,7 +33,7 @@
 
    - **重要**: body-file として作成した Markdown ファイルは絶対にコミットせずに、Issue 作成後、必ず完全に削除する。
 
-     ```
+     ```sh
      rm issue-template.md
      ```
 

@@ -16,13 +16,15 @@
 
 ## 開発ワークフローコマンド
 
-| command      | description              |
-| ------------ | ------------------------ |
-| `/issue`     | GitHub Issue 作成・管理  |
-| `/branch`    | ブランチ作成・Git 操作   |
-| `/commit`    | コミット管理・規約       |
-| `/pr`        | プルリクエスト作成・管理 |
-| `/pr-review` | プルリクエストレビュー   |
+| command             | description              |
+| ------------------- | ------------------------ |
+| `/issue`            | GitHub Issue 作成・管理  |
+| `/branch`           | ブランチ作成・Git 操作   |
+| `/worktree`         | Worktree 作成・起動      |
+| `/worktree-cleanup` | Worktree 整理・削除      |
+| `/commit`           | コミット管理・規約       |
+| `/pr`               | プルリクエスト作成・管理 |
+| `/pr-review`        | プルリクエストレビュー   |
 
 ## 追加予定
 

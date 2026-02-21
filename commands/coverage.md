@@ -35,7 +35,7 @@
 
 ## カバレッジコマンド
 
-```bash
+```sh
 # Generate coverage report
 npm run test:coverage
 
