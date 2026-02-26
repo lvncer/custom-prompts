@@ -9,7 +9,7 @@
       "args": ["-y", "next-devtools-mcp@latest"]
     },
     "deepwiki": {
-      "url": "https://mcp.deepwiki.com/sse"
+      "url": "https://mcp.deepwiki.com/mcp"
     },
     "supabase": {
       "url": "https://mcp.supabase.com/mcp?project_ref=<PROJECT_REF>&read_only=true"
