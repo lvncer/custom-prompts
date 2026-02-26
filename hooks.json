@@ -1,14 +1,9 @@
 {
   "version": 1,
   "hooks": {
-    "postToolUse": [
-      { "command": ".cursor/hooks/on-tool-use.sh" }
-    ],
-    "afterAgentResponse": [
-      { "command": ".cursor/hooks/on-notification.sh" }
-    ],
-    "stop": [
-      { "command": ".cursor/hooks/on-stop.sh" }
-    ]
+    "postToolUse": [{ "command": ".cursor/hooks/on-tool-use.sh" }],
+    "afterAgentResponse": [{ "command": ".cursor/hooks/on-notification.sh" }],
+    "beforeSubmitPrompt": [{ "command": ".cursor/hooks/on-user-sent.sh" }],
+    "stop": [{ "command": ".cursor/hooks/on-stop.sh" }]
   }
 }
