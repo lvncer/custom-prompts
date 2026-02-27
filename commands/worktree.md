@@ -28,19 +28,18 @@ bare リポジトリ（例: `Project.git`）を見つけて worktree を作成�
 2. worktree 一覧を確認
 
    ```sh
-   git --git-dir <bare-repo-path> worktree list
+   git --git-dir list < bare-repo-path > worktree
    ```
 
 3. リモートブランチ一覧を確認し、必要時に fetch（事故防止）
 
    ```sh
-   git --git-dir <bare-repo-path> ls-remote --heads origin
-   git --git-dir <bare-repo-path> fetch --prune origin
-   git --git-dir <bare-repo-path> ls-remote --heads origin
+   git --git-dir --heads origin < bare-repo-path > ls-remote
+   git --git-dir --prune origin < bare-repo-path > fetch
+   git --git-dir --heads origin < bare-repo-path > ls-remote
    ```
 
 4. worktree ディレクトリ名をブランチ名から生成
-
    - 例: `fix/556-add-favicon-control-pc` → `fix-556-add-favicon-control-pc`
 
 5. 分岐して worktree を作成
@@ -70,8 +69,8 @@ bare リポジトリ（例: `Project.git`）を見つけて worktree を作成�
    tmp_dir="$(mktemp -d)"
    curl -L https://github.com/lvncer/ai-configs/archive/refs/heads/main.tar.gz -o "$tmp_dir/ai-configs-main.tar.gz"
    tar -xzf "$tmp_dir/ai-configs-main.tar.gz" -C "$tmp_dir"
-   rm -rf <workspace-root>/<branch-with-slash-replaced>/.cursor
-   cp -R "$tmp_dir/ai-configs-main/.cursor" <workspace-root>/<branch-with-slash-replaced>/.cursor
+   rm -rf < workspace-root > / < branch-with-slash-replaced > /.cursor
+   cp -R "$tmp_dir/ai-configs-main/.cursor" < workspace-root > / < branch-with-slash-replaced > /.cursor
    rm -rf "$tmp_dir"
    ```
 

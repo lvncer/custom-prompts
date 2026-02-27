@@ -7,28 +7,25 @@
 ## 手順
 
 1. Issue 計画
-
    - 明確な Issue タイトルを定義
    - 実装フェーズを特定
 
 2. フェーズテンプレート設定
-
    - 実装を段階的に分割するためのフェーズを定義（詳細は「フェーズテンプレート」セクションを参照）
    - Phase 1: 環境セットアップ（ブランチ作成、依存関係追加など）
    - Phase 2-N: 具体的な実装作業（機能ごとに分割）
    - 最終フェーズ: テストと検証（ビルドテスト、機能テストなど）
 
 3. Issue 作成
-
    - `gh` CLI を使用する
    - タイトルは以下のフォーマットに従う（詳細は「Issue タイトルフォーマット」を参照）
    - body には以下の Issue テンプレートを使用（`--body-file` で指定）
 
      ```bash
-      gh issue create \
-      --title "[タイトル]" \
-      --body-file issue-template.md \
-      --assignee @me
+     gh issue create \
+       --title "[タイトル]" \
+       --body-file issue-template.md \
+       --assignee @me
      ```
 
    - **重要**: body-file として作成した Markdown ファイルは絶対にコミットせずに、Issue 作成後、必ず完全に削除する。
@@ -38,7 +35,6 @@
      ```
 
 4. ラベルを追加（任意）
-
    - 必ず、以下のラベル分類を参照
 
      ```sh

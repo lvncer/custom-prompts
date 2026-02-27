@@ -7,7 +7,6 @@
 ## 手順
 
 1. 状態分析
-
    - 現在のリポジトリの状態を確認
      - 必ず GitKraken MCP を使用
      - ツール: `git_status` (directory: リポジトリパス)
@@ -17,7 +16,6 @@
      - ツール: `git_log_or_diff` (action: "log", directory: リポジトリパス)
 
 2. 同期前の準備
-
    - ローカルの変更を stash またはコミット
      - stash の場合: ツール: `git_stash` (directory: リポジトリパス, name: メッセージ)
      - コミットの場合: ツール: `git_add_or_commit` (action: "add", directory: リポジトリパス, files: ファイル配列) → `git_add_or_commit` (action: "commit", directory: リポジトリパス, message: コミットメッセージ)
@@ -27,7 +25,6 @@
      - ツール: `git_log_or_diff` (action: "log", directory: リポジトリパス) で確認
 
 3. プルとマージ解決
-
    - リモートから最新の変更をプル
      - `git pull origin <ブランチ名>` を実行
    - マージ競合が発生した場合は処理
@@ -35,7 +32,6 @@
      - ツール: `git_status` (directory: リポジトリパス) で状態を確認
 
 4. 競合解決 (必要な場合)
-
    - 競合ファイルを特定
      - ツール: `git_status` (directory: リポジトリパス) で競合ファイルを確認
    - 手動またはツールで競合を解決

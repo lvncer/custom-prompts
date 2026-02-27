@@ -9,21 +9,21 @@ description: Next.js プロジェクトの実装方針を標準化する。デ�
 
 ```sh
 src/
-├── app/              # Next.js App Router - ルーティングとページ
+├── app/ # Next.js App Router - ルーティングとページ
 ├── components/
-│   ├── ui/           # Shadcn/ui コンポーネント - 再利用可能な UI プリミティブ
-│   └── layouts/      # 一貫したページ構造のためのレイアウトコンポーネント
-├── hooks/            # 共有ロジックのためのカスタム React フック
-├── types/            # TypeScript 型定義
+│ ├── ui/      # Shadcn/ui コンポーネント - 再利用可能な UI プリミティブ
+│ └── layouts/ # 一貫したページ構造のためのレイアウトコンポーネント
+├── hooks/     # 共有ロジックのためのカスタム React フック
+├── types/     # TypeScript 型定義
 ├── lib/
-│   ├── constants/    # アプリケーション定数と設定
-│   ├── utils/        # ユーティリティ関数とヘルパー
-│   ├── actions/      # Server Actions（サーバーサイドのミューテーション）
-│   └── services/     # ドメインサービス（ビジネスロジック、外部API呼び出し等）
+│ ├── constants/ # アプリケーション定数と設定
+│ ├── utils/     # ユーティリティ関数とヘルパー
+│ ├── actions/   # Server Actions（サーバーサイドのミューテーション）
+│ └── services/  # ドメインサービス（ビジネスロジック、外部API呼び出し等）
 └── tests/
-    ├── unit/         # 個別の関数/コンポーネントのユニットテスト
-    ├── integration/  # コンポーネント相互作用の統合テスト
-    └── e2e/          # 完全なユーザーフローのエンドツーエンドテスト
+├── unit/        # 個別の関数/コンポーネントのユニットテスト
+├── integration/ # コンポーネント相互作用の統合テスト
+└── e2e/         # 完全なユーザーフローのエンドツーエンドテスト
 ```
 
 ## ファイル命名規則

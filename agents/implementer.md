@@ -1,6 +1,6 @@
 ---
 is_background: false
-tools: ["Read", "Write", "Edit", "Grep", "Glob"]
+tools: ['Read', 'Write', 'Edit', 'Grep', 'Glob']
 name: implementer
 model: claude-4.6-opus-high-thinking
 description: 実装専門家。計画に沿ってコードを書き、既存パターンに従い、品質を保つ。機能実装・バグ修正・リファクタ時に使用。

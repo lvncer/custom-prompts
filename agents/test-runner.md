@@ -1,6 +1,6 @@
 ---
 is_background: false
-tools: ["Read", "Write", "Edit", "Grep", "Glob"]
+tools: ['Read', 'Write', 'Edit', 'Grep', 'Glob']
 name: test-runner
 model: claude-4.6-sonnet-medium-thinking
 description: テスト設計・実装・実行の専門家。ユニット・統合・E2Eテストを作成し、カバレッジと品質を確保する。

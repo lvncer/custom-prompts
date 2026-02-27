@@ -1,6 +1,6 @@
 ---
 is_background: false
-tools: ["Read", "Grep", "Glob"]
+tools: ['Read', 'Grep', 'Glob']
 name: verifier
 model: claude-4.6-sonnet-medium-thinking
 description: コード品質・動作の検証専門家。実装後のレビュー、型チェック、リント、ビルドの確認を行う。変更のマージ前に使用。

@@ -1,6 +1,6 @@
 ---
 is_background: false
-tools: ["Read", "Grep", "Glob"]
+tools: ['Read', 'Grep', 'Glob']
 name: planner
 model: gpt-5.3-codex
 description: 複雑な機能実装・リファクタの計画立案専門家。機能実装、アーキテクチャ変更、複雑なリファクタの依頼時に使用。

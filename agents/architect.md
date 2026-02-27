@@ -1,6 +1,6 @@
 ---
 is_background: false
-tools: ["Read", "Grep", "Glob"]
+tools: ['Read', 'Grep', 'Glob']
 name: architect
 model: gpt-5.3-codex
 description: システム設計・スケーラビリティ・技術判断の専門家。新機能の設計、大規模リファクタ、アーキテクチャ決定時に使用。

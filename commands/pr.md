@@ -9,7 +9,6 @@
 ### 手順
 
 1. PR 準備
-
    - すべての変更がコミットされていることを確認
      - 必ず GitKraken MCP を使用
      - ツール: `git_status` (directory: リポジトリパス) で確認
@@ -18,7 +17,6 @@
    - 最終テストとチェックを実行
 
 2. PR 作成
-
    - 必ず、以下の PR テンプレートを参照
    - まず GitKraken MCP の使用を試みる
      - ツール: `pull_request_create` (repository_name: リポジトリ名, repository_organization: 組織名, title: PR タイトル, source_branch: ソースブランチ, target_branch: ターゲットブランチ, body: PR 本文)
@@ -27,7 +25,6 @@
      - **重要**: body-file として作成した Markdown ファイルは絶対にコミットせずに、PR 作成後、必ず完全に削除する。
 
 3. PR 設定
-
    - 適切なラベルを追加
      - `gh` CLI を使用: `gh pr edit [pr-number] --add-label "label1,label2"`
    - 必要に応じてレビュアーをリクエスト
@@ -58,7 +55,7 @@ gh pr view
 
 # 特定のブランチを指定
 --base main \
---head feat/123-feature-name
+  --head feat/123-feature-name
 ```
 
 ### PR 作成後、テンプレートファイルを削除

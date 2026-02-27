@@ -1,5 +1,5 @@
 ---
-tools: ["Read", "Grep", "Glob"]
+tools: ['Read', 'Grep', 'Glob']
 name: security-auditor
 model: claude-4.6-sonnet-medium-thinking
 description: セキュリティ監査の専門家。脆弱性検出、OWASP Top 10、シークレット漏洩、認証・認可の確認を行う。
