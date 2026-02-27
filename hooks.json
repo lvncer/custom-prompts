@@ -1,6 +1,12 @@
 {
   "version": 1,
   "hooks": {
+    "preToolUse": [
+      {
+        "command": ".cursor/hooks/validate-shell.sh",
+        "matcher": "Shell"
+      }
+    ],
     "postToolUse": [{ "command": ".cursor/hooks/on-tool-use.sh" }],
     "afterAgentResponse": [{ "command": ".cursor/hooks/on-notification.sh" }],
     "stop": [{ "command": ".cursor/hooks/on-stop.sh" }]
