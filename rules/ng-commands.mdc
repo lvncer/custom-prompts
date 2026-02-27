@@ -12,21 +12,20 @@ alwaysApply: true
 
 ### 禁止コマンド
 
-| 禁止                                         | 代替・対応                                               |
-| -------------------------------------------- | -------------------------------------------------------- |
-| `awk`                                        | `perl` を使用。例: `perl -lane 'print $F[0]' file.txt`   |
-| `sed`                                        | `perl` を使用。例: `perl -pi -e 's/old/new/g' file.txt`  |
-| `git push`                                   | ユーザー（先輩）に実行を依頼する                         |
-| `git add -A` / `git add --all` / `git add .` | 追加するファイル名を明示する（例: `git add src/foo.ts`） |
-| `rm -rf /`                                   | 絶対に実行しない                                         |
+| 禁止                     | 対応                                       |
+| ------------------------ | ------------------------------------------ |
+| `git push`               | ユーザー（先輩）に実行を依頼する           |
+| `git merge`              | ユーザー（先輩）に実行を依頼する           |
+| `gh pr merge` / `gh repo sync` | ユーザー（先輩）に実行を依頼する       |
+| `rm -rf /`               | 絶対に実行しない                           |
 
 ### 推奨パターン
 
-- **テキスト処理**: `awk`/`sed` の代わりに `perl` または `jq`（JSON の場合）を使用
-- **Git 操作**: `git add` は対象ファイルを指定、`git push` はユーザー確認
-- **危険な削除**: ルート削除や広範囲の `rm -rf` は提案しない
+- **Git 操作**: `git push` / `git merge` はユーザー確認
+- **gh 操作**: `gh pr merge` / `gh repo sync` はユーザー確認
+- **危険な削除**: `rm -rf /` は提案しない
 
 ## 補足
 
-- `.cursor/hooks/validate-shell.sh` が preToolUse フックで検証する
+- `.cursor/hooks/validate-shell.sh` が beforeShellExecution フックで検証する
 - sandbox の権限設定に関わらず、このフックは実行される

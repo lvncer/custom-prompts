@@ -4,7 +4,7 @@
     "beforeShellExecution": [
       {
         "command": ".cursor/hooks/validate-shell.sh",
-        "matcher": "git|awk|sed|rm"
+        "matcher": "git|gh|rm"
       }
     ],
     "postToolUse": [{ "command": ".cursor/hooks/on-tool-use.sh" }],
