@@ -1,14 +1,14 @@
 {
   "version": 1,
   "hooks": {
-    "preToolUse": [
+    "beforeShellExecution": [
       {
         "command": ".cursor/hooks/validate-shell.sh",
-        "matcher": "Shell"
+        "matcher": "git|awk|sed|rm"
       }
     ],
-    "postToolUse": [{ "command": ".cursor/hooks/on-tool-use.sh" }],
-    "afterAgentResponse": [{ "command": ".cursor/hooks/on-notification.sh" }],
-    "stop": [{ "command": ".cursor/hooks/on-stop.sh" }]
+    "postToolUse": [{"command": ".cursor/hooks/on-tool-use.sh"}],
+    "afterAgentResponse": [{"command": ".cursor/hooks/on-notification.sh"}],
+    "stop": [{"command": ".cursor/hooks/on-stop.sh"}]
   }
 }
