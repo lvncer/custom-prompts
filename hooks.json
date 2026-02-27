@@ -8,7 +8,6 @@
       }
     ],
     "postToolUse": [{ "command": ".cursor/hooks/on-tool-use.sh" }],
-    "afterAgentResponse": [{ "command": ".cursor/hooks/on-notification.sh" }],
     "stop": [{ "command": ".cursor/hooks/on-stop.sh" }]
   }
 }
