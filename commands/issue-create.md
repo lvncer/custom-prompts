@@ -38,7 +38,11 @@
    - 必ず、以下のラベル分類を参照
 
      ```sh
-     gh issue edit [issue-number] --add-label "enhancement,priority/medium"
+     gh issue edit [issue-number] --add-label "enhancement"
+     ```
+
+     ```sh
+     gh issue edit [issue-number] --add-label "priority/medium"
      ```
 
 ## Issue タイトルフォーマット
