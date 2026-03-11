@@ -3,72 +3,58 @@
 ## 概要
 
 確立されたワークフローに従い、適切な説明、Issue リンク、マージプロセス管理でプルリクエストを作成する。
+実行時は **GitKraken MCP を最優先** で使い、未対応操作のみ `gh` をフォールバックで使う。
 
 ## PR プロセス
 
-### 手順
+### 1. PR 準備
 
-1. PR 準備
-   - すべての変更がコミットされていることを確認
-     - 必ず GitKraken MCP を使用
-     - ツール: `git_status` (directory: リポジトリパス) で確認
-   - 最新の変更をリモートにプッシュ
-     - ツール: `git_push` (directory: リポジトリパス)
-   - 最終テストとチェックを実行
+- すべての変更がコミットされていることを確認
+  - ツール: `git_status`
 
-2. PR 作成
-   - 必ず、以下の PR テンプレートを参照
-   - まず GitKraken MCP の使用を試みる
-     - ツール: `pull_request_create` (repository_name: リポジトリ名, repository_organization: 組織名, title: PR タイトル, source_branch: ソースブランチ, target_branch: ターゲットブランチ, body: PR 本文)
-   - GitKraken MCP が利用できない場合は `gh` CLI を使用
-     - body には PR テンプレートを使用（`--body-file` で指定）
-     - **重要**: body-file として作成した Markdown ファイルは絶対にコミットせずに、PR 作成後、必ず完全に削除する。
+### 2. PR 本文のテンプレート取得（優先順）
 
-3. PR 設定
-   - 適切なラベルを追加
-     - `gh` CLI を使用: `gh pr edit [pr-number] --add-label "label1,label2"`
-   - 必要に応じてレビュアーをリクエスト
-     - `gh` CLI を使用: `gh pr edit [pr-number] --add-reviewer @username`
+PR 作成時は、**プロジェクト内の PR テンプレートを次の順で探し、存在すればそれを body に使用する。**
 
-## GitHub CLI (`gh`) での PR 作成
+1. **`.github/PULL_REQUEST_TEMPLATE.md`**（大文字）
+2. **`.github/pull_request_template.md`**（小文字）
+3. **`.github/PULL_REQUEST_TEMPLATE/`** ディレクトリ内の `.md` ファイル（複数ある場合は既定の 1 つ、または選択に従う）
 
-GitKraken MCP が利用できない場合、または PR 作成機能が提供されていない場合は、GitHub CLI (`gh`) を使用する。
+いずれも見つからない場合のみ、このコマンド内の「PR 説明テンプレート」を body として使用する。
 
-### 基本的な PR 作成
+### 3. PR 作成
 
-```sh
-# Create PR with description
-gh pr create --title "feat: [Feature Name] (#123)" --body-file pr-description.md
+- **必ずドラフトで作成する**
+- ツール: GitKraken MCP の `pull_request_create`
+  - `body`: 上記で取得したテンプレート内容（または埋め込みテンプレート）
+  - `is_draft`: **true**（必須）
+- GitKraken MCP が利用できない場合
+  - body には上記テンプレートを使用（`--body-file` で指定）
+  - body-file として作成した一時 Markdown ファイルはコミットせず、PR 作成後に必ず削除する。
 
-# View PR status
-gh pr view
-```
+  ```sh
+  gh pr create --draft --title "feat: [Feature Name] (#123)" --body-file pr-description.md
+  ```
 
-### 詳細な作成オプション
+### 4. PR 設定（ラベル・レビュアー）
 
-```sh
-# PR を作成してレビュアーを同時に指定
---reviewer @username
+GitKraken MCP には **PR を編集するツール**（ラベル追加・レビュアー追加）が存在しないため、**`gh` CLI を使用する。**
 
-# ドラフト PR として作成
---draft
+- 適切なラベルを追加
 
-# 特定のブランチを指定
---base main \
-  --head feat/123-feature-name
-```
+  ```sh
+  gh pr edit [pr-number] --add-label "label1"
+  ```
 
-### PR 作成後、テンプレートファイルを削除
+- レビュアーをリクエスト（任意）
 
-```sh
-rm pr-description.md
-```
+  ```sh
+  gh pr edit [pr-number] --add-reviewer @username
+  ```
 
 ## PR 説明テンプレート
 
 以下のテンプレートを Markdown ファイルとして保存し、`--body-file` オプションで指定する。
-
-**重要**: このファイルは一時ファイルとして扱い、PR 作成後は必ず削除すること。コミットしないこと。
 
 ```md
 ## 概要

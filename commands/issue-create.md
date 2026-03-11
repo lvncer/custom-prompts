@@ -3,47 +3,64 @@
 ## 概要
 
 確立されたワークフローパターンに従い、適切なフェーズテンプレートとラベルで GitHub Issue を作成する。
+Issue 作成は GitKraken MCP にツールが存在しないため、`gh` CLI のみを使用する。
 
 ## 手順
 
-1. Issue 計画
-   - 明確な Issue タイトルを定義
-   - 実装フェーズを特定
+### 1. Issue 計画
 
-2. フェーズテンプレート設定
-   - 実装を段階的に分割するためのフェーズを定義（詳細は「フェーズテンプレート」セクションを参照）
-   - Phase 1: 環境セットアップ（ブランチ作成、依存関係追加など）
-   - Phase 2-N: 具体的な実装作業（機能ごとに分割）
-   - 最終フェーズ: テストと検証（ビルドテスト、機能テストなど）
+- 明確な Issue タイトルを定義（「Issue タイトルフォーマット」に従う）
 
-3. Issue 作成
-   - `gh` CLI を使用する
-   - タイトルは以下のフォーマットに従う（詳細は「Issue タイトルフォーマット」を参照）
-   - body には以下の Issue テンプレートを使用（`--body-file` で指定）
+### 2. Issue 本文のテンプレート取得（優先順）
 
-     ```bash
-     gh issue create \
-       --title "[タイトル]" \
-       --body-file issue-template.md \
-       --assignee @me
-     ```
+Issue 作成時は、**プロジェクト内の Issue テンプレートを次の順で探し、存在すればそれを body に使用する。**
 
-   - **重要**: body-file として作成した Markdown ファイルは絶対にコミットせずに、Issue 作成後、必ず完全に削除する。
+1. `.github/ISSUE_TEMPLATE.md`, `.github/ISSUE_TEMPLATE.yml`
+2. `.github/issue_template.md`, `.github/issue_template.yml`
+3. `.github/ISSUE_TEMPLATE/`** ディレクトリ内の `.md` もしくは `yml` ファイル（複数ある場合は用途に合う 1 つを選択）
 
-     ```sh
-     rm issue-template.md
-     ```
+いずれも見つからない場合のみ、このコマンド内の「Issue テンプレート（body）」に記載のテンプレート（フェーズテンプレート含む）を body として使用する。
 
-4. ラベルを追加（任意）
-   - 必ず、以下のラベル分類を参照
+### 3. フェーズテンプレート設定
 
-     ```sh
-     gh issue edit [issue-number] --add-label "enhancement"
-     ```
+実装を段階的に分割するため、body 内で以下のフェーズ構造を定義する。プロジェクトのテンプレートを使う場合も、フェーズが必要なら同様の見出しを追記する。
 
-     ```sh
-     gh issue edit [issue-number] --add-label "priority/medium"
-     ```
+- **Phase 1**: 環境セットアップ（ブランチ作成、依存関係追加、設定ファイルなど）
+- **Phase 2〜N**: 具体的な実装作業（機能・責務ごとに分割）
+- **最終フェーズ**: テストと検証（ビルドテスト、機能テスト、ドキュメント更新など）
+
+詳細な見出し例は「Issue テンプレート（body）」内の「## フェーズ」を参照。
+
+### 4. Issue 作成
+
+- `gh` CLI を使用する
+- タイトルは「Issue タイトルフォーマット」に従う
+- body には上記で取得したテンプレート（または埋め込みテンプレート）を一時ファイルに書き、`--body-file` で指定する
+
+  ```bash
+  gh issue create \
+    --title "[タイトル]" \
+    --body-file issue-template.md \
+    --assignee @me
+  ```
+
+- **重要**: body-file として作成した Markdown ファイルはコミットせず、Issue 作成後に必ず削除する。
+
+  ```sh
+  rm issue-template.md
+  ```
+
+### 5. ラベルを追加
+
+```sh
+gh issue edit [issue-number] --add-label "enhancement"
+gh issue edit [issue-number] --add-label "priority/medium"
+```
+
+- **Priority**: `priority/high` / `priority/medium` / `priority/low`
+- **Type**: `bug`, `documentation`, `enhancement` など
+- **Status**: `in-progress`, `review-needed`, `blocked` など
+
 
 ## Issue タイトルフォーマット
 
@@ -94,9 +111,9 @@ refactor: 認証モジュールをリファクタリング
 
 ## Issue テンプレート（body）
 
-以下のテンプレートを Markdown ファイルとして保存し、`--body-file` オプションで指定する。
+プロジェクトに Issue テンプレートがない場合に使用する。以下のテンプレートを Markdown ファイルとして保存し、`--body-file` で指定する。
 
-**重要**: このファイルは一時ファイルとして扱い、Issue 作成後は必ず削除すること。コミットしないこと。
+**重要**: このファイルは一時ファイルとして扱い、Issue 作成後は必ず削除する。コミットしないこと。
 
 ```markdown
 ## 概要
@@ -115,31 +132,51 @@ refactor: 認証モジュールをリファクタリング
 
 <!-- 問題解決のためのアプローチや具体的な実装案があれば記述 -->
 
+## フェーズ
+
+<!-- 実装を段階的に分割する。必要に応じて Phase を増減する -->
+
+### Phase 1: 環境セットアップ
+
+- [ ] ブランチ作成
+- [ ] 依存関係・設定の追加・更新
+- [ ] （その他）
+
+### Phase 2: 実装（1）
+
+- [ ] （具体的なタスク）
+- [ ] （その他）
+
+### Phase 3: 実装（2）
+
+- [ ] （具体的なタスク）
+- [ ] （その他）
+
+### 最終フェーズ: テストと検証
+
+- [ ] ビルド・テストの実行
+- [ ] 動作確認
+- [ ] ドキュメント・README の更新（必要な場合）
+
 ## タスク
 
-<!-- 必要なタスクをチェックリスト形式で記述 -->
+<!-- 上記フェーズに含まない細かいタスクをチェックリスト形式で記述 -->
 
 ## 追加情報
 
-<!-- スクリーンショット、エラーメッセージ、関連するドキュメントなど、問題解決に役立つ情報があれば追加してください -->
+<!-- スクリーンショット、エラーメッセージ、関連するドキュメントなど、問題解決に役立つ情報があれば追加 -->
 
 ## 関連リンク
 
-<!-- 関連するイシューやプルリクエスト、外部リソースへのリンクを記載 -->
+<!-- 関連するイシューやプルリクエスト、外部リソースへのリンク -->
 
 例：
 
 - 関連 PR: #123
 - 類似イシュー: #456
-- API 仕様書: https://api-docs.example.com/reset-password
+- API 仕様書: https://api-docs.example.com/...
 
 ## 環境情報（バグの場合）
 
 <!-- バグ報告の場合は動作環境の情報を記入 -->
 ```
-
-## ラベル分類
-
-- Priority: `priority/high|medium|low`
-- Type: `bug`, `documentation`, `enhancement`...
-- Status: `in-progress`, `review-needed`, `blocked`
