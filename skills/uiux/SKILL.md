@@ -1,5 +1,6 @@
 ---
-alwaysApply: true
+name: uiux
+description: UIUXにおけるデザインのガイドライン
 ---
 
 # UI/UX ガイドライン
