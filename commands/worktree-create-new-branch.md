@@ -54,3 +54,15 @@ git --git-dir --prune origin < bare-repo-path > fetch
 ```sh
 git --git-dir <bare-repo-path> worktree add -b <branch> <workspace-root>/<branch-with-slash-replaced> <base-branch>
 ```
+
+### 7. worktree 内で最新を取得（必要なとき）
+
+bare 側の `fetch` だけでは、状況によって worktree が **古い参照のまま** になることがある。リモートに追跡対象のブランチがあるなら、作成した worktree で `pull` すると確実に最新になる。
+
+```sh
+cd <workspace-root>/<branch-with-slash-replaced>
+git pull origin <branch>
+```
+
+- すでに最新なら `Already up to date.` のみで問題なし。
+- **初回 push 前**でリモートに `<branch>` がまだない場合は `git pull origin <branch>` は失敗する（その場合は push 後に同じ手順を実行するか、ベースだけ揃えたいなら `git fetch origin` などでよい）。

@@ -50,3 +50,17 @@ git --git-dir <bare-repo-path> worktree add --track -b <branch> <workspace-root>
 ```sh
 git --git-dir <bare-repo-path> worktree add --track <workspace-root>/<branch-with-slash-replaced> <branch>
 ```
+
+### 6. worktree 内で最新を取得
+
+bare 側の `git fetch` だけだと、状況によっては **古い参照のまま** worktree が作られることがある（例: 特定ブランチでコミットが進んでいるのに、作業ツリーが古い SHA のまま）。
+
+作成した worktree のディレクトリで **そのブランチを `origin` から直接取り直す**と確実に最新になる。
+
+```sh
+cd <workspace-root>/<branch-with-slash-replaced>
+git pull origin <branch>
+```
+
+- すでに最新なら `Already up to date.` のみで問題なし。
+- 「必ず最新で使う」要件なら、この 1 ステップを入れておくのが安全。

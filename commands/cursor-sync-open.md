@@ -4,6 +4,8 @@
 
 worktree 作成後に `.cursor` を反映し、Cursor を起動する。
 
+**必ず `origin` の最新で作業したい場合**は、`worktree-create-*` 側の「worktree 内で最新を取得」（`git pull origin <branch>` など）を先に済ませてから、このコマンドに進む（ここでは pull はしない）。
+
 ## 入力
 
 このコマンドは基本的に `worktree-create-*` の直後に連続して使う。
