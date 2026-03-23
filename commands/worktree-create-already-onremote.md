@@ -7,7 +7,7 @@
 
 ## 入力
 
-- `branch: fix/556-add-favicon-control-pc`
+- 対象ブランチ名（ユーザーが指定。ドキュメント上の `<branch>` などは置換して使う）
 
 ## 手順
 
@@ -33,9 +33,7 @@ git --git-dir <bare-repo-path> update-ref refs/heads/<branch> refs/remotes/origi
 
 ### 4. worktree ディレクトリ名を決める
 
-ディレクトリ名はブランチ名の `/` を `-` に置換する。
-
-- 例: `fix/556-add-favicon-control-pc` -> `fix-556-add-favicon-control-pc`
+ディレクトリ名はブランチ名の `/` を `-` に置換した `<branch-with-slash-replaced>` を使う。
 
 ### 5. worktree を作成
 
@@ -53,7 +51,7 @@ git --git-dir <bare-repo-path> worktree add --track <workspace-root>/<branch-wit
 
 ### 6. worktree 内で最新を取得
 
-bare 側の `git fetch` だけだと、状況によっては **古い参照のまま** worktree が作られることがある（例: 特定ブランチでコミットが進んでいるのに、作業ツリーが古い SHA のまま）。
+bare 側の `git fetch` だけだと、状況によっては **古い参照のまま** worktree が作られることがある（リモートは進んでいるのに、チェックアウトが古いコミットのまま、など）。
 
 作成した worktree のディレクトリで **そのブランチを `origin` から直接取り直す**と確実に最新になる。
 
