@@ -11,8 +11,6 @@
 
 - Cursor
 
-## SETUP
-
 ## ドキュメント
 
 - [ハーネス一覧](/documents/harness.md)
