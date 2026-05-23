@@ -4,7 +4,7 @@
 
 | Component                                 | 説明                                       |
 | ----------------------------------------- | ------------------------------------------ |
-| [Rules](#rules-一覧)                      | 永続的な AI ガイダンスとコーディング規約   |
+| Rules                                     | 永続的な AI ガイダンスとコーディング規約   |
 | [Skills](#skills-一覧)                    | 複雑なタスク向けのエージェントの特化機能   |
 | [SubAgents](#subagent-一覧)               | カスタムエージェントの設定とプロンプト     |
 | [Slash Commands](#slash-commands-一覧)    | エージェントが実行可能なコマンドファイル   |
@@ -12,18 +12,22 @@
 | [Hooks](#hooks-一覧)                      | イベントによって起動される自動化スクリプト |
 | [Execution Controls](#execution-controls) |                                            |
 
+```sh
+.cursor/
+├── agents/   # Subagents
+├── commands/ # Slash Commands
+├── hooks/    # Custom Hooks
+├── rules/    # Rules
+├── skills/   # Skills
+│
+├── hooks.json
+├── mcp.json
+└── sandbox.json
+```
+
 ## 使い方のヒント
 
 [zenn.dev/tkszenn/articles/cafc72cd8d1754](https://zenn.dev/tkszenn/articles/cafc72cd8d1754) を参考にしてください。
-
-## Rules 一覧
-
-| ファイル名                                        | 概要                                | 編集する必要 | Always Apply |
-| ------------------------------------------------- | ----------------------------------- | ------------ | ------------ |
-| [index.mdc](/.cursor/rules/index.mdc)             | 基本的な開発原則など                |              | Yes          |
-| [uiux.mdc](/.cursor/rules/uiux.mdc)               | UI/UX 設計ルール                    |              | Yes          |
-| [mcps.mdc](/.cursor/rules/mcps.mdc)               | 使用する MCP のツールなど           | Yes          | Yes          |
-| [ng-commands.mdc](/.cursor/rules/ng-commands.mdc) | 禁止コマンド（awk/sed/git push 等） | Yes          | Yes          |
 
 ## Skills 一覧
 

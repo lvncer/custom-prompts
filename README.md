@@ -11,19 +11,6 @@
 
 - Cursor
 
-  ```sh
-  .cursor/
-  ├── agents/   # Subagents
-  ├── commands/ # Slash Commands
-  ├── hooks/    # Custom Hooks
-  ├── rules/    # Rules
-  ├── skills/   # Skills
-  │
-  ├── hooks.json
-  ├── mcp.json
-  └── sandbox.json
-  ```
-
 ## SETUP
 
 ## ドキュメント
