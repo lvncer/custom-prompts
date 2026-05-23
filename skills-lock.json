@@ -1,15 +1,33 @@
 {
   "version": 1,
   "skills": {
+    "chrome-extensions": {
+      "source": "googlechrome/modern-web-guidance",
+      "sourceType": "github",
+      "skillPath": "skills/chrome-extensions/SKILL.md",
+      "computedHash": "1aaf29f8efed83acd69e33bec79fb69a0cb7a8e4c0a5a43328c9182cd733b8f9"
+    },
     "git-sync-guard": {
       "source": "lvncer/ai-configs",
       "sourceType": "github",
       "computedHash": "715ece0eb824ab85d975682a89c86783fa925635261f9e4e4d147f70797bb5e3"
     },
+    "modern-web-guidance": {
+      "source": "googlechrome/modern-web-guidance",
+      "sourceType": "github",
+      "skillPath": "skills/modern-web-guidance/SKILL.md",
+      "computedHash": "9f19aa0e3b554d33b2709c66bb16ad342403e323761f62d6665fbb424c23148d"
+    },
     "nextjs-best-practice": {
       "source": "lvncer/ai-configs",
       "sourceType": "github",
       "computedHash": "bc2eac9d2c34b89497d233dabb82b27d0f94d91ae32fb5de8b2f4017f3d63eb9"
+    },
+    "skill-creator": {
+      "source": "anthropics/skills",
+      "sourceType": "github",
+      "skillPath": "skills/skill-creator/SKILL.md",
+      "computedHash": "5ea13a6d9f0d4bb694405d79acd00cadec0d21bb138c4dd10fcf3c500cb835c2"
     },
     "tailwind-design-system": {
       "source": "wshobson/agents",
