@@ -13,4 +13,5 @@
 
 ## ドキュメント
 
+- [開発者向けセットアップ方法](/documents/SETUP.md)
 - [ハーネス一覧](/documents/harness.md)
