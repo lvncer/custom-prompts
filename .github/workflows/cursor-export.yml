@@ -1,0 +1,30 @@
+name: Update cursor-export branch
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".cursor/**"
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Split and push cursor-export
+        run: |
+          git branch -D cursor-export 2>/dev/null || true
+          git subtree split --prefix=.cursor -b cursor-export
+          git push origin cursor-export --force

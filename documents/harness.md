@@ -31,7 +31,7 @@
 
 ## Skills 一覧
 
-skills 一覧のバージョン管理は [/skills-lock.json](/skills-lock.json) を使用しています。
+skills 一覧のバージョン管理は [/.cursor/skills-lock.json](/.cursor/skills-lock.json) を使用しています。
 同期は下記コマンドを実行してください。
 現状は実験段階であり、実行コマンドが変わる可能性があります。
 
