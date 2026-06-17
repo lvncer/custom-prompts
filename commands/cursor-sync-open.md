@@ -41,7 +41,7 @@ rm -rf "$tmp_dir"
 
 ### 2. Skills をインストール
 
-skills 一覧のバージョン管理はリポジトリ直下の `skills-lock.json` を使用している。
+skills 一覧のバージョン管理は `.cursor/skills-lock.json` を使用している。
 同期は worktree ルートで下記を実行する。
 現状は実験段階であり、実行コマンドが変わる可能性がある。
 
