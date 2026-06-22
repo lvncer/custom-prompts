@@ -1,3 +1,19 @@
 {
-  "plugins": {}
+  "plugins": {
+    "aws-core": {
+      "enabled": false
+    },
+    "aws-data-analytics": {
+      "enabled": false
+    },
+    "aws-serverless": {
+      "enabled": false
+    },
+    "databases-on-aws": {
+      "enabled": false
+    },
+    "deploy-on-aws": {
+      "enabled": false
+    }
+  }
 }

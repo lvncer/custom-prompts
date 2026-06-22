@@ -1,16 +1,15 @@
 # ハーネス集
 
-## Agenda
-
-| Component                                 | 説明                                       |
-| ----------------------------------------- | ------------------------------------------ |
-| Rules                                     | 永続的な AI ガイダンスとコーディング規約   |
-| [Skills](#skills-一覧)                    | 複雑なタスク向けのエージェントの特化機能   |
-| [SubAgents](#subagent-一覧)               | カスタムエージェントの設定とプロンプト     |
-| [Slash Commands](#slash-commands-一覧)    | エージェントが実行可能なコマンドファイル   |
-| [MCP Servers](#mcp-servers)               | Model Context Protocol との連携            |
-| [Hooks](#hooks-一覧)                      | イベントによって起動される自動化スクリプト |
-| [Execution Controls](#execution-controls) |                                            |
+| harness                                   | description                                  |
+| ----------------------------------------- | -------------------------------------------- |
+| [Rules](/.cursor/rules/)                                     | 永続的な AI ガイダンスとコーディング規約     |
+| [Skills](#skills-一覧)                    | 複雑なタスク向けのエージェントの特化機能     |
+| [SubAgents](#subagent-一覧)               | カスタムエージェントの設定とプロンプト       |
+| [Slash Commands](#slash-commands-一覧)    | エージェントが実行可能なコマンドファイル     |
+| [MCP Servers](#mcp-サーバー一覧)          | Model Context Protocol との連携              |
+| [Plugins](#plugins-一覧)                  | MCP 設定と Skills をまとめたインストール単位 |
+| [Hooks](#hooks-一覧)                      | イベントによって起動される自動化スクリプト   |
+| [Execution Controls](#execution-controls) |                                              |
 
 ```sh
 .cursor/
@@ -22,12 +21,10 @@
 │
 ├── hooks.json
 ├── mcp.json
+├── settings.json
+├── skills-lock.json
 └── sandbox.json
 ```
-
-## 使い方のヒント
-
-[zenn.dev/tkszenn/articles/cafc72cd8d1754](https://zenn.dev/tkszenn/articles/cafc72cd8d1754) を参考にしてください。
 
 ## Skills 一覧
 
@@ -41,21 +38,6 @@ npx skills experimental_install
 
 新規のskillをインストールする際は、 [https://skills.sh/](https://skills.sh/) からインストールしてください。
 コマンド一覧などのドキュメントは [vercel-labs/skills/blob/main/AGENTS.md](https://github.com/vercel-labs/skills/blob/main/AGENTS.md) を確認してください。
-
-以下は私が作成したスキルです。
-下記コマンドからインストールできます。
-
-- `nextjs-best-practice`
-
-  ```sh
-  npx skills add https://github.com/lvncer/ai-configs/.cursor/skills/nextjs-best-practice/SKILL.md
-  ```
-
-- `git-sync-guard`
-
-  ```sh
-  npx skills add https://github.com/lvncer/ai-configs/.cursor/skills/git-sync-guard/SKILL.md
-  ```
 
 ## SubAgent 一覧
 
@@ -102,15 +84,39 @@ npx skills experimental_install
 - セキュリティチェック
 - AWSデプロイ、監視
 
-## MCP Servers
+## MCP と Plugins の違い
 
-| MCP                                                                      | 説明                                                                   | 必須プロパティ |
-| ------------------------------------------------------------------------ | ---------------------------------------------------------------------- | -------------- |
-| [GitKraken](https://help.gitkraken.com/mcp/mcp-getting-started/)         | Git ワークフローに関連する操作                                         |                |
-| [Next.js DevTools](https://nextjs.org/docs/app/guides/mcp)               | 開発サーバーのアプリケーション情報にアクセス                           |                |
-| [Chrome DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp) | ブラウザの開発者ツール機能を使用                                       |                |
-| [DeepWiki](https://docs.devin.ai/work-with-devin/deepwiki-mcp)           | up-to-date documentation you can talk to, for every repo in the world. |                |
-| [Supabase](https://supabase.com/docs/guides/getting-started/mcp)         |                                                                        | `project_ref`  |
+|              | MCP Server                                  | Plugin                                                 |
+| ------------ | ------------------------------------------- | ------------------------------------------------------ |
+| 役割         | AI が外部ツール・データに接続する**通信口** | MCP 設定 + Skills をまとめた**インストールパッケージ** |
+| 設定場所     | `.cursor/mcp.json`                          | `.cursor/settings.json`                                |
+| 提供するもの | ツール（検索・操作・取得など）              | MCP 接続設定 + ワークフロー用 Skills                   |
+
+## MCP サーバー一覧
+
+設定は [/.cursor/mcp.json](/.cursor/mcp.json)。プレースホルダは各自の環境値に置き換える。
+
+| ジャンル           | MCP                                                                      | 必須設定                |
+| ------------------ | ------------------------------------------------------------------------ | ----------------------- |
+| 開発・デバッグ     | [GitKraken](https://help.gitkraken.com/mcp/mcp-getting-started/)         | Cursor 拡張として有効化 |
+| 開発・デバッグ     | [Next.js DevTools](https://nextjs.org/docs/app/guides/mcp)               |                         |
+| 開発・デバッグ     | [Chrome DevTools](https://github.com/ChromeDevTools/chrome-devtools-mcp) |                         |
+| デザイン           | [Figma](https://www.figma.com/developers/mcp)                            | OAuth（初回接続時）     |
+| コラボレーション   | [Notion](https://developers.notion.com/docs/mcp)                         | OAuth（初回接続時）     |
+| コラボレーション   | [Slack](https://docs.slack.dev/ai/mcp-server/)                           | `<SLACK_CLIENT_ID>`     |
+| インフラ・クラウド | [Supabase](https://supabase.com/docs/guides/getting-started/mcp)         | `<PROJECT_REF>`         |
+| 調査・ドキュメント | [DeepWiki](https://docs.devin.ai/work-with-devin/deepwiki-mcp)           |                         |
+
+## Plugins 一覧
+
+設定は [/.cursor/settings.json](/.cursor/settings.json)。
+`Cursor Settings` → `Plugins` からも有効化できる。
+
+- [`aws-core`]()
+- [`aws-data-analytics`]()
+- [`aws-serverless`]()
+- [`databases-on-aws`]()
+- [`deploy-on-aws`]()
 
 ## Hooks 一覧
 
