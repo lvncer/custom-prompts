@@ -1,5 +1,6 @@
 {
   "mcpServers": {
+    // 開発・デバッグ
     "chrome-devtools": {
       "command": "npx",
       "args": ["chrome-devtools-mcp@latest"]
@@ -8,11 +9,31 @@
       "command": "npx",
       "args": ["-y", "next-devtools-mcp@latest"]
     },
-    "deepwiki": {
-      "url": "https://mcp.deepwiki.com/mcp"
+
+    // デザイン
+    "figma": {
+      "url": "https://mcp.figma.com/mcp"
     },
+
+    // コラボレーション
+    "notion": {
+      "url": "https://mcp.notion.com/mcp"
+    },
+    "slack": {
+      "url": "https://mcp.slack.com/mcp",
+      "auth": {
+        "CLIENT_ID": "<SLACK_CLIENT_ID>"
+      }
+    },
+
+    // インフラ・クラウド
     "supabase": {
       "url": "https://mcp.supabase.com/mcp?project_ref=<PROJECT_REF>&read_only=true"
+    },
+
+    // 調査・ドキュメント
+    "deepwiki": {
+      "url": "https://mcp.deepwiki.com/mcp"
     }
   }
 }
