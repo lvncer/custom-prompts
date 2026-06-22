@@ -6,6 +6,14 @@ const config: Config = {
   singleQuote: true,
   trailingComma: "all",
   plugins: ["prettier-plugin-sh"],
+  overrides: [
+    {
+      files: "*.mdc",
+      options: {
+        parser: "markdown",
+      },
+    },
+  ],
 };
 
 export default config;
