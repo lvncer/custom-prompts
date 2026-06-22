@@ -27,6 +27,9 @@
     },
 
     // インフラ・クラウド
+    "stripe": {
+      "url": "https://mcp.stripe.com"
+    },
     "supabase": {
       "url": "https://mcp.supabase.com/mcp?project_ref=<PROJECT_REF>&read_only=true"
     },

@@ -105,6 +105,7 @@ npx skills experimental_install
 | コラボレーション   | [Notion](https://developers.notion.com/docs/mcp)                         | OAuth（初回接続時）     |
 | コラボレーション   | [Slack](https://docs.slack.dev/ai/mcp-server/)                           | `<SLACK_CLIENT_ID>`     |
 | インフラ・クラウド | [Supabase](https://supabase.com/docs/guides/getting-started/mcp)         | `<PROJECT_REF>`         |
+| インフラ・クラウド | [Stripe](https://docs.stripe.com/mcp#remote)                             |                         |
 | 調査・ドキュメント | [DeepWiki](https://docs.devin.ai/work-with-devin/deepwiki-mcp)           |                         |
 
 ## Plugins 一覧
