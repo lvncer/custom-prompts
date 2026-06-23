@@ -11,7 +11,14 @@
 
 - Cursor
 
+## SETUP
+
+- [https://zenn.dev/tkszenn/articles/cafc72cd8d1754](https://zenn.dev/tkszenn/articles/cafc72cd8d1754)
+
+```sh
+/cursor-sync-open
+```
+
 ## ドキュメント
 
-- [開発者向けセットアップ方法](/documents/SETUP.md)
 - [ハーネス一覧](/documents/harness.md)

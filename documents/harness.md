@@ -57,7 +57,8 @@ npx skills experimental_install
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
 | [grill-with-docs](/.cursor/commands/grill-with-docs.md)                                    | [mattpocock/skills/grill-with-docs](https://www.skills.sh/mattpocock/skills/grill-with-docs) を参考に作成したルール |
 |                                                                                            |                                                                                                                     |
-| [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md)                                 | `.cursor`, `skills` を同期・起動                                                                                    |
+| [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md)                                 | `.cursor`（submodule）, `skills` を同期・起動                                                                       |
+| [/cursor-sync-tarball](/.cursor/commands/cursor-sync-tarball.md)                           | `.cursor`（tarball）, `skills` を同期・起動                                                                         |
 | [/logs](/.cursor/commands/logs.md)                                                         | プロンプトログ保存                                                                                                  |
 | [/git-sync](/.cursor/commands/git-sync.md)                                                 | Git 同期・プッシュ解決                                                                                              |
 |                                                                                            |                                                                                                                     |
