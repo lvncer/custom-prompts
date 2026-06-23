@@ -27,8 +27,8 @@ Cursor 上で `/cursor-sync-clone`、`/cursor-sync-tarball`、または `/cursor
 
 ## 配布方式
 
-| 方式 | コマンド |
-| --- | --- |
-| clone（一方向） | `/cursor-sync-clone` |
-| tarball（一方向） | `/cursor-sync-tarball` |
+| 方式                | コマンド                 |
+| ------------------- | ------------------------ |
+| clone（一方向）     | `/cursor-sync-clone`     |
+| tarball（一方向）   | `/cursor-sync-tarball`   |
 | submodule（双方向） | `/cursor-sync-submodule` |

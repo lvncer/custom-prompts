@@ -26,11 +26,11 @@ worktree に `.cursor` が無くても、Cursor をルートで開いていれ�
 
 ## 配布方式
 
-| 方式 | いつ使う | コマンド | worktree への影響 |
-| --- | --- | --- | --- |
-| tarball | 一方向・curl で済ませたい | `/cursor-sync-tarball` | なし（gitignore） |
-| clone | 一方向・git 認証済み | `/cursor-sync-clone` | なし（gitignore） |
-| submodule | 双方向・参照管理 | `/cursor-sync-open` | `.gitmodules` + 参照のみ |
+| 方式      | いつ使う                  | コマンド               | worktree への影響        |
+| --------- | ------------------------- | ---------------------- | ------------------------ |
+| tarball   | 一方向・curl で済ませたい | `/cursor-sync-tarball` | なし（gitignore）        |
+| clone     | 一方向・git 認証済み      | `/cursor-sync-clone`   | なし（gitignore）        |
+| submodule | 双方向・参照管理          | `/cursor-sync-open`    | `.gitmodules` + 参照のみ |
 
 いずれも **ワークスペースルートから** `workspace_root` と `target` を指定して実行する。`cursor` CLI で worktree を開かない。
 
