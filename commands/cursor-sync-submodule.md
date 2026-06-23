@@ -6,6 +6,7 @@
 対象 worktree に `.cursor` submodule と skills を配布する。Cursor の起動はしない。
 
 一方向の tarball 配布は [/cursor-sync-tarball](/.cursor/commands/cursor-sync-tarball.md)。
+clone 版は [/cursor-sync-clone](/.cursor/commands/cursor-sync-clone.md)。
 
 ## 前提
 

@@ -26,10 +26,11 @@ worktree に `.cursor` が無くても、Cursor をルートで開いていれ�
 
 ## 配布方式
 
-| 方式      | いつ使う             | コマンド               | worktree への影響        |
-| --------- | -------------------- | ---------------------- | ------------------------ |
-| tarball   | 一方向・載せたくない | `/cursor-sync-tarball` | なし（gitignore）        |
-| submodule | 双方向・参照管理     | `/cursor-sync-open`    | `.gitmodules` + 参照のみ |
+| 方式 | いつ使う | コマンド | worktree への影響 |
+| --- | --- | --- | --- |
+| tarball | 一方向・curl で済ませたい | `/cursor-sync-tarball` | なし（gitignore） |
+| clone | 一方向・git 認証済み | `/cursor-sync-clone` | なし（gitignore） |
+| submodule | 双方向・参照管理 | `/cursor-sync-open` | `.gitmodules` + 参照のみ |
 
 いずれも **ワークスペースルートから** `workspace_root` と `target` を指定して実行する。`cursor` CLI で worktree を開かない。
 
@@ -50,11 +51,11 @@ npx skills experimental_install
 ### 単一リポジトリ
 
 1. `.gitmodules` がある → `/cursor-sync-open`（`target` = プロジェクトルート）
-2. それ以外 → `/cursor-sync-tarball`（`target` = プロジェクトルート）
+2. それ以外 → `/cursor-sync-clone` または `/cursor-sync-tarball`（`target` = プロジェクトルート）
 
 ### bare + worktree 運用
 
 1. `workspace_root` と `target`（worktree 名）を特定
 2. `.gitmodules` がある worktree → `/cursor-sync-open`
-3. それ以外 → `/cursor-sync-tarball`
+3. それ以外 → `/cursor-sync-clone` または `/cursor-sync-tarball`
 4. シェルはワークスペースルートから `target_path` を指定して実行
