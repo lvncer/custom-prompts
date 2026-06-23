@@ -26,6 +26,20 @@
 └── sandbox.json
 ```
 
+## ワークスペース構成
+
+bare + worktree 運用時のレイアウトは [project-workspace-layout.mdc](/.cursor/rules/project-workspace-layout.mdc) を参照。
+
+```txt
+<workspace-root>/
+├── .cursor/
+├── <project>.git/
+├── main/
+└── feature-A/
+```
+
+Cursor は `<workspace-root>` を開き、実装はルートから worktree パスを指定して行う。
+
 ## Skills 一覧
 
 skills 一覧のバージョン管理は [/.cursor/skills-lock.json](/.cursor/skills-lock.json) を使用しています。
@@ -57,8 +71,8 @@ npx skills experimental_install
 | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------- |
 | [grill-with-docs](/.cursor/commands/grill-with-docs.md)                                    | [mattpocock/skills/grill-with-docs](https://www.skills.sh/mattpocock/skills/grill-with-docs) を参考に作成したルール |
 |                                                                                            |                                                                                                                     |
-| [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md)                                 | `.cursor`（submodule）, `skills` を同期・起動                                                                       |
-| [/cursor-sync-tarball](/.cursor/commands/cursor-sync-tarball.md)                           | `.cursor`（tarball）, `skills` を同期・起動                                                                         |
+| [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md)                                 | worktree へ `.cursor`（submodule）と skills を配布（ルートから実行）                                                |
+| [/cursor-sync-tarball](/.cursor/commands/cursor-sync-tarball.md)                           | worktree へ `.cursor`（tarball）と skills を配布（ルートから実行）                                                  |
 | [/logs](/.cursor/commands/logs.md)                                                         | プロンプトログ保存                                                                                                  |
 | [/git-sync](/.cursor/commands/git-sync.md)                                                 | Git 同期・プッシュ解決                                                                                              |
 |                                                                                            |                                                                                                                     |

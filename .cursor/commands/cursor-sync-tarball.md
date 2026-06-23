@@ -1,77 +1,59 @@
-# Cursor 同期と起動（tarball）
+# Cursor 同期（tarball）
 
 ## 役割
 
-worktree 作成後に tarball から `.cursor` を一方向同期し、skills をインストールして Cursor を起動する。
-submodule で双方向管理したい場合は [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md) を使う。
+**ワークスペースルート** から実行する AI 向け仕様。
+対象 worktree に tarball で `.cursor` と skills を一方向配布する。Cursor の起動はしない。
+
+submodule で双方向管理する場合は [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md)。
+
+## 前提
+
+- Cursor は `<workspace-root>` を開いている（`.cursor/commands/` が使える状態）
+- 対象 worktree は `<workspace-root>` 直下のディレクトリ
+
+```txt
+<workspace-root>/
+├── .cursor/           ← コマンド実行元（ここ）
+├── <project>.git/
+└── <target>/          ← 配布先 worktree
+```
+
+worktree に `.cursor` が無くてもこのコマンドは実行できる（配布が目的）。
 
 ## 定数
 
 ```txt
-CURSOR_DIR=.cursor
 TEMPLATE_TARBALL_URL=https://github.com/lvncers-template/ai-configs/archive/refs/heads/main.tar.gz
 TARBALL_ROOT_DIR=ai-configs-main
-SKILLS_LOCK_SOURCE=.cursor/skills-lock.json
-SKILLS_LOCK_TARGET=skills-lock.json
-AGENTS_DIR=.agents
 ```
-
-## アーキテクチャ
-
-```txt
-親リポジトリ
-  ├── .cursor/             ← tarball で上書き（Git 管理外）
-  ├── skills-lock.json     ← ルートにコピー（Git 管理外）
-  └── .agents/skills/      ← experimental_install の生成物（Git 管理外）
-```
-
-### Git 管理の境界
-
-| パス                         | 親リポジトリ | 説明                                          |
-| ---------------------------- | ------------ | --------------------------------------------- |
-| `.cursor/`                   | gitignore    | 毎回 tarball で全上書き。ローカル変更は消える |
-| `.agents/`                   | gitignore    | 生成物                                        |
-| `skills-lock.json`（ルート） | gitignore    | `.cursor/skills-lock.json` のコピー           |
-
-### Skills CLI の制約
-
-`npx skills experimental_install` は **プロジェクトルート** で実行する。
-
-- 読む: `./skills-lock.json`
-- 書く: `./.agents/skills/`
-- `.cursor/` 内で実行すると `.cursor/.agents/` ができ、Cursor は認識しない
 
 ## 入力
 
-`worktree-create-*` の直後に使うことが多い。
+| input            | required | 内容                                            |
+| ---------------- | -------- | ----------------------------------------------- |
+| `workspace_root` | true     | ワークスペースルートの絶対パス                  |
+| `target`         | true     | 配布先（worktree ディレクトリ名または絶対パス） |
 
-- `branch`: 作業ブランチ名（例: `feature/hoge`）
-- `worktree_path`: worktree の絶対パス
-
-推測できない場合は bare リポジトリで `git_worktree`（`action: "list"`）を実行し、対象ブランチの worktree パスを取得する。
-
-**プロジェクト本体を最新にしたい場合**は、このコマンドの前に worktree 内で `git pull origin <branch>` を済ませる。
+`target` が相対パスのときは `"${workspace_root}/${target}"` に解決する。
 
 ## 実行フロー
 
 ```txt
-1. worktree_path に cd
-2. tarball を取得して .cursor を上書き
-3. skills を同期（ルートで cp + experimental_install）
-4. Cursor を起動
+1. target_path を解決
+2. tarball から .cursor を target_path に展開
+3. target_path で skills を同期
 ```
 
 ## 手順
 
-### 1. `.cursor` を tarball で反映
+### 1. `.cursor` を tarball で配布
 
 ```sh
 set -euo pipefail
 
-worktree_path="/path/to/workspace/feature-hoge"
+target_path="/path/to/workspace/feature-A"
 TEMPLATE_TARBALL_URL="https://github.com/lvncers-template/ai-configs/archive/refs/heads/main.tar.gz"
-
-cd "$worktree_path"
 
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT
@@ -79,40 +61,40 @@ trap 'rm -rf "$tmp_dir"' EXIT
 curl -fL "$TEMPLATE_TARBALL_URL" -o "$tmp_dir/ai-configs-main.tar.gz"
 tar -xzf "$tmp_dir/ai-configs-main.tar.gz" -C "$tmp_dir"
 
-rm -rf .cursor
-cp -R "$tmp_dir/ai-configs-main/.cursor" .
+rm -rf "${target_path}/.cursor"
+cp -R "$tmp_dir/ai-configs-main/.cursor" "${target_path}/"
 ```
 
 ### 2. Skills を同期
 
 ```sh
-cd "$worktree_path"
+cd "$target_path"
 
 rm -rf .cursor/.agents
-
 cp .cursor/skills-lock.json skills-lock.json
 npx skills experimental_install
 ```
 
-### 3. Cursor で起動
+## worktree 用 gitignore
 
-```sh
-cursor "$worktree_path"
+配布先 worktree の `.gitignore` に追記:
 
-prompt_text="現在のブランチは ${branch} です。ここで作業を開始してください。"
-open "cursor://anysphere.cursor-deeplink/prompt?text=$(python3 -c "import urllib.parse,sys; print(urllib.parse.quote(sys.argv[1]))" "$prompt_text")"
+```gitignore
+.cursor/
+.agents/
+skills-lock.json
 ```
 
 ## エラー対応
 
-| 症状                                | 原因                         | 対処                                                                                   |
-| ----------------------------------- | ---------------------------- | -------------------------------------------------------------------------------------- |
-| `.cursor` が submodule になっている | submodule 方式と混在         | `git submodule deinit -f .cursor` → `git rm -f .cursor` → `.gitmodules` 整理後に再実行 |
-| tarball 取得失敗                    | ネットワーク / URL           | URL と認証を確認                                                                       |
-| skills が Cursor に出ない           | `.cursor/` 内で install した | `rm -rf .cursor/.agents`、ルートで cp + install をやり直す                             |
+| 症状                         | 対処                                                               |
+| ---------------------------- | ------------------------------------------------------------------ |
+| `.cursor` が submodule       | `git submodule deinit -f .cursor` → `git rm -f .cursor` 後に再実行 |
+| tarball 取得失敗             | URL・ネットワーク確認                                              |
+| スラッシュコマンドが使えない | Cursor が `workspace_root` を開いているか確認                      |
 
-## tarball 方式の特性
+## 特性
 
-- テンプレ取り込みは **一方向**（upstream → ローカル）
-- `.cursor/` のローカル変更は `rm -rf .cursor` で消える
-- 親リポジトリに `.cursor` は載らない（gitignore 前提）
+- 一方向（upstream → worktree）
+- worktree リポジトリに `.cursor` は載らない（gitignore 前提）
+- ローカル変更は `rm -rf .cursor` で消える
