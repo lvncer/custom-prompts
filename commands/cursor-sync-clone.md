@@ -34,10 +34,10 @@ HTTPS を使う場合は `CURSOR_TEMPLATE_REPO` を `https://github.com/lvncers-
 
 ## 入力
 
-| input | required | 内容 |
-| --- | --- | --- |
-| `workspace_root` | true | ワークスペースルートの絶対パス |
-| `target` | true | 配布先（worktree ディレクトリ名または絶対パス） |
+| input            | required | 内容                                            |
+| ---------------- | -------- | ----------------------------------------------- |
+| `workspace_root` | true     | ワークスペースルートの絶対パス                  |
+| `target`         | true     | 配布先（worktree ディレクトリ名または絶対パス） |
 
 `target` が相対パスのときは `"${workspace_root}/${target}"` に解決する。
 
@@ -121,17 +121,17 @@ skills-lock.json
 
 ## エラー対応
 
-| 症状 | 対処 |
-| --- | --- |
-| `.cursor` が submodule | `git submodule deinit -f .cursor` → `git rm -f .cursor` 後に再実行 |
-| clone 認証失敗 | SSH 鍵または HTTPS トークンを確認 |
-| スラッシュコマンドが使えない | Cursor が `workspace_root` を開いているか確認 |
+| 症状                         | 対処                                                               |
+| ---------------------------- | ------------------------------------------------------------------ |
+| `.cursor` が submodule       | `git submodule deinit -f .cursor` → `git rm -f .cursor` 後に再実行 |
+| clone 認証失敗               | SSH 鍵または HTTPS トークンを確認                                  |
+| スラッシュコマンドが使えない | Cursor が `workspace_root` を開いているか確認                      |
 
 ## tarball との使い分け
 
-| | clone | tarball |
-| --- | --- | --- |
-| 必要なもの | `git` + 認証 | `curl` + `tar` |
+|                | clone                                    | tarball                             |
+| -------------- | ---------------------------------------- | ----------------------------------- |
+| 必要なもの     | `git` + 認証                             | `curl` + `tar`                      |
 | 向いている場面 | Git 認証が済んでいる、clone に慣れている | curl だけで済ませたい、Git 履歴不要 |
 
 ## 特性
