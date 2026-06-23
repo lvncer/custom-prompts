@@ -23,11 +23,12 @@ Cursor で `<workspace-root>` を開く。
 
 ## worktree へハーネス配布
 
-Cursor 上で `/cursor-sync-tarball` または `/cursor-sync-open` を実行（`workspace_root` と `target` を指定）。
+Cursor 上で `/cursor-sync-clone`、`/cursor-sync-tarball`、または `/cursor-sync-open` を実行（`workspace_root` と `target` を指定）。
 
 ## 配布方式
 
-| 方式                | コマンド               |
-| ------------------- | ---------------------- |
-| tarball（一方向）   | `/cursor-sync-tarball` |
-| submodule（双方向） | `/cursor-sync-open`    |
+| 方式 | コマンド |
+| --- | --- |
+| clone（一方向） | `/cursor-sync-clone` |
+| tarball（一方向） | `/cursor-sync-tarball` |
+| submodule（双方向） | `/cursor-sync-submodule` |

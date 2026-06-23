@@ -5,6 +5,8 @@
 **ワークスペースルート** から実行する AI 向け仕様。
 対象 worktree に tarball で `.cursor` と skills を一方向配布する。Cursor の起動はしない。
 
+tarball 版は [/cursor-sync-tarball](/.cursor/commands/cursor-sync-tarball.md)。
+clone 版は [/cursor-sync-clone](/.cursor/commands/cursor-sync-clone.md)。
 submodule で双方向管理する場合は [/cursor-sync-open](/.cursor/commands/cursor-sync-open.md)。
 
 ## 前提
