@@ -10,8 +10,17 @@
 ## 対応 AI
 
 - Cursor
+- Claude Code
 
 ## SETUP
+
+### Claude Code
+
+```sh
+/claude-sync-clone
+```
+
+### Cursor
 
 - [https://zenn.dev/tkszenn/articles/cafc72cd8d1754](https://zenn.dev/tkszenn/articles/cafc72cd8d1754)
 
