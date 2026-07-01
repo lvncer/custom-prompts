@@ -13,7 +13,7 @@ clone 版は [/claude-sync-clone](/.claude/commands/claude-sync-clone.md)。
 ```txt
 CLAUDE_SUBMODULE_PATH=.claude
 CLAUDE_TEMPLATE_REPO=git@github.com:lvncers-template/ai-configs.git
-CLAUDE_TEMPLATE_BRANCH=main
+CLAUDE_TEMPLATE_BRANCH=claude-export
 ```
 
 ## 入力
@@ -36,7 +36,7 @@ git submodule update --init --remote .claude
 
 ```sh
 cd "$target_path"
-git submodule add -b main \
+git submodule add -b claude-export \
   git@github.com:lvncers-template/ai-configs.git \
   .claude
 ```
