@@ -19,10 +19,10 @@ worktree に `.claude` が無くても、Claude Code をルートで開いてい
 
 ## 配布方式
 
-| 方式      | いつ使う                  | コマンド                | worktree への影響        |
-| --------- | ------------------------- | ----------------------- | ------------------------ |
-| tarball   | 一方向・curl で済ませたい | `/claude-sync-tarball`  | なし（gitignore）        |
-| clone     | 一方向・git 認証済み      | `/claude-sync-clone`    | なし（gitignore）        |
-| submodule | 双方向・参照管理          | `/claude-sync-submodule`| `.gitmodules` + 参照のみ |
+| 方式      | いつ使う                  | コマンド                 | worktree への影響        |
+| --------- | ------------------------- | ------------------------ | ------------------------ |
+| tarball   | 一方向・curl で済ませたい | `/claude-sync-tarball`   | なし（gitignore）        |
+| clone     | 一方向・git 認証済み      | `/claude-sync-clone`     | なし（gitignore）        |
+| submodule | 双方向・参照管理          | `/claude-sync-submodule` | `.gitmodules` + 参照のみ |
 
 いずれも **ワークスペースルートから** `workspace_root` と `target` を指定して実行する。

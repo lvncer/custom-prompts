@@ -13,7 +13,7 @@
 ### 1. bare リポジトリを特定
 
 ```sh
-ls *.git 2>/dev/null || git rev-parse --git-dir
+ls *.git 2> /dev/null || git rev-parse --git-dir
 ```
 
 ### 2. worktree 一覧を確認

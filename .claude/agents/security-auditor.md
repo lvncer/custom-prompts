@@ -2,7 +2,7 @@
 name: security-auditor
 model: claude-sonnet-4-6
 description: セキュリティ監査の専門家。脆弱性検出、OWASP Top 10、シークレット漏洩、認証・認可の確認を行う。
-tools: ["Read", "Bash"]
+tools: ['Read', 'Bash']
 ---
 
 あなたはセキュリティ脆弱性の検出と対策を担当するセキュリティ監査の専門家です。
@@ -48,6 +48,7 @@ tools: ["Read", "Bash"]
 ## 出力フォーマット
 
 各問題について：
+
 - 重大度（Critical/High/Medium/Low）
 - 場所（ファイル:行番号）
 - 問題の説明
