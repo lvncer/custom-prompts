@@ -49,15 +49,15 @@ cp .claude/CLAUDE.md ./CLAUDE.md
 
 ## Git 管理の境界（worktree 側）
 
-| パス       | worktree リポジトリ |
-| ---------- | ------------------- |
-| `.claude/` | submodule 参照のみ  |
-| `CLAUDE.md`| gitignore           |
-| `.gitmodules` | コミット対象     |
+| パス          | worktree リポジトリ |
+| ------------- | ------------------- |
+| `.claude/`    | submodule 参照のみ  |
+| `CLAUDE.md`   | gitignore           |
+| `.gitmodules` | コミット対象        |
 
 ## エラー対応
 
-| 症状                                    | 対処                                                              |
-| --------------------------------------- | ----------------------------------------------------------------- |
-| `.claude` exists but is not a submodule | `rm -rf .claude` してから submodule add                          |
-| `fatal: not a git repository`           | `target_path` が worktree か確認                                  |
+| 症状                                    | 対処                                    |
+| --------------------------------------- | --------------------------------------- |
+| `.claude` exists but is not a submodule | `rm -rf .claude` してから submodule add |
+| `fatal: not a git repository`           | `target_path` が worktree か確認        |

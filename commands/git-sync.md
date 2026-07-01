@@ -39,7 +39,7 @@ git log --oneline -10
 - ローカルとリモートのブランチを比較
 
   ```sh
-  git log HEAD..origin/<branch> --oneline
+  git log HEAD..origin/ < branch > --oneline
   ```
 
 ### 3. プルとマージ解決

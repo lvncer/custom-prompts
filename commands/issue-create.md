@@ -50,12 +50,12 @@ gh issue edit [issue-number] --add-label "priority/medium"
 <type>: <説明>
 ```
 
-| Type     | 説明                 |
-| -------- | -------------------- |
-| feat     | 新機能の追加         |
-| fix      | バグ修正             |
-| docs     | ドキュメントの更新   |
-| refactor | リファクタリング     |
+| Type     | 説明               |
+| -------- | ------------------ |
+| feat     | 新機能の追加       |
+| fix      | バグ修正           |
+| docs     | ドキュメントの更新 |
+| refactor | リファクタリング   |
 
 - 日本語で記述、体言止め、50文字以内
 

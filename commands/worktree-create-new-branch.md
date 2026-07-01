@@ -17,7 +17,7 @@
 ### 1. bare リポジトリを特定する
 
 ```sh
-ls *.git 2>/dev/null || git rev-parse --git-dir
+ls *.git 2> /dev/null || git rev-parse --git-dir
 ```
 
 ### 2. worktree 一覧を確認する
@@ -29,7 +29,7 @@ git worktree list
 ### 3. リモート参照を同期する
 
 ```sh
-git --git-dir <bare-repo-path> fetch --prune origin
+git --git-dir --prune origin < bare-repo-path > fetch
 ```
 
 ### 4. ブランチ名を決める
