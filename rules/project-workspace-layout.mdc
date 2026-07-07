@@ -47,10 +47,10 @@ cd "<workspace-root>/feature-A" && npm test
 
 worktree 配下に `.cursor` が無いのは正常。ハーネスはワークスペースルートにだけあればコマンドは使える。
 
-worktree 側にもハーネスが要るとき（そのディレクトリを単体で Cursor 開く等）は `/cursor-sync-clone`、`/cursor-sync-tarball`、または `/cursor-sync-open` で **配布** する。
+worktree 側にもハーネスが要るとき（そのディレクトリを単体で Cursor 開く等）は、人間が [documents/SETUP.md](/documents/SETUP.md) の手順で **配布** する。
 
 ## worktree 作成後の流れ（worktree 運用時のみ）
 
 1. `worktree-create-*` で worktree を作る
-2. ワークスペースルートから `/cursor-sync-*` で対象 worktree にハーネスを配布
+2. ハーネスが要る場合は人間が [documents/SETUP.md](/documents/SETUP.md) の手順で対象 worktree に配布
 3. ルートに留まったまま worktree パスを指定して実装・テスト
