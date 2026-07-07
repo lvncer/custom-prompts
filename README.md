@@ -14,20 +14,10 @@
 
 ## SETUP
 
-### Claude Code
-
-```sh
-/claude-sync-clone
-```
-
-### Cursor
-
-- [https://zenn.dev/tkszenn/articles/cafc72cd8d1754](https://zenn.dev/tkszenn/articles/cafc72cd8d1754)
-
-```sh
-/cursor-sync-open
-```
+`.claude` / `.cursor` はスラッシュコマンドではインストールできないため、人間が手元のシェルで導入する。
+手順は [documents/SETUP.md](/documents/SETUP.md) を参照。
 
 ## ドキュメント
 
+- [セットアップガイド](/documents/SETUP.md)
 - [ハーネス一覧](/documents/harness.md)
