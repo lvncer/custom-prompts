@@ -79,6 +79,7 @@ npx skills experimental_install
 |                                                                                            |                                                            |
 | [/issue-create](/.cursor/commands/issue.md)                                                | GitHub Issue 作成・管理                                    |
 | [/branch](/.cursor/commands/branch.md)                                                     | ブランチ作成・Git 操作                                     |
+| [/setup-init-bare](/.cursor/commands/setup-init-bare.md)                                   | bare + worktree 構成の新規ワークスペース初期セットアップ   |
 | [/worktree-create-new-branch](/.cursor/commands/worktree.md)                               | 新規ブランチから Worktree 作成・起動                       |
 | [/worktree-create-already-onremote](/.cursor/commands/worktree-create-already-onremote.md) | 既存リモートブランチから Worktree 作成・起動               |
 | [/worktree-list](/.cursor/commands/worktree-cleanup.md)                                    | Worktree 一覧と状態を取得                                  |
