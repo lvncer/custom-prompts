@@ -1,23 +1,22 @@
 # セットアップガイド
 
-`.claude` と `.cursor` は、それ自身のスラッシュコマンドではインストールできない（ハーネスが無いとスラッシュコマンドも使えないため）。
-このガイドは **人間が手元のシェルで実行する** 手順。3パターンから選ぶ。
+## パターンの選び方
 
-対象リポジトリ: `git@github.com:lvncers-template/ai-configs.git`
-
-単一リポジトリなら `target_path` = プロジェクトルート（`.`）。
-bare + worktree 運用なら `target_path` = 対象 worktree のパス。
-
----
+| 方式      | 必要なもの | 向いている場面                        | worktree への影響        |
+| --------- | ---------- | ------------------------------------- | ------------------------ |
+| tarball   | curl / tar | 一番シンプルに済ませたい・git 不要    | なし（gitignore）        |
+| clone     | git + 認証 | git 認証済み・clone に慣れている      | なし（gitignore）        |
+| submodule | git + 認証 | ハーネスの更新を submodule で追いたい | `.gitmodules` + 参照のみ |
 
 ## パターン1: tarball（一番シンプル・git不要）
 
-`curl` と `tar` があればよい。Git 履歴は不要。
+`curl` と `tar` があればよい。
+Git 履歴は不要。
 
 ```sh
 set -euo pipefail
 
-target_path="." # 単一リポジトリなら "."、worktree なら "/path/to/workspace/feature-A"
+target_path="."
 TARBALL_URL="https://github.com/lvncers-template/ai-configs/archive/refs/heads/main.tar.gz"
 
 tmp_dir="$(mktemp -d)"
@@ -42,8 +41,8 @@ npx skills experimental_install
 ```sh
 set -euo pipefail
 
-target_path="."                                                # 単一リポジトリなら "."、worktree なら "/path/to/workspace/feature-A"
-TEMPLATE_REPO="git@github.com:lvncers-template/ai-configs.git" # HTTPS: https://github.com/lvncers-template/ai-configs.git
+target_path="."
+TEMPLATE_REPO="git@github.com:lvncers-template/ai-configs.git"
 
 tmp_dir="$(mktemp -d)"
 trap 'rm -rf "$tmp_dir"' EXIT
@@ -68,7 +67,7 @@ npx skills experimental_install
 ```sh
 set -euo pipefail
 
-target_path="." # 単一リポジトリなら "."、worktree なら "/path/to/workspace/feature-A"
+target_path="."
 TEMPLATE_REPO="git@github.com:lvncers-template/ai-configs.git"
 
 cd "$target_path"
@@ -89,16 +88,6 @@ npx skills experimental_install
 git submodule update --init --remote .claude .cursor
 ```
 
----
-
-## パターンの選び方
-
-| 方式      | 必要なもの | 向いている場面                        | worktree への影響        |
-| --------- | ---------- | ------------------------------------- | ------------------------ |
-| tarball   | curl / tar | 一番シンプルに済ませたい・git 不要    | なし（gitignore）        |
-| clone     | git + 認証 | git 認証済み・clone に慣れている      | なし（gitignore）        |
-| submodule | git + 認証 | ハーネスの更新を submodule で追いたい | `.gitmodules` + 参照のみ |
-
 ## gitignore
 
 tarball / clone を使った場合、配布先の `.gitignore` に追記する。
@@ -112,12 +101,3 @@ skills-lock.json
 ```
 
 submodule の場合は `.claude/` `.cursor/` はコミット対象（`.gitmodules` 経由の参照）、`.agents/` `CLAUDE.md` `skills-lock.json` は gitignore。
-
-## エラー対応
-
-| 症状                                   | 対処                                                                       |
-| -------------------------------------- | -------------------------------------------------------------------------- |
-| `.claude` / `.cursor` が既に submodule | `git submodule deinit -f <path>` → `git rm -f <path>` 後に再実行           |
-| clone / submodule add の認証失敗       | SSH 鍵または HTTPS トークンを確認                                          |
-| tarball 取得失敗                       | URL・ネットワークを確認                                                    |
-| skills が効かない                      | `.cursor/` 内で install していないか確認。ワークスペースルートで実行し直す |
