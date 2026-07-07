@@ -1,63 +1,77 @@
 # MCP / Plugin Toolkit 調査メモ
 
-調査日: 2026-06-22
+調査日: 2026-06-22（2026-07-07 に再調査・更新）
 
 このメモは、現状の `.cursor/mcp.json` と `.cursor/settings.json` で使っている MCP / Plugin を対象に、Cursor と Claude Code の両方で使える Plugin / Toolkit が公開されているかを整理したもの。
 
+## 前提: 設定ファイルの不具合（2026-07-07 に発見・修正済み）
+
+再調査のきっかけになった「MCP が使えない」の原因は2つあった。
+
+| 対象                    | 問題                                                                                                     | 修正                                                                             |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| Cursor (`.cursor/mcp.json`) | `//` コメントが入っており strict JSON として不正。Cursor が JSONC を許容すると明言しているのは `permissions.json` のみで `mcp.json` は対象外 | コメントを削除                                                                    |
+| Claude Code             | `.claude/mcp.json` を見ていたが、Claude Code が読むのはプロジェクト**ルート**の `.mcp.json`。`.claude/mcp.json` は完全に無視される | ルート直下に `.mcp.json` を新規作成し、`.claude/mcp.json` は削除                  |
+| Slack エントリ         | `"auth": {"CLIENT_ID": ...}` は Claude Code / Cursor どちらのスキーマにも存在しないフィールド                          | Claude Code 側は `"oauth": {"clientId": ...}"` に修正。Cursor 側は該当フィールドごと削除 |
+| リモート MCP 全般      | Claude Code の `.mcp.json` はリモートサーバーに `"type": "http"` を要求する（Cursor は省略可）                       | ルート `.mcp.json` の各リモートサーバーに `"type": "http"` を追加                |
+
+`claude mcp list` で修正前後を比較し、修正後に8サーバー全てが `⏸ Pending approval` として認識されることを実機で確認済み（プロジェクトスコープの MCP は初回に `claude` を対話実行して承認が必要）。
+
 ## 結論
 
-Plugin / Toolkit として優先的に使う候補は `Figma`, `Stripe`, `Supabase`, `AWS`。
-`Slack` と `Chrome DevTools` は Plugin 的な配布はあるが、Cursor と Claude Code の両方で同じ温度感の公式 Plugin として扱うには少し確認が必要。
-`Next.js DevTools`, `Notion`, `GitKraken`, `DeepWiki` は現時点では MCP 直接設定のままでよさそう。
+Plugin / Toolkit として優先的に使う候補は `Figma`, `Stripe`, `Supabase`, `AWS`, `Notion`, `Slack`。
+前回調査時点では Notion / Slack は「要検証」だったが、両方とも公式 Plugin の導線が明確になったため昇格。
+`Chrome DevTools` は Claude Code 側は明確だが Cursor 側は依然 MCP 手動設定が中心。
+`Next.js DevTools`, `DeepWiki` は MCP 直接設定のままでよい。`GitKraken` は Claude Code のみ Plugin 化された。
 
 ## 推奨整理
 
-| 判定          | 対象             | 理由                                                                             | 推奨アクション                                                       |
-| ------------- | ---------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| Plugin 化推奨 | Figma            | Cursor と Claude Code の両方で公式 Plugin が案内されている                       | `.cursor/mcp.json` の直接設定をやめ、Plugin インストール手順へ寄せる |
-| Plugin 化推奨 | Stripe           | 公式 docs が Cursor `/add-plugin stripe` と Claude Code plugin を案内している    | MCP 直接設定より Plugin を優先                                       |
-| Plugin 化推奨 | Supabase         | 公式 docs に MCP + Agent Skills を束ねる Plugin がある                           | project_ref を分けたい場合だけ MCP 直接設定を残す                    |
-| Plugin 化推奨 | AWS              | 公式 Agent Toolkit / Agent Plugins が MCP + Skills を束ねる                      | Plugin に寄せる。MCP 直接登録との二重登録は避ける                    |
-| 要検証        | Slack            | `slackapi/slack-mcp-plugin` はあるが、Cursor は Add button / MCP config 色が強い | Plugin として安定運用できるか確認後に移行                            |
-| 要検証        | Chrome DevTools  | Claude Code Plugin は公式案内あり。Cursor は MCP install 案内が中心              | Cursor Plugin が明確に使えるなら移行                                 |
-| MCP 継続      | Next.js DevTools | MCP server と `init` ルールが中心。Plugin / Toolkit は見当たらない               | 現状維持                                                             |
-| MCP 継続      | Notion           | Claude Code Plugin は案内あり。Cursor は MCP 設定のみ                            | 現状維持                                                             |
-| MCP 継続      | GitKraken        | GitLens / GitKraken CLI による MCP 導入が中心                                    | 現状維持                                                             |
-| MCP 継続      | DeepWiki         | remote MCP のみ。Plugin / Toolkit は見当たらない                                 | 現状維持                                                             |
+| 判定          | 対象             | 理由                                                                                     | 推奨アクション                                                       |
+| ------------- | ---------------- | ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------- |
+| Plugin 化推奨 | Figma            | Cursor と Claude Code の両方で公式 Plugin が案内されている                                | `.cursor/mcp.json` の直接設定をやめ、Plugin インストール手順へ寄せる |
+| Plugin 化推奨 | Stripe           | 公式 docs が Cursor `/add-plugin stripe` と Claude Code plugin を案内している              | MCP 直接設定より Plugin を優先                                       |
+| Plugin 化推奨 | Supabase         | Claude Code 側は `claude-plugins-official` に統合済み。Cursor 側はコミュニティ Plugin のみ | project_ref を分けたい場合だけ MCP 直接設定を残す（詳細は下表）      |
+| Plugin 化推奨 | AWS              | 公式 Agent Toolkit / Agent Plugins が `claude-plugins-official` 経由で導入可能             | Plugin に寄せる。プラグイン名が変更されているため要更新（下記補足）  |
+| Plugin 化推奨 | Notion           | Claude Code・Cursor 双方で公式 Plugin の導線が確認できた（前回調査から昇格）              | Plugin へ寄せる                                                       |
+| Plugin 化推奨 | Slack            | `slackapi/slack-mcp-plugin` が Claude Code 公式マーケットプレイスに掲載され、Cursor 対応も明記（前回調査から昇格） | Plugin へ寄せる。Cursor 側の具体的な導入手順だけ最終確認             |
+| 要検証        | Chrome DevTools  | Claude Code Plugin は公式案内あり。Cursor は MCP install 案内が中心（変化なし）           | Cursor Plugin が明確に使えるなら移行                                  |
+| MCP 継続      | Next.js DevTools | MCP server と `init` ルールが中心。Plugin / Toolkit は見当たらない                        | 現状維持                                                              |
+| Plugin 化推奨（Claude Code のみ） | GitKraken | `gitkraken/claude-plugin` が Claude Code 公式 Plugin として登場（`claude plugins install gitkraken`）。Cursor は引き続き GitLens/CLI 経由 | Claude Code は Plugin 化。Cursor は MCP 継続                          |
+| MCP 継続      | DeepWiki         | remote MCP のみ。Plugin / Toolkit は見当たらない（変化なし）                              | 現状維持                                                              |
 
 ## 詳細一覧
 
 | ジャンル           | 現在の対象       | 現在の設定                     | Plugin / Toolkit 有無 | Cursor                      | Claude Code                                                                                                                  | Toolkit / Docs URL                                                                                                 | メモ                                                                                                         |
 | ------------------ | ---------------- | ------------------------------ | --------------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| デザイン           | Figma            | `.cursor/mcp.json` remote MCP  | あり                  | `/add-plugin figma`         | `claude plugin install figma@claude-plugins-official`                                                                        | https://github.com/figma/mcp-server-guide                                                                          | MCP server config + Agent Skills + Rules を含む。Plugin へ寄せる価値が高い                                   |
-| 決済               | Stripe           | `.cursor/mcp.json` remote MCP  | あり                  | `/add-plugin stripe`        | `claude plugin install stripe@claude-plugins-official`                                                                       | https://docs.stripe.com/skills                                                                                     | 公式が Plugin 推奨。Skills index も公開されている                                                            |
-| DB / Backend       | Supabase         | `.cursor/mcp.json` remote MCP  | あり                  | 公式 Plugin あり            | `claude plugin marketplace add supabase/agent-skills` → `claude plugin install supabase@supabase-agent-skills`               | https://supabase.com/docs/guides/ai-tools/plugins                                                                  | MCP + Supabase agent skills を一括導入。プロジェクトごとに `project_ref` を分けたい場合は MCP 直接設定が便利 |
-| AWS                | AWS              | `.cursor/settings.json` Plugin | あり                  | Cursor Plugin / Marketplace | `/plugin marketplace add aws/agent-toolkit-for-aws` or `/plugin marketplace add awslabs/agent-plugins`                       | https://docs.aws.amazon.com/agent-toolkit/latest/userguide/plugins.html / https://github.com/awslabs/agent-plugins | `aws-core` 系と `deploy-on-aws` 系の2系統がある。二重登録に注意                                              |
-| コラボレーション   | Slack            | `.cursor/mcp.json` remote MCP  | 候補あり              | Add to Cursor / MCP config  | local plugin repo から導入                                                                                                   | https://github.com/slackapi/slack-mcp-plugin                                                                       | Cursor と Claude Code 両方の設定 repo はあるが、公式 marketplace plugin としての導線は要確認                 |
-| 開発・デバッグ     | Chrome DevTools  | `.cursor/mcp.json` stdio MCP   | 部分的にあり          | MCP install                 | `/plugin marketplace add ChromeDevTools/chrome-devtools-mcp` → `/plugin install chrome-devtools-mcp@chrome-devtools-plugins` | https://github.com/ChromeDevTools/chrome-devtools-mcp                                                              | Claude Code は Plugin が明確。Cursor は MCP install 案内が中心                                               |
-| 開発・デバッグ     | Next.js DevTools | `.cursor/mcp.json` stdio MCP   | 見当たらない          | MCP config                  | `claude mcp add next-devtools npx next-devtools-mcp@latest`                                                                  | https://github.com/vercel/next-devtools-mcp                                                                        | `init` tool を必ず呼ぶ運用が重要。Plugin よりルール化が向いている                                            |
-| コラボレーション   | Notion           | `.cursor/mcp.json` remote MCP  | 部分的にあり          | MCP config                  | Notion plugin for Claude Code の案内あり                                                                                     | https://developers.notion.com/guides/mcp/get-started-with-mcp                                                      | Cursor は MCP config の案内のみ。Claude Code 側だけ Plugin があるため、共通 Plugin 化は保留                  |
-| Git                | GitKraken        | ルール上で利用想定             | 見当たらない          | GitLens / GitKraken CLI     | `gk mcp` or Claude MCP config                                                                                                | https://github.com/gitkraken/mcp                                                                                   | GitLens 経由または GitKraken CLI 経由。Plugin ではなく MCP install                                           |
-| 調査・ドキュメント | DeepWiki         | `.cursor/mcp.json` remote MCP  | 見当たらない          | MCP config                  | `claude mcp add -s user -t http deepwiki https://mcp.deepwiki.com/mcp`                                                       | https://docs.devin.ai/work-with-devin/deepwiki-mcp                                                                 | remote MCP のみ。認証不要で軽いので現状維持でよい                                                            |
+| デザイン           | Figma            | ルート `.mcp.json` / `.cursor/mcp.json`  | あり                  | `/add-plugin figma`         | `claude plugin install figma@claude-plugins-official`                                                                        | https://github.com/figma/mcp-server-guide                                                                          | MCP server config + Agent Skills + Rules を含む。Plugin へ寄せる価値が高い                                   |
+| 決済               | Stripe           | ルート `.mcp.json` / `.cursor/mcp.json`  | あり                  | `/add-plugin stripe`        | `claude plugin install stripe@claude-plugins-official`                                                                       | https://docs.stripe.com/skills                                                                                     | 公式が Plugin 推奨。Skills index も公開されている                                                            |
+| DB / Backend       | Supabase         | ルート `.mcp.json` / `.cursor/mcp.json`  | あり                  | コミュニティ Plugin（`supabase-community/cursor-plugin`）。公式パートナー一覧には未掲載 | `claude plugin marketplace add anthropics/claude-plugins-official` → `claude plugin install supabase@claude-plugins-official` | https://supabase.com/docs/guides/ai-tools/plugins                                                                  | **変更点**: Claude Code 側は独立した `supabase/agent-skills` marketplace ではなく `claude-plugins-official` に統合された。Cursor 側は公式パートナー（Amplitude/AWS/Figma/Linear/Stripe/Cloudflare/Vercel/Databricks/Snowflake/Hex）に含まれず、コミュニティ版のみ。project_ref を分けたい場合は MCP 直接設定が便利 |
+| インフラ・クラウド | AWS              | `.cursor/settings.json` Plugin | あり                  | 公式パートナーとして Cursor Marketplace に掲載 | `claude plugin marketplace add anthropics/claude-plugins-official` 経由で個別 Plugin をインストール                          | https://github.com/aws/agent-toolkit-for-aws / https://github.com/awslabs/agent-plugins                           | **要修正**: `claude-plugins-official` の実際の Plugin ID は `aws-core`, `aws-agents`（agent-toolkit-for-aws 由来）と `aws-amplify`, `aws-serverless`, `aws-transform`（awslabs/agent-plugins 由来）。現在 `.cursor/settings.json` にある `aws-data-analytics` / `databases-on-aws` / `deploy-on-aws` は現行のマーケットプレイスに存在しない古い ID の可能性が高く、要確認 |
+| コラボレーション   | Slack            | ルート `.mcp.json` / `.cursor/mcp.json`  | あり                  | `slackapi/slack-mcp-plugin` が Cursor 対応を明記            | 公式マーケットプレイスに掲載済み。ワークスペース管理者の承認 + 初回 OAuth 認証が必要                                          | https://github.com/slackapi/slack-mcp-plugin                                                                       | 前回「要検証」としていたが、リポジトリの README で Claude Code と Cursor 両対応が明言されている。Cursor 側の具体的なインストールコマンドだけ実機確認が望ましい |
+| 開発・デバッグ     | Chrome DevTools  | ルート `.mcp.json` / `.cursor/mcp.json`  | 部分的にあり          | MCP install（Settings → MCP → New MCP Server） | `claude-plugins-official` に `chrome-devtools-mcp` として掲載を確認                                                          | https://github.com/ChromeDevTools/chrome-devtools-mcp                                                              | Claude Code は Plugin が明確（確認済み）。Cursor は依然 MCP 手動設定が中心                                   |
+| 開発・デバッグ     | Next.js DevTools | ルート `.mcp.json` / `.cursor/mcp.json`  | 見当たらない          | MCP config                  | `claude mcp add next-devtools npx next-devtools-mcp@latest`                                                                  | https://github.com/vercel/next-devtools-mcp                                                                        | `init` tool を必ず呼ぶ運用が重要。Plugin よりルール化が向いている                                            |
+| コラボレーション   | Notion           | ルート `.mcp.json` / `.cursor/mcp.json`  | あり                  | Cursor Marketplace に掲載を確認（Notion 公式リポジトリが Claude Code / Cursor / Kiro / Gemini CLI 等16以上のツールに対応と明記） | `/plugin install notion@claude-plugins-official`                                                                             | https://github.com/makenotion/claude-code-notion-plugin                                                            | 前回「部分的にあり」としていたが、Notion 自身の公式リポジトリで Cursor 対応が明言されており両対応が確認できた。Plugin 化を推奨 |
+| Git                | GitKraken        | ルール上で利用想定             | Claude Code のみあり  | GitLens / GitKraken CLI 経由の MCP 導入のまま | `claude plugins install gitkraken`（`gitkraken/claude-plugin`、公式）                                                        | https://github.com/gitkraken/claude-plugin                                                                         | 前回「見当たらない」だったが、Claude Code 向け公式 Plugin が新規公開された。Cursor はまだ Plugin ではなく MCP 導線のまま |
+| 調査・ドキュメント | DeepWiki         | ルート `.mcp.json` / `.cursor/mcp.json`  | 見当たらない          | MCP config                  | `claude mcp add -s user -t http deepwiki https://mcp.deepwiki.com/mcp`                                                       | https://docs.devin.ai/work-with-devin/deepwiki-mcp                                                                 | remote MCP のみ。認証不要で軽いので現状維持でよい                                                            |
 
-## AWS Plugin の補足
+## AWS Plugin の補足（要修正）
 
-AWS は Plugin 名と配布元がややこしい。
+AWS は Plugin 名と配布元がややこしく、かつ今回の再調査で ID が変わっていることが判明した。
 
-| 系統                  | 主な Plugin                                           | URL                                          | 用途                                               |
-| --------------------- | ----------------------------------------------------- | -------------------------------------------- | -------------------------------------------------- |
-| Agent Toolkit for AWS | `aws-core`, `aws-agents`, `aws-data-analytics`        | https://github.com/aws/agent-toolkit-for-aws | AWS MCP Server と主要 Skills の基本セット          |
-| Agent Plugins for AWS | `aws-serverless`, `databases-on-aws`, `deploy-on-aws` | https://github.com/awslabs/agent-plugins     | Serverless / Database / Deploy など目的別の Plugin |
+| 系統                  | 現在確認できた Plugin ID（`claude-plugins-official` 内）        | Source repo                                  | 用途                                               |
+| --------------------- | ----------------------------------------------------------------- | --------------------------------------------- | -------------------------------------------------- |
+| Agent Toolkit for AWS | `aws-core`, `aws-agents`                                          | https://github.com/aws/agent-toolkit-for-aws | AWS MCP Server と主要 Skills の基本セット。`aws-core` が中心プラグイン |
+| Agent Plugins for AWS | `aws-amplify`, `aws-serverless`, `aws-transform`                  | https://github.com/awslabs/agent-plugins     | Amplify / Serverless / コード移行など目的別の Plugin |
 
-`.cursor/settings.json` に両方の系統の Plugin 名が混ざっている場合、実際に Cursor 側で認識される名前か確認してから有効化する。
-AWS MCP Server を `.cursor/mcp.json` に手動追加しつつ AWS Plugin も有効化すると、MCP が重複する可能性がある。
+`.cursor/settings.json` にある `aws-data-analytics`, `databases-on-aws`, `deploy-on-aws` は前回調査時点の ID で、今回の `claude-plugins-official` の marketplace.json には同名の項目が確認できなかった。名称変更 or 廃止の可能性があるため、有効化する前に実際にインストールを試して ID が通るか確認すること。
 
 ## 移行時の注意
 
 | 注意点                             | 内容                                                                                              |
-| ---------------------------------- | ------------------------------------------------------------------------------------------------- |
-| 二重登録を避ける                   | Plugin が MCP server を含む場合、`.cursor/mcp.json` の同じ MCP 設定は削除する                     |
-| 認証方式を確認する                 | OAuth / PAT / API key / local CLI で運用が変わる                                                  |
-| project scope が必要なら直接 MCP   | Supabase の `project_ref` など、プロジェクトごとに値を変えたいものは直接 MCP 設定の方が扱いやすい |
-| Cursor と Claude Code で導線が違う | 同じ Plugin 名でも install command / marketplace が異なることがある                               |
-| 公式 docs 優先                     | 個人ブログの導入例より、公式 docs / 公式 GitHub repo を優先する                                   |
+| ---------------------------------- | --------------------------------------------------------------------------------------------------- |
+| 二重登録を避ける                   | Plugin が MCP server を含む場合、ルート `.mcp.json` / `.cursor/mcp.json` の同じ MCP 設定は削除する |
+| 認証方式を確認する                 | OAuth / PAT / API key / local CLI で運用が変わる。Claude Code の OAuth 設定は `"oauth": {"clientId": ...}"` 形式（`"auth"` フィールドは存在しない） |
+| project scope が必要なら直接 MCP   | Supabase の `project_ref` など、プロジェクトごとに値を変えたいものは直接 MCP 設定の方が扱いやすい   |
+| Cursor と Claude Code で導線が違う | 同じ Plugin 名でも install command / marketplace が異なることがある                                 |
+| 設定ファイルの置き場所             | Claude Code のプロジェクトスコープ MCP はリポジトリ**ルート**の `.mcp.json`。`.claude/mcp.json` は読まれない |
+| 公式 docs 優先                     | 個人ブログの導入例より、公式 docs / 公式 GitHub repo を優先する                                     |
