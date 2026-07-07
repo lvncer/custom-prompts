@@ -1,14 +1,14 @@
 # ハーネス集
 
-| harness                                   | description                                  |
-| ----------------------------------------- | -------------------------------------------- |
-| [Rules](/.cursor/rules/)                  | 永続的な AI ガイダンスとコーディング規約     |
-| [Skills](#skills-一覧)                    | 複雑なタスク向けのエージェントの特化機能     |
-| [SubAgents](#subagent-一覧)               | カスタムエージェントの設定とプロンプト       |
-| [Slash Commands](#slash-commands-一覧)    | エージェントが実行可能なコマンドファイル     |
-| [MCP Servers](#mcp-サーバー一覧)          | Model Context Protocol との連携              |
-| [Hooks](#hooks-一覧)                      | イベントによって起動される自動化スクリプト   |
-| [Execution Controls](#execution-controls) |                                              |
+| harness                                   | description                                |
+| ----------------------------------------- | ------------------------------------------ |
+| [Rules](/.cursor/rules/)                  | 永続的な AI ガイダンスとコーディング規約   |
+| [Skills](#skills-一覧)                    | 複雑なタスク向けのエージェントの特化機能   |
+| [SubAgents](#subagent-一覧)               | カスタムエージェントの設定とプロンプト     |
+| [Slash Commands](#slash-commands-一覧)    | エージェントが実行可能なコマンドファイル   |
+| [MCP Servers](#mcp-サーバー一覧)          | Model Context Protocol との連携            |
+| [Hooks](#hooks-一覧)                      | イベントによって起動される自動化スクリプト |
+| [Execution Controls](#execution-controls) |                                            |
 
 ```sh
 .cursor/
