@@ -21,3 +21,4 @@
 
 - [セットアップガイド](/documents/SETUP.md)
 - [ハーネス一覧](/documents/harness.md)
+- [Skills 移行計画（進行中）](/documents/SKILLS_MIGRATION.md)
