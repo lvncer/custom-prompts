@@ -1,6 +1,6 @@
 # スラッシュコマンド → Skills 移行計画
 
-> P1（読み取り専用・低リスク）バッチは移行済み。P2/P3 は未着手。
+> P1・P2・P3 すべてのバッチが移行済み。残りは未分類コマンド（下記）の扱い確認のみ。
 
 ## 現状と方針
 
@@ -116,11 +116,11 @@ Progress:
 - [x] 2. .claude/commands/\*.md を1つずつ SKILL.md 形式に変換し、lvncers-template/skills に配置（P1 の4件のみ）
 - [x] 3. 各スキルについて disable-model-invocation の要否をユーザーが指定（P1 は全て未指定でよいと確認済み）
 - [x] 4. ai-configs の .claude/skills-lock.json にエントリを追加
-- [x] 5. npx skills add ... --copy で取り込み、動作確認（P1 の4件）
-- [x] 6. 動作確認後、対応する .claude/commands/\*.md を削除（P1 の4件）
+- [x] 5. npx skills add ... --copy で取り込み、動作確認（P1〜P3 全15件）
+- [x] 6. 動作確認後、対応する .claude/commands/\*.md を削除（P1〜P3 全15件）
 - [ ] 7. documents/harness.md の Slash Commands 一覧を更新（.cursor 側のコマンドは今回の対象外のため保留）
-- [ ] 8. P2（test-run, test-write, commit）の移行
-- [ ] 9. P3（git-sync, branch, issue-create, pr-create, worktree-create-new-branch, worktree-create-already-onremote, worktree-remove, setup-init-bare）の移行。disable-model-invocation: true を全件に付与
+- [x] 8. P2（test-run, test-write, commit）の移行
+- [x] 9. P3（git-sync, branch, issue-create, pr-create, worktree-create-new-branch, worktree-create-already-onremote, worktree-remove, setup-init-bare）の移行。disable-model-invocation: true を全件に付与
 - [ ] 10. 未分類コマンドの扱いをユーザーに確認（下記参照）
 ```
 
@@ -137,7 +137,36 @@ Progress:
 
 対応する `.claude/commands/*.md` は削除済み。`.cursor/commands/` 側は今回のスコープ外のため未変更。
 
-## 未分類コマンド（P2/P3着手時に要確認）
+## P2 移行結果（完了）
+
+| skill        | 配置先                               | disable-model-invocation |
+| ------------ | ------------------------------------ | ------------------------ |
+| `test-run`   | `skills/testing/test-run/SKILL.md`   | 未指定（自動起動可）     |
+| `test-write` | `skills/testing/test-write/SKILL.md` | 未指定（自動起動可）     |
+| `commit`     | `skills/git/commit/SKILL.md`         | `true`                   |
+
+`commit` は「よく使うが可逆的」という P2 の分類ではあるものの、公式ドキュメントで `disable-model-invocation: true` の代表例として挙げられている慣習に合わせ、モデルの自律判断では起動しないようにした。ユーザーが `/commit` と明示したときのみ実行する。
+
+## P3 移行結果（完了）
+
+すべて `disable-model-invocation: true`。GitHub 上や作業ツリーに跡が残る操作、または削除操作のため、ユーザーが明示的に依頼したときのみ実行する。
+
+| skill                              | 配置先                                                                           |
+| ---------------------------------- | -------------------------------------------------------------------------------- |
+| `git-sync`                         | `skills/git/git-sync/SKILL.md`                                                   |
+| `branch`                           | `skills/git/branch/SKILL.md`                                                     |
+| `issue-create`                     | `skills/github/issue-create/SKILL.md`                                            |
+| `pr-create`                        | `skills/github/pr-create/SKILL.md`                                               |
+| `worktree-create-new-branch`       | `skills/worktree/worktree-create-new-branch/SKILL.md`                            |
+| `worktree-create-already-onremote` | `skills/worktree/worktree-create-already-onremote/SKILL.md`                      |
+| `worktree-remove`                  | `skills/worktree/worktree-remove/SKILL.md`                                       |
+| `setup-init-bare`                  | `skills/worktree/setup-init-bare/SKILL.md`（+ `scripts/init-bare-workspace.sh`） |
+
+変換時に、移行前の `.claude/commands/` に既に混入していた壊れたシェルプレースホルダを2件修正した（`git-sync.md` の `git log HEAD..origin/<branch> --oneline` と `worktree-create-new-branch.md` の `git --git-dir <bare-repo-path> fetch --prune origin`。いずれも過去に prettier-plugin-sh が `<placeholder>` をリダイレクト構文と誤解して壊したもの）。
+
+`.claude/skills/` はローカルの生成物として `.gitignore` に追加済み（`.claude/skills-lock.json` のみコミット対象）。`.cursor/skills/` とは異なり実体ファイルはコミットしない方針。
+
+## 未分類コマンド（要確認）
 
 移行対象一覧の作成時、以下は P1/P2/P3 のどれにも分類されていなかった。次のバッチに進む前にユーザーの指定が必要。
 
