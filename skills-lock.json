@@ -1,0 +1,29 @@
+{
+  "version": 1,
+  "skills": {
+    "grill-with-docs": {
+      "source": "lvncers-template/skills",
+      "sourceType": "github",
+      "skillPath": "skills/planning/grill-with-docs/SKILL.md",
+      "computedHash": "e9ee5b544ee66d04536559f68a4e53976b86baa8653c90fc1d3d4756904bc258"
+    },
+    "pr-review": {
+      "source": "lvncers-template/skills",
+      "sourceType": "github",
+      "skillPath": "skills/github/pr-review/SKILL.md",
+      "computedHash": "281cf04df19c414c0e036f5e3865f35c5311d789d1602c6ad83d67b12fdfd9b4"
+    },
+    "pr-review-commit-driven": {
+      "source": "lvncers-template/skills",
+      "sourceType": "github",
+      "skillPath": "skills/github/pr-review-commit-driven/SKILL.md",
+      "computedHash": "b01695cb231e3584296a74a1895c102018706ab20956f75530c2fbe1a68819d6"
+    },
+    "worktree-list": {
+      "source": "lvncers-template/skills",
+      "sourceType": "github",
+      "skillPath": "skills/worktree/worktree-list/SKILL.md",
+      "computedHash": "e3b0509d7fa2d48fa0f7b4c78eac13840d29b531115ac4d22ad1716d66930865"
+    }
+  }
+}
