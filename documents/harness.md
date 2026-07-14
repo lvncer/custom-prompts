@@ -66,29 +66,6 @@ npx skills experimental_install
 
 ## Slash Commands 一覧
 
-| command                                                                                    | description                                                |
-| ------------------------------------------------------------------------------------------ | ---------------------------------------------------------- |
-| [grill-with-docs](/.cursor/commands/grill-with-docs.md)                                    | `mattpocock/skills/grill-with-docs` を参考に作成したルール |
-|                                                                                            |                                                            |
-| [/logs](/.cursor/commands/logs.md)                                                         | プロンプトログ保存                                         |
-| [/git-sync](/.cursor/commands/git-sync.md)                                                 | Git 同期・プッシュ解決                                     |
-|                                                                                            |                                                            |
-| [/test-run](/.cursor/commands/test.md)                                                     | テスト・ビルド実行                                         |
-| [/test-write](/.cursor/commands/test.md)                                                   | テスト作成                                                 |
-| [/coverage](/.cursor/commands/coverage.md)                                                 | テストカバレッジ検証                                       |
-|                                                                                            |                                                            |
-| [/issue-create](/.cursor/commands/issue.md)                                                | GitHub Issue 作成・管理                                    |
-| [/branch](/.cursor/commands/branch.md)                                                     | ブランチ作成・Git 操作                                     |
-| [/setup-init-bare](/.cursor/commands/setup-init-bare.md)                                   | bare + worktree 構成の新規ワークスペース初期セットアップ   |
-| [/worktree-create-new-branch](/.cursor/commands/worktree.md)                               | 新規ブランチから Worktree 作成・起動                       |
-| [/worktree-create-already-onremote](/.cursor/commands/worktree-create-already-onremote.md) | 既存リモートブランチから Worktree 作成・起動               |
-| [/worktree-list](/.cursor/commands/worktree-cleanup.md)                                    | Worktree 一覧と状態を取得                                  |
-| [/worktree-remove](/.cursor/commands/worktree-cleanup.md)                                  | Worktree 整理・削除                                        |
-| [/commit](/.cursor/commands/commit.md)                                                     | コミット管理・規約                                         |
-| [/pr-create](/.cursor/commands/pr.md)                                                      | プルリクエスト作成・管理                                   |
-| [/pr-review](/.cursor/commands/pr.md)                                                      | プルリクエストレビュー                                     |
-| [/pr-review-commit-driven](/.cursor/commands/pr-review.md)                                 | コミット駆動プルリクエストレビュー                         |
-
 ### 追加予定コマンド
 
 - 依存関係解消

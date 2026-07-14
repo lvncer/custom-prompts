@@ -20,10 +20,10 @@
       "computedHash": "772bf7ad7844260a4808a9484d07b8ae4361fcd32ccd71f8c4ebb4a3f8ce7fc8"
     },
     "grill-with-docs": {
-      "source": "lvncers-template/skills",
+      "source": "mattpocock/skills",
       "sourceType": "github",
-      "skillPath": "skills/planning/grill-with-docs/SKILL.md",
-      "computedHash": "e9ee5b544ee66d04536559f68a4e53976b86baa8653c90fc1d3d4756904bc258"
+      "skillPath": "skills/engineering/grill-with-docs/SKILL.md",
+      "computedHash": "9c460cbd94fd3c63cdef967dbdb6e66ca687103cdc380cd37834e4d10b738f78"
     },
     "issue-create": {
       "source": "lvncers-template/skills",
